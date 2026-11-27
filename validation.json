@@ -28,7 +28,7 @@
       "name": "unit_tests",
       "command": "python -m pytest tests -q",
       "status": "passed",
-      "detail": "56 passed"
+      "detail": "152 passed in 23.36s; includes independent experimental query architecture, data and inference tests."
     },
     {
       "name": "schema_validation",
@@ -58,7 +58,7 @@
       "name": "model_parameter_audit",
       "command": "python infer.py --check-only",
       "status": "passed",
-      "detail": "总参数量 23,077,263（ViT 2,911,525 + YOLO-seg 3,399,033 + GAT 356,373 + ResNet18 主干 2,787,279 + 六套 ROI 墨迹 U-Net 各 1,948,847 + Stuff U-Net 1,929,971），上限 5,000,000,000"
+      "detail": "23,561,566 state-dict parameter/buffer elements including 484,303 native residual head elements; limit 5,000,000,000."
     },
     {
       "name": "vit_training",
@@ -293,6 +293,12 @@
       "command": "python tools/build_atom_affinity.py ... && python tools/train_atom_affinity.py ... && python infer.py ... --atom-assign-classes 3,28",
       "status": "passed",
       "detail": "43.7 万对、12 维特征、共享逻辑回归；calib 25.337→25.819%（class 3 TP 59→70、class 28 27→30）；全量 PQ 24.068→24.348%，SQ 68.137、RQ 35.734、TP/FP/FN=2186/2720/5143；hold 23.168%、final 24.083%"
+    },
+    {
+      "name": "native_geometry_boundary_confirmation",
+      "command": "fixed source-grouped 108-page comparison after weights/config freeze",
+      "status": "passed",
+      "detail": "PQ 37.7958% -> 38.7982%, TP +15, FP -5; 99-family paired bootstrap delta 95% CI [0.0220,1.9095] points. Default entry reproduces frozen selected predictions on 2 full-inference pages."
     }
   ],
   "model": {
@@ -349,5 +355,177 @@
     "external_data": "未使用",
     "hardcoded_answers": false
   },
-  "generated_at": "2026-11-22"
+  "generated_at": "2026-11-22",
+  "current_default_evaluation": {
+    "date": "2026-11-27",
+    "engine": "hybrid native-residual-v2 boundary prior, cap0",
+    "dataset": "test_final same 1000 pages; cached historical ROI replay, baseline verified on every page",
+    "images": 1000,
+    "TP": 2852,
+    "FP": 2042,
+    "FN": 4477,
+    "sum_iou": 2064.7969371076933,
+    "micro": {
+      "PQ": 0.337854362612729,
+      "SQ": 0.7239820957600608,
+      "RQ": 0.46666121246829745
+    },
+    "baseline_micro": {
+      "PQ": 0.3292305446958775,
+      "SQ": 0.7160147700556794,
+      "RQ": 0.4598097112860892
+    },
+    "confirmation": {
+      "metrics": {
+        "baseline": {
+          "images": 108,
+          "TP": 503,
+          "FP": 294,
+          "FN": 627,
+          "sum_iou": 364.16234879314914,
+          "PQ": 0.3779578088148927,
+          "SQ": 0.723980812710038,
+          "RQ": 0.5220550077841204
+        },
+        "boundary": {
+          "images": 108,
+          "TP": 518,
+          "FP": 289,
+          "FN": 612,
+          "sum_iou": 375.76014484795513,
+          "PQ": 0.3879815641176615,
+          "SQ": 0.7254056850346624,
+          "RQ": 0.5348477026329376
+        }
+      },
+      "uncertainty": {
+        "method": "paired source-component percentile bootstrap",
+        "source_components": 99,
+        "draws": 5000,
+        "seed": 73,
+        "delta_PQ_points_95pct_CI": {
+          "boundary": [
+            0.02199947963368368,
+            1.9094849414181572
+          ]
+        },
+        "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+      }
+    },
+    "record": "docs/ROUND3_RESULTS.json",
+    "roi_max_instances": 0,
+    "native_weight_sha256": "dd885ae635ac546a465c1622d1f99b64cec637494e78142888459b514bade907",
+    "note": "Fixed old base-model exposure unverified. Confirmation isolates the new head increment only; historical cached score is regression, not new dev score or fully unseen end-to-end evaluation."
+  },
+  "historical_checks_note": "Earlier checks preserve their original experiment results; current default is current_default_evaluation.",
+  "previous_default_evaluation": {
+    "date": "2026-11-27",
+    "engine": "hybrid native detail, no redundant class cap",
+    "dataset": "test_final same 1000 pages; cached historical regression, 994 reused / 6 rerun",
+    "micro": {
+      "PQ": 0.3292305446958775,
+      "SQ": 0.7160147700556794,
+      "RQ": 0.4598097112860892
+    },
+    "images": 1000,
+    "TP": 2803,
+    "FP": 2060,
+    "FN": 4526,
+    "sum_iou": 2006.9894004660691,
+    "baseline_micro": {
+      "PQ": 0.3285596136708346,
+      "SQ": 0.7162105680251317,
+      "RQ": 0.45874722929151956
+    },
+    "record": "docs/ROUND2_RESULTS.json",
+    "roi_max_instances": 0,
+    "confirmation_pages": 92,
+    "confirmation_predictions_byte_identical": true,
+    "note": "Fixed old weights historical exposure unverified; no dev score or independent full-system generalization claim."
+  },
+  "older_default_evaluations": [
+    {
+      "date": "2026-11-26",
+      "engine": "hybrid + native-residual-detail-v1",
+      "dataset": "test_final, same full 1000 pages; local historical benchmark",
+      "micro": {
+        "PQ": 0.3285596136708346,
+        "SQ": 0.7162105680251317,
+        "RQ": 0.45874722929151956
+      },
+      "images": 1000,
+      "TP": 2794,
+      "FP": 2058,
+      "FN": 4535,
+      "sum_iou": 2001.092327062218,
+      "baseline_micro": {
+        "PQ": 0.24358503641380036,
+        "SQ": 0.6809916214548523,
+        "RQ": 0.35769167892757886
+      },
+      "source_isolated_final": {
+        "baseline": {
+          "images": 83,
+          "TP": 225,
+          "FP": 381,
+          "FN": 746,
+          "sum_iou": 156.20322064771227,
+          "PQ": 0.19810173829766933,
+          "SQ": 0.6942365362120545,
+          "RQ": 0.2853519340519975,
+          "delta_PQ_points": 0.0
+        },
+        "native_detail": {
+          "images": 83,
+          "TP": 315,
+          "FP": 284,
+          "FN": 656,
+          "sum_iou": 225.76668084380748,
+          "PQ": 0.2876008673169522,
+          "SQ": 0.7167196217263729,
+          "RQ": 0.4012738853503185,
+          "delta_PQ_points": 8.94991290192829
+        }
+      },
+      "record": "docs/NATIVE_DETAIL_RESULTS.json",
+      "note": "Historical frozen models label exposure unverified; no claim of fully unseen end-to-end evaluation. Dev remains unlabeled."
+    }
+  ],
+  "experimental_round4_evaluation": {
+    "date": "2026-11-27",
+    "record": "docs/ROUND4_RESULTS.json",
+    "adopted": false,
+    "default_native_sha256": "dd885ae635ac546a465c1622d1f99b64cec637494e78142888459b514bade907",
+    "development_images": 155,
+    "baseline_PQ": 0.3585807057012604,
+    "control_PQ": 0.3555608408895497,
+    "instance_PQ": 0.3585807057012604,
+    "post_quality_PQ": 0.36325244504990206,
+    "post_quality_gain_points": 0.467173934864166,
+    "post_quality_gate_passed": false,
+    "new_historical1000_evaluation": false,
+    "note": "Exploratory observed-source comparisons. No failed candidate replaced production, no gate retuning."
+  },
+  "experimental_round5_evaluation": {
+    "date": "2026-11-27",
+    "architecture": "query-ink-set-v1",
+    "record": "docs/ROUND5_QUERY_INSTANCES.md",
+    "parameters": 2362595,
+    "production_adopted": false,
+    "train_capacity_pages": 8,
+    "train_capacity_GT": 46,
+    "updates": 1000,
+    "optimizer_state_reset_at_update": 200,
+    "free_query_final": {
+      "TP": 0,
+      "FP": 1,
+      "FN": 46
+    },
+    "mask_threshold": 0.5,
+    "class_threshold": 0.5,
+    "dev_evaluations": 0,
+    "default_changed": false,
+    "training_capacity_passed": false,
+    "note": "Same-training-page native Thing-mask capacity probe only, not CAD PQ or generalization. No full training on failed capacity."
+  }
 }

@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import ast
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -28,6 +29,7 @@ FORBIDDEN_IMPORTS = {
     "http.client", "urllib.request", "urllib.error",
 }
 SKIP_FILES = {ROOT / "compliance" / "net_guard.py"}
+SKIP_DIRECTORIES = {".git", ".venv", "venv", "__pycache__", "tests", "_smoke", "_work", "node_modules"}
 #: 开发期外部复核模块允许在函数内部“延迟导入”联网库：模块顶层仍必须是
 #: 纯离线依赖，默认推理路径不会加载网络代码；只有显式 --external-api 时
 #: 才执行到该函数。其他文件的任何位置导入联网库仍会被拦截。
@@ -56,8 +58,12 @@ def _iter_imports(node: ast.AST, in_function: bool = False):
 
 def scan_imports() -> list[str]:
     problems = []
-    for path in sorted(ROOT.rglob("*.py")):
-        if path in SKIP_FILES or "tests" in path.parts or "_smoke" in path.parts:
+    paths = []
+    for directory, subdirectories, filenames in os.walk(ROOT):
+        subdirectories[:] = sorted(name for name in subdirectories if name not in SKIP_DIRECTORIES)
+        paths.extend(Path(directory) / name for name in filenames if name.endswith(".py"))
+    for path in sorted(paths):
+        if path in SKIP_FILES:
             continue
         try:
             tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))

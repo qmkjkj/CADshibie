@@ -1,0 +1,3196 @@
+{
+  "experiment": "native-residual-detail-v1",
+  "date": "2026-11-26",
+  "online_score": false,
+  "same_page_paired_comparison": true,
+  "freeze": {
+    "checkpoint": "_work\\native_detail_best.pt",
+    "sha256": "076cfcb059f4baff57787b41d3b16a3e10244ae2260a40cccee918c655765ef6",
+    "selected_by": "fixed training-side crop validation only",
+    "epoch": 7,
+    "crop_proxy_PQ": 0.3562504012971096,
+    "splits_sha256": "4b3978fcb72b6a8ff62d3d4dd94c77ae42bb852112d6dd9995228c6a67457593",
+    "raster": "legacy400",
+    "source_identity": "legacy",
+    "geometry_refine": false
+  },
+  "architecture": "Frozen hybrid candidates + native 320px RGB/coarse logit residual UNet",
+  "training": {
+    "pages": {
+      "train": 800,
+      "val": 120
+    },
+    "crops": {
+      "train": 9660,
+      "val": 1043
+    },
+    "positive_crops": {
+      "train": 7444,
+      "val": 765
+    },
+    "validation_sample": 500,
+    "epochs": 10,
+    "selected_epoch": 7,
+    "batch": 8,
+    "base": 16,
+    "seed": 73,
+    "lr": 0.0005,
+    "index_sha256": "561c2bf97d84a423161ac6e66b69fe38d542c5bfb141a67779871850772dc586",
+    "epoch_history": [
+      {
+        "epoch": 0,
+        "loss": 0.0,
+        "crop_proxy_PQ": 0.19734178126540466,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 125,
+        "FP": 364,
+        "FN": 231,
+        "seconds": 9.49,
+        "validation_supported_classes": []
+      },
+      {
+        "epoch": 1,
+        "loss": 0.290679762127581,
+        "crop_proxy_PQ": 0.3337575953844647,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 197,
+        "FP": 288,
+        "FN": 159,
+        "seconds": 94.18,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          22,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 2,
+        "loss": 0.27485129950161014,
+        "crop_proxy_PQ": 0.32838169782559373,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 193,
+        "FP": 294,
+        "FN": 163,
+        "seconds": 100.18,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          22,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 3,
+        "loss": 0.27197707918108693,
+        "crop_proxy_PQ": 0.3513005463828852,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 208,
+        "FP": 278,
+        "FN": 148,
+        "seconds": 108.46,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 4,
+        "loss": 0.2697186984911265,
+        "crop_proxy_PQ": 0.33653985648362483,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 197,
+        "FP": 290,
+        "FN": 159,
+        "seconds": 97.7,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 5,
+        "loss": 0.26846914516996273,
+        "crop_proxy_PQ": 0.3426388604487943,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 202,
+        "FP": 284,
+        "FN": 154,
+        "seconds": 98.9,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 6,
+        "loss": 0.2667006589472294,
+        "crop_proxy_PQ": 0.3549144907091565,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 208,
+        "FP": 274,
+        "FN": 148,
+        "seconds": 96.37,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 7,
+        "loss": 0.26511307293240793,
+        "crop_proxy_PQ": 0.3562504012971096,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 207,
+        "FP": 276,
+        "FN": 149,
+        "seconds": 98.34,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 8,
+        "loss": 0.26375130623184295,
+        "crop_proxy_PQ": 0.3510076994972117,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 201,
+        "FP": 280,
+        "FN": 155,
+        "seconds": 96.93,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          22,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 9,
+        "loss": 0.26245645867870343,
+        "crop_proxy_PQ": 0.34952978018172143,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 200,
+        "FP": 281,
+        "FN": 156,
+        "seconds": 109.25,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          28,
+          29
+        ]
+      },
+      {
+        "epoch": 10,
+        "loss": 0.26184568043477485,
+        "crop_proxy_PQ": 0.35102841737253043,
+        "coarse_crop_proxy_PQ": 0.19734178126540466,
+        "TP": 202,
+        "FP": 279,
+        "FN": 154,
+        "seconds": 100.54,
+        "validation_supported_classes": [
+          2,
+          3,
+          4,
+          8,
+          14,
+          15,
+          18,
+          22,
+          28,
+          29
+        ]
+      }
+    ]
+  },
+  "evaluation": {
+    "baseline": "baseline",
+    "scopes": {
+      "all_evaluated": {
+        "baseline": {
+          "images": 1000,
+          "TP": 2188,
+          "FP": 2717,
+          "FN": 5141,
+          "sum_iou": 1490.0096677432168,
+          "PQ": 0.24358503641380036,
+          "SQ": 0.6809916214548523,
+          "RQ": 0.35769167892757886,
+          "delta_PQ_points": 0.0
+        },
+        "native_detail": {
+          "images": 1000,
+          "TP": 2794,
+          "FP": 2058,
+          "FN": 4535,
+          "sum_iou": 2001.092327062218,
+          "PQ": 0.3285596136708346,
+          "SQ": 0.7162105680251317,
+          "RQ": 0.45874722929151956,
+          "delta_PQ_points": 8.497457725703422
+        }
+      },
+      "source_isolated_all": {
+        "baseline": {
+          "images": 178,
+          "TP": 525,
+          "FP": 748,
+          "FN": 1413,
+          "sum_iou": 362.6716636030189,
+          "PQ": 0.22589328159639918,
+          "SQ": 0.690803168767655,
+          "RQ": 0.32700093428838367,
+          "delta_PQ_points": 0.0
+        },
+        "native_detail": {
+          "images": 178,
+          "TP": 696,
+          "FP": 558,
+          "FN": 1242,
+          "sum_iou": 503.33589791177627,
+          "PQ": 0.31537336961890744,
+          "SQ": 0.7231837613674946,
+          "RQ": 0.43609022556390975,
+          "delta_PQ_points": 8.948008802250826
+        }
+      },
+      "source_isolated_calib": {
+        "baseline": {
+          "images": 42,
+          "TP": 151,
+          "FP": 141,
+          "FN": 257,
+          "sum_iou": 104.68930275259513,
+          "PQ": 0.2991122935788432,
+          "SQ": 0.6933066407456631,
+          "RQ": 0.43142857142857144,
+          "delta_PQ_points": 0.0
+        },
+        "native_detail": {
+          "images": 42,
+          "TP": 180,
+          "FP": 105,
+          "FN": 228,
+          "sum_iou": 130.98188662902868,
+          "PQ": 0.3780141028254796,
+          "SQ": 0.7276771479390483,
+          "RQ": 0.5194805194805194,
+          "delta_PQ_points": 7.890180924663637
+        }
+      },
+      "source_isolated_hold": {
+        "baseline": {
+          "images": 53,
+          "TP": 149,
+          "FP": 226,
+          "FN": 410,
+          "sum_iou": 101.77914020271187,
+          "PQ": 0.21794248437411537,
+          "SQ": 0.6830814778705495,
+          "RQ": 0.31905781584582443,
+          "delta_PQ_points": 0.0
+        },
+        "native_detail": {
+          "images": 53,
+          "TP": 201,
+          "FP": 169,
+          "FN": 358,
+          "sum_iou": 146.58733043894,
+          "PQ": 0.31558090514303555,
+          "SQ": 0.7292902011887562,
+          "RQ": 0.4327233584499462,
+          "delta_PQ_points": 9.763842076892018
+        }
+      },
+      "source_isolated_final": {
+        "baseline": {
+          "images": 83,
+          "TP": 225,
+          "FP": 381,
+          "FN": 746,
+          "sum_iou": 156.20322064771227,
+          "PQ": 0.19810173829766933,
+          "SQ": 0.6942365362120545,
+          "RQ": 0.2853519340519975,
+          "delta_PQ_points": 0.0
+        },
+        "native_detail": {
+          "images": 83,
+          "TP": 315,
+          "FP": 284,
+          "FN": 656,
+          "sum_iou": 225.76668084380748,
+          "PQ": 0.2876008673169522,
+          "SQ": 0.7167196217263729,
+          "RQ": 0.4012738853503185,
+          "delta_PQ_points": 8.94991290192829
+        }
+      }
+    },
+    "paired_uncertainty": {
+      "all_evaluated": {
+        "method": "paired source-component percentile bootstrap",
+        "source_components": 565,
+        "draws": 5000,
+        "seed": 73,
+        "delta_PQ_points_95pct_CI": {
+          "native_detail": [
+            7.697353809316922,
+            9.260320092270664
+          ]
+        },
+        "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+      },
+      "source_isolated_all": {
+        "method": "paired source-component percentile bootstrap",
+        "source_components": 156,
+        "draws": 5000,
+        "seed": 73,
+        "delta_PQ_points_95pct_CI": {
+          "native_detail": [
+            7.6813192917960835,
+            10.264387780568121
+          ]
+        },
+        "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+      },
+      "source_isolated_calib": {
+        "method": "paired source-component percentile bootstrap",
+        "source_components": 39,
+        "draws": 5000,
+        "seed": 73,
+        "delta_PQ_points_95pct_CI": {
+          "native_detail": [
+            4.883228123321147,
+            11.794988576420778
+          ]
+        },
+        "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+      },
+      "source_isolated_hold": {
+        "method": "paired source-component percentile bootstrap",
+        "source_components": 48,
+        "draws": 5000,
+        "seed": 73,
+        "delta_PQ_points_95pct_CI": {
+          "native_detail": [
+            7.7006232668123715,
+            11.76683029457315
+          ]
+        },
+        "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+      },
+      "source_isolated_final": {
+        "method": "paired source-component percentile bootstrap",
+        "source_components": 69,
+        "draws": 5000,
+        "seed": 73,
+        "delta_PQ_points_95pct_CI": {
+          "native_detail": [
+            7.217330408429448,
+            10.644864707831573
+          ]
+        },
+        "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+      }
+    },
+    "note": "Historical frozen weights may have prior label exposure; source isolation does not undo that history."
+  },
+  "final_match_changes": {
+    "old_TP": 225,
+    "new_TP": 315,
+    "retained": 220,
+    "lost": 5,
+    "gained": 95,
+    "per_class": {
+      "2": {
+        "retained": 41,
+        "gained": 20,
+        "lost": 2
+      },
+      "3": {
+        "retained": 8,
+        "gained": 3
+      },
+      "4": {
+        "retained": 13,
+        "gained": 7
+      },
+      "8": {
+        "retained": 54,
+        "gained": 23
+      },
+      "12": {
+        "gained": 1,
+        "retained": 2
+      },
+      "14": {
+        "retained": 38,
+        "gained": 2,
+        "lost": 1
+      },
+      "15": {
+        "retained": 16,
+        "gained": 6
+      },
+      "18": {
+        "gained": 12,
+        "retained": 8
+      },
+      "19": {
+        "gained": 6,
+        "retained": 3
+      },
+      "20": {
+        "gained": 3,
+        "retained": 1
+      },
+      "21": {
+        "retained": 4,
+        "gained": 4
+      },
+      "22": {
+        "retained": 17,
+        "gained": 3
+      },
+      "25": {
+        "gained": 1
+      },
+      "28": {
+        "lost": 2,
+        "retained": 1,
+        "gained": 3
+      },
+      "29": {
+        "retained": 4,
+        "gained": 1
+      },
+      "31": {
+        "retained": 1
+      },
+      "32": {
+        "retained": 9
+      }
+    },
+    "note": "Ground-truth matches under the same strict IoU > .5 Hungarian matching; prediction instance IDs are not compared."
+  },
+  "per_class": {
+    "all1000": {
+      "2": {
+        "baseline": {
+          "TP": 498,
+          "FP": 430,
+          "FN": 898,
+          "sum_iou": 332.11106766536375,
+          "images": 388,
+          "PQ": 0.2858098689030669,
+          "SQ": 0.6668896941071562,
+          "RQ": 0.42857142857142855
+        },
+        "native_detail": {
+          "TP": 617,
+          "FP": 300,
+          "FN": 779,
+          "sum_iou": 420.5121004517791,
+          "images": 387,
+          "PQ": 0.36360752308843847,
+          "SQ": 0.6815431125636614,
+          "RQ": 0.5335062689148292
+        }
+      },
+      "3": {
+        "baseline": {
+          "TP": 250,
+          "FP": 257,
+          "FN": 569,
+          "sum_iou": 153.4660148666167,
+          "images": 426,
+          "PQ": 0.231472118954173,
+          "SQ": 0.6138640594664667,
+          "RQ": 0.3770739064856712
+        },
+        "native_detail": {
+          "TP": 300,
+          "FP": 205,
+          "FN": 519,
+          "sum_iou": 192.32147109204678,
+          "images": 426,
+          "PQ": 0.29051581735958726,
+          "SQ": 0.6410715703068226,
+          "RQ": 0.45317220543806647
+        }
+      },
+      "4": {
+        "baseline": {
+          "TP": 92,
+          "FP": 112,
+          "FN": 227,
+          "sum_iou": 69.46697389027432,
+          "images": 189,
+          "PQ": 0.26564808371041804,
+          "SQ": 0.7550758031551557,
+          "RQ": 0.35181644359464626
+        },
+        "native_detail": {
+          "TP": 153,
+          "FP": 51,
+          "FN": 166,
+          "sum_iou": 130.32562898455691,
+          "images": 189,
+          "PQ": 0.4983771662889366,
+          "SQ": 0.851801496631091,
+          "RQ": 0.5850860420650096
+        }
+      },
+      "5": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 13,
+          "sum_iou": 0.0,
+          "images": 6,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 13,
+          "sum_iou": 0.0,
+          "images": 6,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "8": {
+        "baseline": {
+          "TP": 510,
+          "FP": 670,
+          "FN": 507,
+          "sum_iou": 372.31950774757433,
+          "images": 406,
+          "PQ": 0.33893446312933484,
+          "SQ": 0.7300382504854399,
+          "RQ": 0.4642694583522986
+        },
+        "native_detail": {
+          "TP": 640,
+          "FP": 536,
+          "FN": 377,
+          "sum_iou": 500.62487679321634,
+          "images": 406,
+          "PQ": 0.45656623510553246,
+          "SQ": 0.7822263699894005,
+          "RQ": 0.5836753305973552
+        }
+      },
+      "9": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 31,
+          "sum_iou": 0.0,
+          "images": 17,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 31,
+          "sum_iou": 0.0,
+          "images": 17,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "10": {
+        "baseline": {
+          "TP": 2,
+          "FP": 56,
+          "FN": 50,
+          "sum_iou": 1.12045595841841,
+          "images": 59,
+          "PQ": 0.020371926516698363,
+          "SQ": 0.560227979209205,
+          "RQ": 0.03636363636363636
+        },
+        "native_detail": {
+          "TP": 2,
+          "FP": 56,
+          "FN": 50,
+          "sum_iou": 1.12045595841841,
+          "images": 59,
+          "PQ": 0.020371926516698363,
+          "SQ": 0.560227979209205,
+          "RQ": 0.03636363636363636
+        }
+      },
+      "11": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 64,
+          "sum_iou": 0.0,
+          "images": 21,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 64,
+          "sum_iou": 0.0,
+          "images": 21,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "12": {
+        "baseline": {
+          "TP": 16,
+          "FP": 63,
+          "FN": 60,
+          "sum_iou": 11.005343082390766,
+          "images": 45,
+          "PQ": 0.14200442686955828,
+          "SQ": 0.6878339426494229,
+          "RQ": 0.2064516129032258
+        },
+        "native_detail": {
+          "TP": 34,
+          "FP": 45,
+          "FN": 42,
+          "sum_iou": 24.46079879344013,
+          "images": 45,
+          "PQ": 0.31562321023793716,
+          "SQ": 0.7194352586305921,
+          "RQ": 0.43870967741935485
+        }
+      },
+      "13": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 153,
+          "sum_iou": 0.0,
+          "images": 61,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 153,
+          "sum_iou": 0.0,
+          "images": 61,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "14": {
+        "baseline": {
+          "TP": 129,
+          "FP": 69,
+          "FN": 244,
+          "sum_iou": 87.56071469602543,
+          "images": 68,
+          "PQ": 0.30669252082670906,
+          "SQ": 0.6787652302017475,
+          "RQ": 0.45183887915936954
+        },
+        "native_detail": {
+          "TP": 149,
+          "FP": 47,
+          "FN": 224,
+          "sum_iou": 104.9255134463785,
+          "images": 68,
+          "PQ": 0.3688067256463216,
+          "SQ": 0.7041980768213323,
+          "RQ": 0.523725834797891
+        }
+      },
+      "15": {
+        "baseline": {
+          "TP": 60,
+          "FP": 64,
+          "FN": 110,
+          "sum_iou": 45.87770785910446,
+          "images": 75,
+          "PQ": 0.31209325074220723,
+          "SQ": 0.7646284643184077,
+          "RQ": 0.40816326530612246
+        },
+        "native_detail": {
+          "TP": 76,
+          "FP": 48,
+          "FN": 94,
+          "sum_iou": 62.03680802901108,
+          "images": 75,
+          "PQ": 0.4220191022381706,
+          "SQ": 0.8162737898554089,
+          "RQ": 0.5170068027210885
+        }
+      },
+      "16": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 83,
+          "sum_iou": 0.0,
+          "images": 42,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 83,
+          "sum_iou": 0.0,
+          "images": 42,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "17": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 111,
+          "sum_iou": 0.0,
+          "images": 49,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 111,
+          "sum_iou": 0.0,
+          "images": 49,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "18": {
+        "baseline": {
+          "TP": 68,
+          "FP": 131,
+          "FN": 311,
+          "sum_iou": 45.34724639889441,
+          "images": 95,
+          "PQ": 0.15691088719340626,
+          "SQ": 0.6668712705719767,
+          "RQ": 0.23529411764705882
+        },
+        "native_detail": {
+          "TP": 112,
+          "FP": 75,
+          "FN": 267,
+          "sum_iou": 74.42998038847372,
+          "images": 95,
+          "PQ": 0.2630034642702252,
+          "SQ": 0.6645533963256582,
+          "RQ": 0.3957597173144876
+        }
+      },
+      "19": {
+        "baseline": {
+          "TP": 18,
+          "FP": 26,
+          "FN": 36,
+          "sum_iou": 11.255005032699776,
+          "images": 46,
+          "PQ": 0.2296939802591791,
+          "SQ": 0.6252780573722098,
+          "RQ": 0.3673469387755102
+        },
+        "native_detail": {
+          "TP": 34,
+          "FP": 10,
+          "FN": 20,
+          "sum_iou": 23.432370966123212,
+          "images": 46,
+          "PQ": 0.47821165236986146,
+          "SQ": 0.6891873813565651,
+          "RQ": 0.6938775510204082
+        }
+      },
+      "20": {
+        "baseline": {
+          "TP": 50,
+          "FP": 177,
+          "FN": 92,
+          "sum_iou": 29.327887966048888,
+          "images": 127,
+          "PQ": 0.1589587423634086,
+          "SQ": 0.5865577593209778,
+          "RQ": 0.27100271002710025
+        },
+        "native_detail": {
+          "TP": 78,
+          "FP": 150,
+          "FN": 64,
+          "sum_iou": 51.15935996640866,
+          "images": 127,
+          "PQ": 0.27653708089950624,
+          "SQ": 0.6558892303385725,
+          "RQ": 0.42162162162162165
+        }
+      },
+      "21": {
+        "baseline": {
+          "TP": 32,
+          "FP": 49,
+          "FN": 46,
+          "sum_iou": 20.779948755510556,
+          "images": 63,
+          "PQ": 0.2613830032139693,
+          "SQ": 0.6493733986097049,
+          "RQ": 0.4025157232704403
+        },
+        "native_detail": {
+          "TP": 56,
+          "FP": 25,
+          "FN": 22,
+          "sum_iou": 37.72752506583662,
+          "images": 63,
+          "PQ": 0.4745600637212154,
+          "SQ": 0.6737058047470825,
+          "RQ": 0.7044025157232704
+        }
+      },
+      "22": {
+        "baseline": {
+          "TP": 88,
+          "FP": 61,
+          "FN": 397,
+          "sum_iou": 61.039200560535825,
+          "images": 209,
+          "PQ": 0.19255268315626442,
+          "SQ": 0.6936272790969981,
+          "RQ": 0.277602523659306
+        },
+        "native_detail": {
+          "TP": 96,
+          "FP": 57,
+          "FN": 389,
+          "sum_iou": 67.92232461824933,
+          "images": 209,
+          "PQ": 0.21292264770611077,
+          "SQ": 0.7075242147734305,
+          "RQ": 0.30094043887147337
+        }
+      },
+      "23": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 126,
+          "sum_iou": 0.0,
+          "images": 76,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 126,
+          "sum_iou": 0.0,
+          "images": 76,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "24": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 33,
+          "sum_iou": 0.0,
+          "images": 28,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 33,
+          "sum_iou": 0.0,
+          "images": 28,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "25": {
+        "baseline": {
+          "TP": 31,
+          "FP": 19,
+          "FN": 38,
+          "sum_iou": 20.00187184789122,
+          "images": 52,
+          "PQ": 0.33616591340993646,
+          "SQ": 0.64522167251262,
+          "RQ": 0.5210084033613446
+        },
+        "native_detail": {
+          "TP": 37,
+          "FP": 13,
+          "FN": 32,
+          "sum_iou": 27.465588992379427,
+          "images": 52,
+          "PQ": 0.4616065376870492,
+          "SQ": 0.7423132160102548,
+          "RQ": 0.6218487394957983
+        }
+      },
+      "26": {
+        "baseline": {
+          "TP": 61,
+          "FP": 17,
+          "FN": 72,
+          "sum_iou": 45.325086361092104,
+          "images": 41,
+          "PQ": 0.42962167166911946,
+          "SQ": 0.7430342026408542,
+          "RQ": 0.5781990521327014
+        },
+        "native_detail": {
+          "TP": 63,
+          "FP": 15,
+          "FN": 70,
+          "sum_iou": 47.66457392995325,
+          "images": 41,
+          "PQ": 0.4517969092886564,
+          "SQ": 0.7565805385706865,
+          "RQ": 0.5971563981042654
+        }
+      },
+      "27": {
+        "baseline": {
+          "TP": 37,
+          "FP": 47,
+          "FN": 59,
+          "sum_iou": 21.13957507965848,
+          "images": 31,
+          "PQ": 0.2348841675517609,
+          "SQ": 0.5713398670177968,
+          "RQ": 0.4111111111111111
+        },
+        "native_detail": {
+          "TP": 45,
+          "FP": 39,
+          "FN": 51,
+          "sum_iou": 26.35210404885064,
+          "images": 31,
+          "PQ": 0.29280115609834045,
+          "SQ": 0.5856023121966809,
+          "RQ": 0.5
+        }
+      },
+      "28": {
+        "baseline": {
+          "TP": 65,
+          "FP": 81,
+          "FN": 252,
+          "sum_iou": 38.69222511973592,
+          "images": 151,
+          "PQ": 0.16713704155393488,
+          "SQ": 0.5952650018420911,
+          "RQ": 0.28077753779697623
+        },
+        "native_detail": {
+          "TP": 95,
+          "FP": 24,
+          "FN": 222,
+          "sum_iou": 61.6620088628354,
+          "images": 150,
+          "PQ": 0.2828532516643826,
+          "SQ": 0.6490737775035306,
+          "RQ": 0.43577981651376146
+        }
+      },
+      "29": {
+        "baseline": {
+          "TP": 55,
+          "FP": 74,
+          "FN": 244,
+          "sum_iou": 36.14861004633821,
+          "images": 225,
+          "PQ": 0.1689187385342907,
+          "SQ": 0.6572474553879675,
+          "RQ": 0.2570093457943925
+        },
+        "native_detail": {
+          "TP": 81,
+          "FP": 48,
+          "FN": 218,
+          "sum_iou": 58.92361186521571,
+          "images": 225,
+          "PQ": 0.27534398067857807,
+          "SQ": 0.7274519983359964,
+          "RQ": 0.37850467289719625
+        }
+      },
+      "30": {
+        "baseline": {
+          "TP": 27,
+          "FP": 59,
+          "FN": 109,
+          "sum_iou": 18.203063997792125,
+          "images": 162,
+          "PQ": 0.1639915675476768,
+          "SQ": 0.6741875554737824,
+          "RQ": 0.24324324324324326
+        },
+        "native_detail": {
+          "TP": 27,
+          "FP": 59,
+          "FN": 109,
+          "sum_iou": 18.203063997792125,
+          "images": 162,
+          "PQ": 0.1639915675476768,
+          "SQ": 0.6741875554737824,
+          "RQ": 0.24324324324324326
+        }
+      },
+      "31": {
+        "baseline": {
+          "TP": 10,
+          "FP": 7,
+          "FN": 11,
+          "sum_iou": 6.5966878719728665,
+          "images": 23,
+          "PQ": 0.3471940985248877,
+          "SQ": 0.6596687871972866,
+          "RQ": 0.5263157894736842
+        },
+        "native_detail": {
+          "TP": 10,
+          "FP": 7,
+          "FN": 11,
+          "sum_iou": 6.5966878719728665,
+          "images": 23,
+          "PQ": 0.3471940985248877,
+          "SQ": 0.6596687871972866,
+          "RQ": 0.5263157894736842
+        }
+      },
+      "32": {
+        "baseline": {
+          "TP": 44,
+          "FP": 96,
+          "FN": 132,
+          "sum_iou": 34.77336740409957,
+          "images": 236,
+          "PQ": 0.22008460382341496,
+          "SQ": 0.7903038046386265,
+          "RQ": 0.27848101265822783
+        },
+        "native_detail": {
+          "TP": 44,
+          "FP": 96,
+          "FN": 132,
+          "sum_iou": 34.77336740409957,
+          "images": 236,
+          "PQ": 0.22008460382341496,
+          "SQ": 0.7903038046386265,
+          "RQ": 0.27848101265822783
+        }
+      },
+      "33": {
+        "baseline": {
+          "TP": 5,
+          "FP": 13,
+          "FN": 15,
+          "sum_iou": 3.138319117525973,
+          "images": 26,
+          "PQ": 0.16517469039610386,
+          "SQ": 0.6276638235051946,
+          "RQ": 0.2631578947368421
+        },
+        "native_detail": {
+          "TP": 5,
+          "FP": 13,
+          "FN": 15,
+          "sum_iou": 3.138319117525973,
+          "images": 26,
+          "PQ": 0.16517469039610386,
+          "SQ": 0.6276638235051946,
+          "RQ": 0.2631578947368421
+        }
+      },
+      "34": {
+        "baseline": {
+          "TP": 40,
+          "FP": 139,
+          "FN": 48,
+          "sum_iou": 25.31378641765256,
+          "images": 209,
+          "PQ": 0.1896163776603188,
+          "SQ": 0.632844660441314,
+          "RQ": 0.299625468164794
+        },
+        "native_detail": {
+          "TP": 40,
+          "FP": 139,
+          "FN": 48,
+          "sum_iou": 25.31378641765256,
+          "images": 209,
+          "PQ": 0.1896163776603188,
+          "SQ": 0.632844660441314,
+          "RQ": 0.299625468164794
+        }
+      }
+    },
+    "calib": {
+      "2": {
+        "baseline": {
+          "TP": 35,
+          "FP": 31,
+          "FN": 46,
+          "sum_iou": 23.18727890871764,
+          "images": 20,
+          "PQ": 0.31547318243153255,
+          "SQ": 0.6624936831062183,
+          "RQ": 0.47619047619047616
+        },
+        "native_detail": {
+          "TP": 43,
+          "FP": 18,
+          "FN": 38,
+          "sum_iou": 29.374872622227432,
+          "images": 20,
+          "PQ": 0.4137306003130624,
+          "SQ": 0.6831365726099403,
+          "RQ": 0.6056338028169014
+        }
+      },
+      "3": {
+        "baseline": {
+          "TP": 4,
+          "FP": 4,
+          "FN": 15,
+          "sum_iou": 2.656402706008384,
+          "images": 12,
+          "PQ": 0.19677057081543586,
+          "SQ": 0.664100676502096,
+          "RQ": 0.2962962962962963
+        },
+        "native_detail": {
+          "TP": 5,
+          "FP": 3,
+          "FN": 14,
+          "sum_iou": 3.44020298266801,
+          "images": 12,
+          "PQ": 0.2548298505680007,
+          "SQ": 0.688040596533602,
+          "RQ": 0.37037037037037035
+        }
+      },
+      "4": {
+        "baseline": {
+          "TP": 6,
+          "FP": 7,
+          "FN": 17,
+          "sum_iou": 4.640725867434087,
+          "images": 14,
+          "PQ": 0.2578181037463382,
+          "SQ": 0.7734543112390145,
+          "RQ": 0.3333333333333333
+        },
+        "native_detail": {
+          "TP": 10,
+          "FP": 3,
+          "FN": 13,
+          "sum_iou": 8.50428213046047,
+          "images": 14,
+          "PQ": 0.47246011835891505,
+          "SQ": 0.8504282130460471,
+          "RQ": 0.5555555555555556
+        }
+      },
+      "8": {
+        "baseline": {
+          "TP": 47,
+          "FP": 37,
+          "FN": 22,
+          "sum_iou": 36.39446879333894,
+          "images": 22,
+          "PQ": 0.4757446901090057,
+          "SQ": 0.7743503998582753,
+          "RQ": 0.6143790849673203
+        },
+        "native_detail": {
+          "TP": 49,
+          "FP": 34,
+          "FN": 20,
+          "sum_iou": 39.555733097041305,
+          "images": 22,
+          "PQ": 0.5204701723294909,
+          "SQ": 0.8072598591232919,
+          "RQ": 0.6447368421052632
+        }
+      },
+      "9": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "10": {
+        "baseline": {
+          "TP": 0,
+          "FP": 1,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 1,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "11": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 14,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 14,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "12": {
+        "baseline": {
+          "TP": 1,
+          "FP": 2,
+          "FN": 0,
+          "sum_iou": 0.6933139534883721,
+          "images": 2,
+          "PQ": 0.34665697674418605,
+          "SQ": 0.6933139534883721,
+          "RQ": 0.5
+        },
+        "native_detail": {
+          "TP": 1,
+          "FP": 2,
+          "FN": 0,
+          "sum_iou": 0.707533234859675,
+          "images": 2,
+          "PQ": 0.3537666174298375,
+          "SQ": 0.707533234859675,
+          "RQ": 0.5
+        }
+      },
+      "13": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 7,
+          "sum_iou": 0.0,
+          "images": 4,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 7,
+          "sum_iou": 0.0,
+          "images": 4,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "14": {
+        "baseline": {
+          "TP": 4,
+          "FP": 4,
+          "FN": 6,
+          "sum_iou": 2.2508366140828553,
+          "images": 2,
+          "PQ": 0.25009295712031726,
+          "SQ": 0.5627091535207138,
+          "RQ": 0.4444444444444444
+        },
+        "native_detail": {
+          "TP": 8,
+          "FP": 0,
+          "FN": 2,
+          "sum_iou": 5.016228116435676,
+          "images": 2,
+          "PQ": 0.557358679603964,
+          "SQ": 0.6270285145544595,
+          "RQ": 0.8888888888888888
+        }
+      },
+      "15": {
+        "baseline": {
+          "TP": 0,
+          "FP": 2,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 2,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 2,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 2,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "16": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 2,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 2,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "17": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 6,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 6,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "18": {
+        "baseline": {
+          "TP": 7,
+          "FP": 4,
+          "FN": 18,
+          "sum_iou": 3.940188011151097,
+          "images": 5,
+          "PQ": 0.21889933395283873,
+          "SQ": 0.5628840015930139,
+          "RQ": 0.3888888888888889
+        },
+        "native_detail": {
+          "TP": 8,
+          "FP": 5,
+          "FN": 17,
+          "sum_iou": 5.100259652451237,
+          "images": 5,
+          "PQ": 0.2684347185500651,
+          "SQ": 0.6375324565564047,
+          "RQ": 0.42105263157894735
+        }
+      },
+      "19": {
+        "baseline": {
+          "TP": 2,
+          "FP": 5,
+          "FN": 5,
+          "sum_iou": 1.3377445183040386,
+          "images": 6,
+          "PQ": 0.1911063597577198,
+          "SQ": 0.6688722591520193,
+          "RQ": 0.2857142857142857
+        },
+        "native_detail": {
+          "TP": 4,
+          "FP": 3,
+          "FN": 3,
+          "sum_iou": 2.986797409717405,
+          "images": 6,
+          "PQ": 0.4266853442453436,
+          "SQ": 0.7466993524293513,
+          "RQ": 0.5714285714285714
+        }
+      },
+      "20": {
+        "baseline": {
+          "TP": 6,
+          "FP": 9,
+          "FN": 6,
+          "sum_iou": 3.613829135743443,
+          "images": 9,
+          "PQ": 0.2676910470921069,
+          "SQ": 0.6023048559572405,
+          "RQ": 0.4444444444444444
+        },
+        "native_detail": {
+          "TP": 8,
+          "FP": 7,
+          "FN": 4,
+          "sum_iou": 5.219579495203911,
+          "images": 9,
+          "PQ": 0.3866355181632527,
+          "SQ": 0.6524474369004889,
+          "RQ": 0.5925925925925926
+        }
+      },
+      "21": {
+        "baseline": {
+          "TP": 8,
+          "FP": 5,
+          "FN": 3,
+          "sum_iou": 5.207640220425758,
+          "images": 8,
+          "PQ": 0.43397001836881316,
+          "SQ": 0.6509550275532198,
+          "RQ": 0.6666666666666666
+        },
+        "native_detail": {
+          "TP": 9,
+          "FP": 4,
+          "FN": 2,
+          "sum_iou": 5.757354127622756,
+          "images": 8,
+          "PQ": 0.47977951063522967,
+          "SQ": 0.6397060141803063,
+          "RQ": 0.75
+        }
+      },
+      "22": {
+        "baseline": {
+          "TP": 5,
+          "FP": 6,
+          "FN": 24,
+          "sum_iou": 3.852116722785853,
+          "images": 14,
+          "PQ": 0.19260583613929266,
+          "SQ": 0.7704233445571707,
+          "RQ": 0.25
+        },
+        "native_detail": {
+          "TP": 5,
+          "FP": 5,
+          "FN": 24,
+          "sum_iou": 3.9417729917217836,
+          "images": 14,
+          "PQ": 0.20214220470368122,
+          "SQ": 0.7883545983443567,
+          "RQ": 0.2564102564102564
+        }
+      },
+      "23": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 11,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 11,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "24": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 4,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 4,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "25": {
+        "baseline": {
+          "TP": 9,
+          "FP": 2,
+          "FN": 4,
+          "sum_iou": 6.090588988277707,
+          "images": 9,
+          "PQ": 0.5075490823564756,
+          "SQ": 0.6767321098086341,
+          "RQ": 0.75
+        },
+        "native_detail": {
+          "TP": 9,
+          "FP": 2,
+          "FN": 4,
+          "sum_iou": 6.993265373817384,
+          "images": 9,
+          "PQ": 0.5827721144847821,
+          "SQ": 0.7770294859797093,
+          "RQ": 0.75
+        }
+      },
+      "28": {
+        "baseline": {
+          "TP": 9,
+          "FP": 5,
+          "FN": 18,
+          "sum_iou": 5.14983717801784,
+          "images": 12,
+          "PQ": 0.25121156965940683,
+          "SQ": 0.5722041308908712,
+          "RQ": 0.43902439024390244
+        },
+        "native_detail": {
+          "TP": 12,
+          "FP": 0,
+          "FN": 15,
+          "sum_iou": 7.607328483710963,
+          "images": 12,
+          "PQ": 0.39011940942107504,
+          "SQ": 0.6339440403092469,
+          "RQ": 0.6153846153846154
+        }
+      },
+      "29": {
+        "baseline": {
+          "TP": 5,
+          "FP": 4,
+          "FN": 11,
+          "sum_iou": 3.030492105999706,
+          "images": 12,
+          "PQ": 0.2424393684799765,
+          "SQ": 0.6060984211999412,
+          "RQ": 0.4
+        },
+        "native_detail": {
+          "TP": 6,
+          "FP": 3,
+          "FN": 10,
+          "sum_iou": 4.132837882271299,
+          "images": 12,
+          "PQ": 0.3306270305817039,
+          "SQ": 0.6888063137118832,
+          "RQ": 0.48
+        }
+      },
+      "30": {
+        "baseline": {
+          "TP": 0,
+          "FP": 3,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 3,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "32": {
+        "baseline": {
+          "TP": 2,
+          "FP": 5,
+          "FN": 8,
+          "sum_iou": 1.915987678855326,
+          "images": 13,
+          "PQ": 0.22541031515945012,
+          "SQ": 0.957993839427663,
+          "RQ": 0.23529411764705882
+        },
+        "native_detail": {
+          "TP": 2,
+          "FP": 5,
+          "FN": 8,
+          "sum_iou": 1.915987678855326,
+          "images": 13,
+          "PQ": 0.22541031515945012,
+          "SQ": 0.957993839427663,
+          "RQ": 0.23529411764705882
+        }
+      },
+      "34": {
+        "baseline": {
+          "TP": 1,
+          "FP": 5,
+          "FN": 1,
+          "sum_iou": 0.7278513499640694,
+          "images": 7,
+          "PQ": 0.18196283749101735,
+          "SQ": 0.7278513499640694,
+          "RQ": 0.25
+        },
+        "native_detail": {
+          "TP": 1,
+          "FP": 5,
+          "FN": 1,
+          "sum_iou": 0.7278513499640694,
+          "images": 7,
+          "PQ": 0.18196283749101735,
+          "SQ": 0.7278513499640694,
+          "RQ": 0.25
+        }
+      }
+    },
+    "hold": {
+      "2": {
+        "baseline": {
+          "TP": 32,
+          "FP": 39,
+          "FN": 85,
+          "sum_iou": 21.18599744959294,
+          "images": 29,
+          "PQ": 0.22538295159141425,
+          "SQ": 0.6620624202997794,
+          "RQ": 0.3404255319148936
+        },
+        "native_detail": {
+          "TP": 44,
+          "FP": 23,
+          "FN": 73,
+          "sum_iou": 29.484312825914134,
+          "images": 29,
+          "PQ": 0.3204816611512406,
+          "SQ": 0.6700980187707758,
+          "RQ": 0.4782608695652174
+        }
+      },
+      "3": {
+        "baseline": {
+          "TP": 10,
+          "FP": 18,
+          "FN": 28,
+          "sum_iou": 5.765832941730006,
+          "images": 24,
+          "PQ": 0.1747222103554547,
+          "SQ": 0.5765832941730006,
+          "RQ": 0.30303030303030304
+        },
+        "native_detail": {
+          "TP": 13,
+          "FP": 15,
+          "FN": 25,
+          "sum_iou": 8.609392904718764,
+          "images": 24,
+          "PQ": 0.2608906940823868,
+          "SQ": 0.6622609926706742,
+          "RQ": 0.3939393939393939
+        }
+      },
+      "4": {
+        "baseline": {
+          "TP": 5,
+          "FP": 9,
+          "FN": 15,
+          "sum_iou": 2.9972668212675564,
+          "images": 16,
+          "PQ": 0.17630981301573861,
+          "SQ": 0.5994533642535113,
+          "RQ": 0.29411764705882354
+        },
+        "native_detail": {
+          "TP": 10,
+          "FP": 4,
+          "FN": 10,
+          "sum_iou": 8.71140318376838,
+          "images": 16,
+          "PQ": 0.51243548139814,
+          "SQ": 0.871140318376838,
+          "RQ": 0.5882352941176471
+        }
+      },
+      "8": {
+        "baseline": {
+          "TP": 45,
+          "FP": 63,
+          "FN": 27,
+          "sum_iou": 33.834576473809854,
+          "images": 36,
+          "PQ": 0.37593973859788726,
+          "SQ": 0.7518794771957745,
+          "RQ": 0.5
+        },
+        "native_detail": {
+          "TP": 57,
+          "FP": 50,
+          "FN": 15,
+          "sum_iou": 45.80094942112884,
+          "images": 36,
+          "PQ": 0.5117424516327245,
+          "SQ": 0.8035254284408568,
+          "RQ": 0.6368715083798883
+        }
+      },
+      "9": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 9,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 9,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "10": {
+        "baseline": {
+          "TP": 0,
+          "FP": 1,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 1,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "11": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 6,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 6,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "12": {
+        "baseline": {
+          "TP": 4,
+          "FP": 10,
+          "FN": 12,
+          "sum_iou": 2.4068025770887442,
+          "images": 8,
+          "PQ": 0.1604535051392496,
+          "SQ": 0.6017006442721861,
+          "RQ": 0.26666666666666666
+        },
+        "native_detail": {
+          "TP": 9,
+          "FP": 5,
+          "FN": 7,
+          "sum_iou": 6.595765424232593,
+          "images": 8,
+          "PQ": 0.43971769494883955,
+          "SQ": 0.7328628249147325,
+          "RQ": 0.6
+        }
+      },
+      "13": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 12,
+          "sum_iou": 0.0,
+          "images": 8,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 12,
+          "sum_iou": 0.0,
+          "images": 8,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "14": {
+        "baseline": {
+          "TP": 10,
+          "FP": 5,
+          "FN": 15,
+          "sum_iou": 6.589679846356708,
+          "images": 9,
+          "PQ": 0.3294839923178354,
+          "SQ": 0.6589679846356707,
+          "RQ": 0.5
+        },
+        "native_detail": {
+          "TP": 12,
+          "FP": 3,
+          "FN": 13,
+          "sum_iou": 8.499930316080363,
+          "images": 9,
+          "PQ": 0.42499651580401815,
+          "SQ": 0.7083275263400303,
+          "RQ": 0.6
+        }
+      },
+      "15": {
+        "baseline": {
+          "TP": 4,
+          "FP": 7,
+          "FN": 16,
+          "sum_iou": 2.753691994571999,
+          "images": 11,
+          "PQ": 0.17765754803690315,
+          "SQ": 0.6884229986429997,
+          "RQ": 0.25806451612903225
+        },
+        "native_detail": {
+          "TP": 6,
+          "FP": 5,
+          "FN": 14,
+          "sum_iou": 4.580176735848386,
+          "images": 11,
+          "PQ": 0.295495273280541,
+          "SQ": 0.7633627893080642,
+          "RQ": 0.3870967741935484
+        }
+      },
+      "16": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 9,
+          "sum_iou": 0.0,
+          "images": 6,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 9,
+          "sum_iou": 0.0,
+          "images": 6,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "17": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 17,
+          "sum_iou": 0.0,
+          "images": 9,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 17,
+          "sum_iou": 0.0,
+          "images": 9,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "18": {
+        "baseline": {
+          "TP": 4,
+          "FP": 19,
+          "FN": 45,
+          "sum_iou": 2.9165875449601524,
+          "images": 10,
+          "PQ": 0.08101632069333757,
+          "SQ": 0.7291468862400381,
+          "RQ": 0.1111111111111111
+        },
+        "native_detail": {
+          "TP": 11,
+          "FP": 13,
+          "FN": 38,
+          "sum_iou": 6.9793548072365095,
+          "images": 10,
+          "PQ": 0.19121520019826052,
+          "SQ": 0.6344868006578644,
+          "RQ": 0.3013698630136986
+        }
+      },
+      "19": {
+        "baseline": {
+          "TP": 2,
+          "FP": 2,
+          "FN": 4,
+          "sum_iou": 1.3740890985517356,
+          "images": 6,
+          "PQ": 0.27481781971034713,
+          "SQ": 0.6870445492758678,
+          "RQ": 0.4
+        },
+        "native_detail": {
+          "TP": 2,
+          "FP": 2,
+          "FN": 4,
+          "sum_iou": 1.5718280864617116,
+          "images": 6,
+          "PQ": 0.3143656172923423,
+          "SQ": 0.7859140432308558,
+          "RQ": 0.4
+        }
+      },
+      "20": {
+        "baseline": {
+          "TP": 5,
+          "FP": 14,
+          "FN": 7,
+          "sum_iou": 2.713092821846916,
+          "images": 9,
+          "PQ": 0.17503824657076877,
+          "SQ": 0.5426185643693832,
+          "RQ": 0.3225806451612903
+        },
+        "native_detail": {
+          "TP": 5,
+          "FP": 14,
+          "FN": 7,
+          "sum_iou": 2.9261387239835517,
+          "images": 9,
+          "PQ": 0.18878314348280978,
+          "SQ": 0.5852277447967104,
+          "RQ": 0.3225806451612903
+        }
+      },
+      "21": {
+        "baseline": {
+          "TP": 2,
+          "FP": 6,
+          "FN": 4,
+          "sum_iou": 1.2584033613445378,
+          "images": 7,
+          "PQ": 0.1797719087635054,
+          "SQ": 0.6292016806722689,
+          "RQ": 0.2857142857142857
+        },
+        "native_detail": {
+          "TP": 5,
+          "FP": 3,
+          "FN": 1,
+          "sum_iou": 3.301191609824812,
+          "images": 7,
+          "PQ": 0.4715988014035446,
+          "SQ": 0.6602383219649625,
+          "RQ": 0.7142857142857143
+        }
+      },
+      "22": {
+        "baseline": {
+          "TP": 5,
+          "FP": 3,
+          "FN": 29,
+          "sum_iou": 3.0097677650484376,
+          "images": 20,
+          "PQ": 0.14332227452611607,
+          "SQ": 0.6019535530096876,
+          "RQ": 0.23809523809523808
+        },
+        "native_detail": {
+          "TP": 4,
+          "FP": 4,
+          "FN": 30,
+          "sum_iou": 2.5441255008534833,
+          "images": 20,
+          "PQ": 0.12114883337397539,
+          "SQ": 0.6360313752133708,
+          "RQ": 0.19047619047619047
+        }
+      },
+      "23": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 11,
+          "sum_iou": 0.0,
+          "images": 8,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 11,
+          "sum_iou": 0.0,
+          "images": 8,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "24": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 3,
+          "sum_iou": 0.0,
+          "images": 3,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "25": {
+        "baseline": {
+          "TP": 2,
+          "FP": 2,
+          "FN": 7,
+          "sum_iou": 1.228673835125448,
+          "images": 7,
+          "PQ": 0.18902674386545354,
+          "SQ": 0.614336917562724,
+          "RQ": 0.3076923076923077
+        },
+        "native_detail": {
+          "TP": 3,
+          "FP": 1,
+          "FN": 6,
+          "sum_iou": 2.002118804754509,
+          "images": 7,
+          "PQ": 0.3080182776545399,
+          "SQ": 0.6673729349181697,
+          "RQ": 0.46153846153846156
+        }
+      },
+      "26": {
+        "baseline": {
+          "TP": 9,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 7.4020619603951,
+          "images": 1,
+          "PQ": 0.7791644168836948,
+          "SQ": 0.8224513289327889,
+          "RQ": 0.9473684210526315
+        },
+        "native_detail": {
+          "TP": 9,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 7.62691415348209,
+          "images": 1,
+          "PQ": 0.8028330687875884,
+          "SQ": 0.8474349059424545,
+          "RQ": 0.9473684210526315
+        }
+      },
+      "28": {
+        "baseline": {
+          "TP": 0,
+          "FP": 4,
+          "FN": 20,
+          "sum_iou": 0.0,
+          "images": 15,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 3,
+          "FN": 20,
+          "sum_iou": 0.0,
+          "images": 15,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "29": {
+        "baseline": {
+          "TP": 2,
+          "FP": 1,
+          "FN": 8,
+          "sum_iou": 1.162541948700972,
+          "images": 9,
+          "PQ": 0.17885260749245724,
+          "SQ": 0.581270974350486,
+          "RQ": 0.3076923076923077
+        },
+        "native_detail": {
+          "TP": 3,
+          "FP": 0,
+          "FN": 7,
+          "sum_iou": 2.1736541783311236,
+          "images": 9,
+          "PQ": 0.33440833512786516,
+          "SQ": 0.7245513927770412,
+          "RQ": 0.46153846153846156
+        }
+      },
+      "30": {
+        "baseline": {
+          "TP": 1,
+          "FP": 5,
+          "FN": 8,
+          "sum_iou": 0.6290083867784904,
+          "images": 10,
+          "PQ": 0.08386778490379872,
+          "SQ": 0.6290083867784904,
+          "RQ": 0.13333333333333333
+        },
+        "native_detail": {
+          "TP": 1,
+          "FP": 5,
+          "FN": 8,
+          "sum_iou": 0.6290083867784904,
+          "images": 10,
+          "PQ": 0.08386778490379872,
+          "SQ": 0.6290083867784904,
+          "RQ": 0.13333333333333333
+        }
+      },
+      "32": {
+        "baseline": {
+          "TP": 6,
+          "FP": 10,
+          "FN": 9,
+          "sum_iou": 3.7656027387909106,
+          "images": 19,
+          "PQ": 0.24294211218005873,
+          "SQ": 0.6276004564651517,
+          "RQ": 0.3870967741935484
+        },
+        "native_detail": {
+          "TP": 6,
+          "FP": 10,
+          "FN": 9,
+          "sum_iou": 3.7656027387909106,
+          "images": 19,
+          "PQ": 0.24294211218005873,
+          "SQ": 0.6276004564651517,
+          "RQ": 0.3870967741935484
+        }
+      },
+      "33": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "34": {
+        "baseline": {
+          "TP": 1,
+          "FP": 8,
+          "FN": 1,
+          "sum_iou": 0.7854626367513443,
+          "images": 9,
+          "PQ": 0.1428113885002444,
+          "SQ": 0.7854626367513443,
+          "RQ": 0.18181818181818182
+        },
+        "native_detail": {
+          "TP": 1,
+          "FP": 8,
+          "FN": 1,
+          "sum_iou": 0.7854626367513443,
+          "images": 9,
+          "PQ": 0.1428113885002444,
+          "SQ": 0.7854626367513443,
+          "RQ": 0.18181818181818182
+        }
+      }
+    },
+    "final": {
+      "2": {
+        "baseline": {
+          "TP": 43,
+          "FP": 68,
+          "FN": 99,
+          "sum_iou": 28.97624058961353,
+          "images": 43,
+          "PQ": 0.22906119043172748,
+          "SQ": 0.6738660602235704,
+          "RQ": 0.33992094861660077
+        },
+        "native_detail": {
+          "TP": 61,
+          "FP": 49,
+          "FN": 81,
+          "sum_iou": 40.375159111063475,
+          "images": 43,
+          "PQ": 0.320437770722726,
+          "SQ": 0.6618878542797291,
+          "RQ": 0.48412698412698413
+        }
+      },
+      "3": {
+        "baseline": {
+          "TP": 8,
+          "FP": 29,
+          "FN": 55,
+          "sum_iou": 4.67333566111785,
+          "images": 30,
+          "PQ": 0.093466713222357,
+          "SQ": 0.5841669576397313,
+          "RQ": 0.16
+        },
+        "native_detail": {
+          "TP": 11,
+          "FP": 25,
+          "FN": 52,
+          "sum_iou": 6.4223753037783355,
+          "images": 30,
+          "PQ": 0.12974495563188557,
+          "SQ": 0.583852300343485,
+          "RQ": 0.2222222222222222
+        }
+      },
+      "4": {
+        "baseline": {
+          "TP": 13,
+          "FP": 13,
+          "FN": 22,
+          "sum_iou": 9.985464746194827,
+          "images": 23,
+          "PQ": 0.32739228676048615,
+          "SQ": 0.7681126727842175,
+          "RQ": 0.4262295081967213
+        },
+        "native_detail": {
+          "TP": 20,
+          "FP": 6,
+          "FN": 15,
+          "sum_iou": 17.136886546930388,
+          "images": 23,
+          "PQ": 0.5618651326862423,
+          "SQ": 0.8568443273465194,
+          "RQ": 0.6557377049180327
+        }
+      },
+      "8": {
+        "baseline": {
+          "TP": 54,
+          "FP": 85,
+          "FN": 74,
+          "sum_iou": 40.272404584749076,
+          "images": 48,
+          "PQ": 0.30166595194568596,
+          "SQ": 0.7457852700879458,
+          "RQ": 0.4044943820224719
+        },
+        "native_detail": {
+          "TP": 77,
+          "FP": 62,
+          "FN": 51,
+          "sum_iou": 59.51475954467123,
+          "images": 48,
+          "PQ": 0.4458034422821815,
+          "SQ": 0.7729189551256004,
+          "RQ": 0.5767790262172284
+        }
+      },
+      "9": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 8,
+          "sum_iou": 0.0,
+          "images": 4,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 8,
+          "sum_iou": 0.0,
+          "images": 4,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "10": {
+        "baseline": {
+          "TP": 0,
+          "FP": 9,
+          "FN": 11,
+          "sum_iou": 0.0,
+          "images": 9,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 9,
+          "FN": 11,
+          "sum_iou": 0.0,
+          "images": 9,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "11": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 17,
+          "sum_iou": 0.0,
+          "images": 7,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 17,
+          "sum_iou": 0.0,
+          "images": 7,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "12": {
+        "baseline": {
+          "TP": 2,
+          "FP": 10,
+          "FN": 12,
+          "sum_iou": 1.7991967871485943,
+          "images": 10,
+          "PQ": 0.13839975285758419,
+          "SQ": 0.8995983935742972,
+          "RQ": 0.15384615384615385
+        },
+        "native_detail": {
+          "TP": 3,
+          "FP": 9,
+          "FN": 11,
+          "sum_iou": 2.606206875212723,
+          "images": 10,
+          "PQ": 0.20047745193944022,
+          "SQ": 0.8687356250709076,
+          "RQ": 0.23076923076923078
+        }
+      },
+      "13": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 39,
+          "sum_iou": 0.0,
+          "images": 12,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 39,
+          "sum_iou": 0.0,
+          "images": 12,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "14": {
+        "baseline": {
+          "TP": 39,
+          "FP": 24,
+          "FN": 70,
+          "sum_iou": 24.402637452290953,
+          "images": 16,
+          "PQ": 0.28375159828245294,
+          "SQ": 0.6257086526228449,
+          "RQ": 0.45348837209302323
+        },
+        "native_detail": {
+          "TP": 40,
+          "FP": 23,
+          "FN": 69,
+          "sum_iou": 26.392087615322907,
+          "images": 16,
+          "PQ": 0.3068847397130571,
+          "SQ": 0.6598021903830726,
+          "RQ": 0.46511627906976744
+        }
+      },
+      "15": {
+        "baseline": {
+          "TP": 16,
+          "FP": 17,
+          "FN": 38,
+          "sum_iou": 12.183562728869045,
+          "images": 17,
+          "PQ": 0.2800819018130815,
+          "SQ": 0.7614726705543153,
+          "RQ": 0.367816091954023
+        },
+        "native_detail": {
+          "TP": 22,
+          "FP": 11,
+          "FN": 32,
+          "sum_iou": 18.298311647072854,
+          "images": 17,
+          "PQ": 0.4206508424614449,
+          "SQ": 0.8317414385033115,
+          "RQ": 0.5057471264367817
+        }
+      },
+      "16": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 26,
+          "sum_iou": 0.0,
+          "images": 11,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 26,
+          "sum_iou": 0.0,
+          "images": 11,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "17": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 21,
+          "sum_iou": 0.0,
+          "images": 10,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 21,
+          "sum_iou": 0.0,
+          "images": 10,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "18": {
+        "baseline": {
+          "TP": 8,
+          "FP": 31,
+          "FN": 68,
+          "sum_iou": 5.709671203563491,
+          "images": 19,
+          "PQ": 0.09929862962719115,
+          "SQ": 0.7137089004454363,
+          "RQ": 0.1391304347826087
+        },
+        "native_detail": {
+          "TP": 20,
+          "FP": 12,
+          "FN": 56,
+          "sum_iou": 13.832046504529481,
+          "images": 18,
+          "PQ": 0.25614900934313856,
+          "SQ": 0.691602325226474,
+          "RQ": 0.37037037037037035
+        }
+      },
+      "19": {
+        "baseline": {
+          "TP": 3,
+          "FP": 7,
+          "FN": 8,
+          "sum_iou": 1.6377430447014691,
+          "images": 8,
+          "PQ": 0.1559755280668066,
+          "SQ": 0.545914348233823,
+          "RQ": 0.2857142857142857
+        },
+        "native_detail": {
+          "TP": 9,
+          "FP": 1,
+          "FN": 2,
+          "sum_iou": 5.604652822876759,
+          "images": 8,
+          "PQ": 0.5337764593215961,
+          "SQ": 0.6227392025418621,
+          "RQ": 0.8571428571428571
+        }
+      },
+      "20": {
+        "baseline": {
+          "TP": 1,
+          "FP": 22,
+          "FN": 18,
+          "sum_iou": 0.5788235294117647,
+          "images": 16,
+          "PQ": 0.027563025210084035,
+          "SQ": 0.5788235294117647,
+          "RQ": 0.047619047619047616
+        },
+        "native_detail": {
+          "TP": 4,
+          "FP": 19,
+          "FN": 15,
+          "sum_iou": 2.336887310527913,
+          "images": 16,
+          "PQ": 0.11128034812037682,
+          "SQ": 0.5842218276319783,
+          "RQ": 0.19047619047619047
+        }
+      },
+      "21": {
+        "baseline": {
+          "TP": 4,
+          "FP": 5,
+          "FN": 8,
+          "sum_iou": 2.7953252282123704,
+          "images": 8,
+          "PQ": 0.26622145030594,
+          "SQ": 0.6988313070530926,
+          "RQ": 0.38095238095238093
+        },
+        "native_detail": {
+          "TP": 8,
+          "FP": 1,
+          "FN": 4,
+          "sum_iou": 5.669758186914456,
+          "images": 8,
+          "PQ": 0.5399769701823292,
+          "SQ": 0.708719773364307,
+          "RQ": 0.7619047619047619
+        }
+      },
+      "22": {
+        "baseline": {
+          "TP": 17,
+          "FP": 4,
+          "FN": 34,
+          "sum_iou": 12.03132399280663,
+          "images": 22,
+          "PQ": 0.3342034442446286,
+          "SQ": 0.7077249407533311,
+          "RQ": 0.4722222222222222
+        },
+        "native_detail": {
+          "TP": 20,
+          "FP": 5,
+          "FN": 31,
+          "sum_iou": 14.520636273143442,
+          "images": 22,
+          "PQ": 0.38212200718798534,
+          "SQ": 0.7260318136571721,
+          "RQ": 0.5263157894736842
+        }
+      },
+      "23": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 16,
+          "sum_iou": 0.0,
+          "images": 10,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 16,
+          "sum_iou": 0.0,
+          "images": 10,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "24": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 5,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 5,
+          "sum_iou": 0.0,
+          "images": 5,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "25": {
+        "baseline": {
+          "TP": 0,
+          "FP": 2,
+          "FN": 4,
+          "sum_iou": 0.0,
+          "images": 4,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 1,
+          "FP": 1,
+          "FN": 3,
+          "sum_iou": 0.6440677966101694,
+          "images": 4,
+          "PQ": 0.21468926553672316,
+          "SQ": 0.6440677966101694,
+          "RQ": 0.3333333333333333
+        }
+      },
+      "26": {
+        "baseline": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.0,
+          "images": 1,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "27": {
+        "baseline": {
+          "TP": 0,
+          "FP": 1,
+          "FN": 4,
+          "sum_iou": 0.0,
+          "images": 2,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 1,
+          "FN": 4,
+          "sum_iou": 0.0,
+          "images": 2,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "28": {
+        "baseline": {
+          "TP": 3,
+          "FP": 5,
+          "FN": 27,
+          "sum_iou": 1.606495857297678,
+          "images": 17,
+          "PQ": 0.08455241354198305,
+          "SQ": 0.535498619099226,
+          "RQ": 0.15789473684210525
+        },
+        "native_detail": {
+          "TP": 4,
+          "FP": 2,
+          "FN": 26,
+          "sum_iou": 2.1937182999578067,
+          "images": 17,
+          "PQ": 0.12187323888654482,
+          "SQ": 0.5484295749894517,
+          "RQ": 0.2222222222222222
+        }
+      },
+      "29": {
+        "baseline": {
+          "TP": 4,
+          "FP": 10,
+          "FN": 23,
+          "sum_iou": 2.5558406775713007,
+          "images": 23,
+          "PQ": 0.12467515500347809,
+          "SQ": 0.6389601693928252,
+          "RQ": 0.1951219512195122
+        },
+        "native_detail": {
+          "TP": 5,
+          "FP": 9,
+          "FN": 22,
+          "sum_iou": 3.223972441031961,
+          "images": 23,
+          "PQ": 0.1572669483430225,
+          "SQ": 0.6447944882063922,
+          "RQ": 0.24390243902439024
+        }
+      },
+      "30": {
+        "baseline": {
+          "TP": 0,
+          "FP": 12,
+          "FN": 17,
+          "sum_iou": 0.0,
+          "images": 20,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 12,
+          "FN": 17,
+          "sum_iou": 0.0,
+          "images": 20,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "31": {
+        "baseline": {
+          "TP": 1,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.6416615713848975,
+          "images": 2,
+          "PQ": 0.42777438092326503,
+          "SQ": 0.6416615713848975,
+          "RQ": 0.6666666666666666
+        },
+        "native_detail": {
+          "TP": 1,
+          "FP": 0,
+          "FN": 1,
+          "sum_iou": 0.6416615713848975,
+          "images": 2,
+          "PQ": 0.42777438092326503,
+          "SQ": 0.6416615713848975,
+          "RQ": 0.6666666666666666
+        }
+      },
+      "32": {
+        "baseline": {
+          "TP": 9,
+          "FP": 11,
+          "FN": 14,
+          "sum_iou": 6.35349299277872,
+          "images": 29,
+          "PQ": 0.2955113019897079,
+          "SQ": 0.7059436658643022,
+          "RQ": 0.4186046511627907
+        },
+        "native_detail": {
+          "TP": 9,
+          "FP": 11,
+          "FN": 14,
+          "sum_iou": 6.35349299277872,
+          "images": 29,
+          "PQ": 0.2955113019897079,
+          "SQ": 0.7059436658643022,
+          "RQ": 0.4186046511627907
+        }
+      },
+      "33": {
+        "baseline": {
+          "TP": 0,
+          "FP": 3,
+          "FN": 2,
+          "sum_iou": 0.0,
+          "images": 4,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 3,
+          "FN": 2,
+          "sum_iou": 0.0,
+          "images": 4,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      },
+      "34": {
+        "baseline": {
+          "TP": 0,
+          "FP": 13,
+          "FN": 4,
+          "sum_iou": 0.0,
+          "images": 15,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "native_detail": {
+          "TP": 0,
+          "FP": 13,
+          "FN": 4,
+          "sum_iou": 0.0,
+          "images": 15,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "cadvec/__init__.py": "cc2c4af701a70111fd36a3896efc8a582597eb3cdcd41a42a13d947b9630ba9b",
+    "cadvec/anchor_assign.py": "75b5b27f1ab5ff493154a55d4a9b112ec5375d59dc586d2947a68a48ca81d7a3",
+    "cadvec/atom_assign.py": "4d2bd829d16be1fdb060b2e707c4cf494414c8deb870592c7463017159d67b5d",
+    "cadvec/config.py": "c3e4e958d7ab00e88674621c8eb50d7ee80f4f6cf90a88db3c4671b9619d1728",
+    "cadvec/crops.py": "19042302f095b2321d9769e669e0d5605b26c0db95da25d58216b0b92f7aa711",
+    "cadvec/dataset.py": "f79f797ef749a4e008868c35c118a369633b9fc092c7b0f83588460050ecaa96",
+    "cadvec/detail_unet.py": "e9bad9dfa3c102e23c544a581be232ff2979f0a39956736ac1c6a75f17b8609f",
+    "cadvec/evaluate.py": "3ff0032f7e69eb1977e77f76d4cbcd8bec468f861809fd6e32e0b1879896d34f",
+    "cadvec/external.py": "7d76b92d8ed1acc3bc4c2585b58e7e3577d14568b8b5c2340a9dafb795b6de23",
+    "cadvec/gat_model.py": "9c4632f6be07d4687c66697d884e2d55aee25d8b2cd2a923c51f153667167052",
+    "cadvec/geometry_refine.py": "4879f9dc5b64b5591eb9a02b0c8e22faa8b2ddddd481907cc3861ff77e2fab30",
+    "cadvec/grouping.py": "eb274630516d5e56cdd17e217bc9446defa24bb581a9bd2f115ba18cb41d4c43",
+    "cadvec/hybrid.py": "e5f0be472108a670245c9e07f7bb1fd631cdc477c82ac265f757197bb8be77d4",
+    "cadvec/image.py": "b309540d88d608fcd7ce0c3f4c430aa0958c68c2beff694a7964d9ab3730e3ea",
+    "cadvec/image_features.py": "6da38ba25f87f997d1c8532aa948c4a2921c069db9b144e2004ef90298da6684",
+    "cadvec/ink_support.py": "19a9e82dfb4d6573c8a3abb6d082de077ed4887588559f56b6b657328c0e8361",
+    "cadvec/instances.py": "d59fb344fd8f8cb4b2fd33fd5a10e5079c50ce7c6beb61198d759b869b69f48a",
+    "cadvec/layers.py": "85e43181fa57f8216a7065bb59c40a57fee9444c73263f1958aa147fce1ee2aa",
+    "cadvec/local_match.py": "8939adc93925b33d636acb4b35624d6463879081a519ac4f5b05633c9f6ee28e",
+    "cadvec/native_detail.py": "49adaf639df42bb149d72326d14033bfd7dcfee6b49b699e183ad1c5b1a1652a",
+    "cadvec/objects.py": "f3e36bd73afc390d9884f67c8e7a51368d791b24847e24aff755616b1c8342a6",
+    "cadvec/parallel.py": "bd24871d66b6e801c18db494f5956c7e64770fea6f20507a73003034dd47d74e",
+    "cadvec/pipeline.py": "d1d815a615e060984902e219cd8a8e5c2deae4519f50118ccf718c0ef4892c3f",
+    "cadvec/pipeline_det.py": "5769ead1135879d51215f0ed5eead87e1332889cb6acb332485dbee428fe02f5",
+    "cadvec/pipeline_gat.py": "6c17350ea2139b885d0b3265f7c9d064395a820e9dedcca4accfa62ad7619c3b",
+    "cadvec/pipeline_seg.py": "14e067bd99cd1be0a47b40f9a5487a26451563d037aec83b1d7cf897ddb00151",
+    "cadvec/pipeline_segdet.py": "dd587c78eff106775eea0af744538186767cfbf7b777e1fab263c359cccac991",
+    "cadvec/pipeline_tpl.py": "68dcb29cab8fc76ba04b5a7a48b970a72e33cbe2ecb92dbaaa9aa55fe7b64c58",
+    "cadvec/pipeline_v2.py": "b02d18276a41ce8deafabea570dc96856b818d6a4383facee2ee502bfb468d25",
+    "cadvec/primitive_graph.py": "9a85e4082505db6aab1a52160d1f0960e59280fd513ac2fe5926d81e8b930cd6",
+    "cadvec/prior.py": "bd1a5c3e0547f45bcf615cd97ffb574fc6afe4849a35607b4dbceb9c0a697c03",
+    "cadvec/raster.py": "8860952a90d5f1f29afb9cd7a268af6e735fa234bf2159acd597b14aa4ffa932",
+    "cadvec/roi_ink.py": "e4197c01092b8e49abeb5ffbbb4cfc5ebf57421267eb4e0b2c70c1a55197a2c5",
+    "cadvec/schema.py": "e31539891f96722b6c02ebda16032bb700e8cbebfc609309dba3f4a81d250d2e",
+    "cadvec/segmentation.py": "997b50e90b074743ca626e59c99b5e4d3d4f01b55effb8d6e6b0a8f0b568a07a",
+    "cadvec/segmodel.py": "9a5b02a0ea24e54ee8c6c3c70ef27ac5b46824d42a91476bc7ca9eb6a2a4d6d9",
+    "cadvec/skeleton.py": "73396ab7dca09923ab119ddb51a8c474e79ea8a90ae7803f0978e569fe41a4e3",
+    "cadvec/strokes.py": "83319ef19361fe4b0bc19c3689acadd751d974741ab372d89233bcf5db29738c",
+    "cadvec/stuff_branch.py": "7e384cd19361df0fc710a3888854cf9a34dd935ff8b40be3b4a0233e0655b8e5",
+    "cadvec/stuff_unet.py": "b76943aa27b8eaa6d26d4b0ab795a0fa3d4e4c5a55951cf30a5600cbdd8bc1cb",
+    "cadvec/svg.py": "0052dd31cda767892a9fabbff8ee0ac060e0b4c908b52e663cc4b752a9853715",
+    "cadvec/template_build.py": "059bab8abc53a743dd2ebcd3bc279edee4452224ee6ee17a45bb44af80dbc29e",
+    "cadvec/templating.py": "2a5f2fc6e387269df3aa08c366f90fc01db2729600dfaa1af743560bf335d9df",
+    "cadvec/vectorize.py": "8732996e8cd3cc44030c15c893dae3614b357df23e4d4ad25e9cabcfa4cabb52",
+    "cadvec/vit.py": "63dd453913a33ab02b07bfcff17eabb33c5ff0e98fb0c577a93839de86b7c191",
+    "compliance/__init__.py": "23876bc897655c7bf87bd75418c439e6fc37512cf07c601faf9a1d8e00d5d789",
+    "compliance/net_guard.py": "b78588f80d2a2897875a200409fabe96fca56b57b5b79a8eb2f164887c95d095",
+    "compliance/params.py": "c50fd091f8a09cdfdb997ed0f8ff3c0d7c236a2a87d2a586ddaaab692885104e",
+    "infer.py": "e4b979ee32a59f31b027b95eddb81d832e307b8058b6c844d6b22b6c10161332",
+    "tools/audit_dataset_overlap.py": "456514ebfc9643fa56e810de6d9a34e268aebe06e0e8018c710129e641445891",
+    "tools/build_clean_splits.py": "a6f4e0f76b332fc55c8498fafede04f2e46dda67b9d0b06b6e9dad2155a84a49",
+    "tools/build_native_detail.py": "3b084c12b94a6cb18f55ab83a46859f78ecfcc4bf2f404d45588147212e1ed2b",
+    "tools/compare_instance_matches.py": "57560188b6da849da8269fa2e522217dac519b80eb202696ae8332f573a842dc",
+    "tools/summarize_ablation.py": "0de5fd04fb5f0fbfb967eb2758b1b8c2fa2137518eb60ed25fd136f171395e4b",
+    "tools/train_native_detail.py": "3167a7ba428fdeee87b912a201f899e6304109b435d68c57aabdaf4e9cfea1c5"
+  },
+  "weights_sha256": {
+    "vit_strokes.pt": "8cbc240a8f80d5dff04b8ebb688ad1ff102c8b7f91a5476b10db479fd56a7345",
+    "yolo_seg.pt": "1157d3014ad48fc376dee3fb9ce712f6df4a9798dcb7ea0c4d17e8cae395e1c5",
+    "gat_primitive.pt": "f5e8428dad7cd53b0d61c42c03691551fc771a3e32e463d0177ad46e346d1eea",
+    "resnet18_layer3.pt": "41b265a255f2ab9c49a58a539f477daa5122df56eac9d7b9e018823612453149",
+    "stroke_palette.json": "c73875bc6cf3b780ae56f783ba9c48bab914cfa58d0f1e72ef5bfd429b387e4e",
+    "class_policy.json": "7589f89ff122905936b88c215d9dc55ce358a74c7eb1d8f7b6c0e7c1a422b84b",
+    "color_class_prior.json": "c48440776533f5aca7cfd0ce0d289513cc40e733b27a819a0b3719c4dab05e57",
+    "color_prior.json": "721c0e0da1b9e794d3b912b949fbe19b7a4d17a1b545f559876468a38dbec685",
+    "roi_ink.pt": "a47629742bc5e0aa8bc2c9e5395553e3bc9f09d7a89a6dddc5587cde059fe1ac",
+    "roi_ink_quality.json": "ea49894cbb05f0b781290d1fecf2c86e596b00a7c4ef03a98ee74c8d2a7bab7c",
+    "roi_ink_all.pt": "956ef170671f944e4f94ff3d6352da64910ac0f5379efdbeff87936893ae227c",
+    "roi_ink_256.pt": "07590465cdf0c584d1f596ed4f47611db95b91048b03324dd8c88b74143ded6d",
+    "roi_quality.json": "386a67cb5bd3438bbc444325317fa7ac1676b000c9df189c81fcafe50a729106",
+    "roi_ink_c2.pt": "c7b94c43daec24bd2c6de80e57cdb19f8d6f9d4c9e23ca59384e11346f38ac3a",
+    "roi_ink_unified.pt": "c0c14eb15f4e03d5a558a292fb233f5bea52b2da21369f8a1efe80bdf933d2b0",
+    "roi_quality_all.json": "dc4e84dcf68b195c78f3794770970e49fed3238790d777c469685df89183dacb",
+    "roi_ink_512.pt": "dbe1347ab7bf9b41ee100d2e69e9e4e7b826ba6c3db43e456480ae4ac39eea7b",
+    "roi_quality_512_all.json": "417e86965196710c3c2e095c3739de3610f26ebedaad687a450844276b52bf8b",
+    "roi_quality_512c_all.json": "434c30043f3ec60cdbda64c2e27155357eab892eb9021be50a1d30bd1d734156",
+    "atom_affinity.json": "b5846394fb3a89c1b833257975a332dbb8c8092fd1fdb82f26e3919b6619c4b7",
+    "anchor_assign.json": "adc2af7a9afe6003e88c9b3e42e6481f1f1a0174ec97712172a29b3cc357e55c",
+    "stuff_unet.pt": "da78569cb1b502ac6c804a2cc20d5cb0576a4aace58a821c621075e5fd4ff26d",
+    "stuff_thresholds.json": "8377175d9e29116cea0b67d4c890f83efeddd42e0bd0a8b74596b1359505dd6b",
+    "native_detail.pt": "076cfcb059f4baff57787b41d3b16a3e10244ae2260a40cccee918c655765ef6"
+  },
+  "model_parameters_state_dict_audit": 23561566,
+  "environment": {
+    "date": "2026-11-26",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.9",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8GB",
+    "packages": {
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "ultralytics": "8.4.216",
+      "numpy": "2.2.6",
+      "Pillow": "11.3.0",
+      "scipy": "1.15.3",
+      "scikit-image": "0.25.2"
+    },
+    "workers": 3,
+    "native_detail_weight_bytes": 1983490,
+    "note": "This local Windows run does not validate the historical Linux container."
+  },
+  "tests": {
+    "passed": 102,
+    "offline_compliance": true,
+    "schema_valid_outputs": 1000,
+    "default_matches_frozen_predictions": true,
+    "baseline_switch_matches_historical": true,
+    "999px_native_frame": true,
+    "filename_independence": true
+  },
+  "limitations": [
+    "Frozen old models historical label exposure is unverified.",
+    "Source-prefix and dHash grouping may miss related pages.",
+    "Calib was observed during training; epoch/configuration chosen by training validation only.",
+    "Full 1000 is a historical benchmark comparison, not independent unseen-data evidence.",
+    "Insufficient evidence for rare classes or a 50% score on the unlabeled dev set."
+  ]
+}

@@ -1,0 +1,1788 @@
+{
+  "architecture": "query-ink-set-v1",
+  "date": "2026-11-27",
+  "production_adopted": false,
+  "decision": "Stop full-dataset training: same-training-page capacity probe failed. Do not tune thresholds or evaluate unlabeled dev.",
+  "default_native_sha256": "dd885ae635ac546a465c1622d1f99b64cec637494e78142888459b514bade907",
+  "default_historical1000_PQ": 0.337854362612729,
+  "parameters": 2362595,
+  "dataset": {
+    "manifest_sha256": "8341e9b2fb5dba3df3ad51185c989a26fa43d6edc91c9016bedad9c9a671a365",
+    "train_pages": 800,
+    "validation_pages": 120,
+    "max_instances": 96,
+    "native_shapes": {
+      "(999, 1000)": 14,
+      "(1000, 999)": 13,
+      "(1000, 1000)": 893
+    },
+    "labels": "Original official train source-grouped selection; not unseen sources",
+    "validation_used_in_capacity_probe": false
+  },
+  "capacity200": {
+    "protocol": {
+      "architecture": "query-ink-set-v1",
+      "created_at_utc": "2026-11-27T02:05:38.432040+00:00",
+      "dataset_manifest_sha256": "8341e9b2fb5dba3df3ad51185c989a26fa43d6edc91c9016bedad9c9a671a365",
+      "backbone_sha256": "1157d3014ad48fc376dee3fb9ce712f6df4a9798dcb7ea0c4d17e8cae395e1c5",
+      "resume_sha256": null,
+      "model_kwargs": {
+        "num_queries": 100,
+        "dim": 128,
+        "mask_dim": 32,
+        "decoder_layers": 3,
+        "heads": 4
+      },
+      "parameters": 2362595,
+      "train_stems": [
+        "9WwF0",
+        "ETpC1",
+        "7UIjI",
+        "a8Lp4",
+        "HcYK7",
+        "QgliH",
+        "VaaLC",
+        "6Yk9E"
+      ],
+      "validation_stems": [
+        "9WwF0",
+        "ETpC1",
+        "7UIjI",
+        "a8Lp4",
+        "HcYK7",
+        "QgliH",
+        "VaaLC",
+        "6Yk9E"
+      ],
+      "steps": 200,
+      "lr": 0.0003,
+      "backbone_lr": 2.9999999999999997e-05,
+      "points": 8192,
+      "batch": 1,
+      "seed": 173,
+      "overfit_capacity_probe": true,
+      "augmentation": "none",
+      "selection": "Last step only. No repeated dev selection or confidence tuning.",
+      "source_files": {
+        "cadvec/query_instances.py": "8b3cb37a956fb8b2977efd79052b9c789de5a3cedb44a5c4049384876af494f0",
+        "cadvec/query_data.py": "7ba5df7fa6b7baf1e4c561537ac7d9dd2193b77e4a65826512439d6335660f44",
+        "tools/train_query_instances.py": "f2695a9b8796385fdaa7f1d320a9b57341371a44819ef9bf683fa77db5638cab",
+        "tools/build_query_instances.py": "f1f2dbc64dac3376459b0e32a37d82c9fab951de2261562cc1e42bdbffacb4c2"
+      }
+    },
+    "result": {
+      "completed_at_utc": "2026-11-27T02:06:23.891076+00:00",
+      "training_seconds": 41.80506260006223,
+      "seconds_per_step": 0.20902531300031113,
+      "peak_gpu_mb": 1680.82421875,
+      "weight_sha256": "e0e60f2d51f98fdb547e8f399b5c60610b1a67d67a82656f826fc0b581bcb2c8",
+      "initial": {
+        "images": 8,
+        "TP": 0,
+        "FP": 0,
+        "FN": 46,
+        "sum_iou": 0.0,
+        "mask_PQ_before_vector_export": 0.0,
+        "note": "Native mask diagnostic, not final vector CAD PQ. Fixed confidence/mask thresholds .5.",
+        "per_image": [
+          {
+            "stem": "9WwF0",
+            "TP": 0,
+            "FP": 0,
+            "FN": 18,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.16719238460063934,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "ETpC1",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.17186398804187775,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "7UIjI",
+            "TP": 0,
+            "FP": 0,
+            "FN": 2,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.16298958659172058,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "a8Lp4",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.1770927608013153,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "HcYK7",
+            "TP": 0,
+            "FP": 0,
+            "FN": 11,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.15848393738269806,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "QgliH",
+            "TP": 0,
+            "FP": 0,
+            "FN": 15,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.16193626821041107,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "VaaLC",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.17624877393245697,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "6Yk9E",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.16262081265449524,
+            "best_same_class_mask_iou_mean": 0.0
+          }
+        ]
+      },
+      "final": {
+        "images": 8,
+        "TP": 0,
+        "FP": 0,
+        "FN": 46,
+        "sum_iou": 0.0,
+        "mask_PQ_before_vector_export": 0.0,
+        "note": "Native mask diagnostic, not final vector CAD PQ. Fixed confidence/mask thresholds .5.",
+        "per_image": [
+          {
+            "stem": "9WwF0",
+            "TP": 0,
+            "FP": 0,
+            "FN": 18,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.21472464501857758,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "ETpC1",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.0024939870927482843,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "7UIjI",
+            "TP": 0,
+            "FP": 0,
+            "FN": 2,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.05327124893665314,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "a8Lp4",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.22431717813014984,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "HcYK7",
+            "TP": 0,
+            "FP": 0,
+            "FN": 11,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.11788585036993027,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "QgliH",
+            "TP": 0,
+            "FP": 0,
+            "FN": 15,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.21790632605552673,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "VaaLC",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.02642107754945755,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "6Yk9E",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.0023265115451067686,
+            "best_same_class_mask_iou_mean": 0.0
+          }
+        ]
+      },
+      "production_adopted": false,
+      "note": "Overfit probe measures training capacity only."
+    }
+  },
+  "capacity1000": {
+    "protocol": {
+      "architecture": "query-ink-set-v1",
+      "created_at_utc": "2026-11-27T02:07:03.964408+00:00",
+      "dataset_manifest_sha256": "8341e9b2fb5dba3df3ad51185c989a26fa43d6edc91c9016bedad9c9a671a365",
+      "backbone_sha256": "1157d3014ad48fc376dee3fb9ce712f6df4a9798dcb7ea0c4d17e8cae395e1c5",
+      "resume_sha256": "e0e60f2d51f98fdb547e8f399b5c60610b1a67d67a82656f826fc0b581bcb2c8",
+      "model_kwargs": {
+        "num_queries": 100,
+        "dim": 128,
+        "mask_dim": 32,
+        "decoder_layers": 3,
+        "heads": 4
+      },
+      "parameters": 2362595,
+      "train_stems": [
+        "9WwF0",
+        "ETpC1",
+        "7UIjI",
+        "a8Lp4",
+        "HcYK7",
+        "QgliH",
+        "VaaLC",
+        "6Yk9E"
+      ],
+      "validation_stems": [
+        "9WwF0",
+        "ETpC1",
+        "7UIjI",
+        "a8Lp4",
+        "HcYK7",
+        "QgliH",
+        "VaaLC",
+        "6Yk9E"
+      ],
+      "steps": 800,
+      "lr": 0.0003,
+      "backbone_lr": 2.9999999999999997e-05,
+      "points": 8192,
+      "batch": 1,
+      "seed": 173,
+      "overfit_capacity_probe": true,
+      "augmentation": "none",
+      "selection": "Last step only. No repeated dev selection or confidence tuning.",
+      "source_files": {
+        "cadvec/query_instances.py": "8b3cb37a956fb8b2977efd79052b9c789de5a3cedb44a5c4049384876af494f0",
+        "cadvec/query_data.py": "7ba5df7fa6b7baf1e4c561537ac7d9dd2193b77e4a65826512439d6335660f44",
+        "tools/train_query_instances.py": "f2695a9b8796385fdaa7f1d320a9b57341371a44819ef9bf683fa77db5638cab",
+        "tools/build_query_instances.py": "f1f2dbc64dac3376459b0e32a37d82c9fab951de2261562cc1e42bdbffacb4c2"
+      }
+    },
+    "result": {
+      "completed_at_utc": "2026-11-27T02:09:43.901281+00:00",
+      "training_seconds": 157.4307117999997,
+      "seconds_per_step": 0.19678838974999963,
+      "peak_gpu_mb": 1680.82421875,
+      "weight_sha256": "f5a3e1b0cf9fbc404b7a2457470a37d961c11b7dd119cf781889e81f7c42dc3c",
+      "initial": {
+        "images": 8,
+        "TP": 0,
+        "FP": 0,
+        "FN": 46,
+        "sum_iou": 0.0,
+        "mask_PQ_before_vector_export": 0.0,
+        "note": "Native mask diagnostic, not final vector CAD PQ. Fixed confidence/mask thresholds .5.",
+        "per_image": [
+          {
+            "stem": "9WwF0",
+            "TP": 0,
+            "FP": 0,
+            "FN": 18,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.21472464501857758,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "ETpC1",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.0024939870927482843,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "7UIjI",
+            "TP": 0,
+            "FP": 0,
+            "FN": 2,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.05327124893665314,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "a8Lp4",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.22431717813014984,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "HcYK7",
+            "TP": 0,
+            "FP": 0,
+            "FN": 11,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.11788585036993027,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "QgliH",
+            "TP": 0,
+            "FP": 0,
+            "FN": 15,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.21790632605552673,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "VaaLC",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.02642107754945755,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "6Yk9E",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.0023265115451067686,
+            "best_same_class_mask_iou_mean": 0.0
+          }
+        ]
+      },
+      "final": {
+        "images": 8,
+        "TP": 0,
+        "FP": 1,
+        "FN": 46,
+        "sum_iou": 0.0,
+        "mask_PQ_before_vector_export": 0.0,
+        "note": "Native mask diagnostic, not final vector CAD PQ. Fixed confidence/mask thresholds .5.",
+        "per_image": [
+          {
+            "stem": "9WwF0",
+            "TP": 0,
+            "FP": 0,
+            "FN": 18,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.3006727993488312,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "ETpC1",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.00952522549778223,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "7UIjI",
+            "TP": 0,
+            "FP": 1,
+            "FN": 2,
+            "sum_iou": 0.0,
+            "predictions": 1,
+            "max_predicted_class_score": 0.5013335347175598,
+            "best_same_class_mask_iou_mean": 0.1578000163608104
+          },
+          {
+            "stem": "a8Lp4",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.36284586787223816,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "HcYK7",
+            "TP": 0,
+            "FP": 0,
+            "FN": 11,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.3578352630138397,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "QgliH",
+            "TP": 0,
+            "FP": 0,
+            "FN": 15,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.4578976035118103,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "VaaLC",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.33439385890960693,
+            "best_same_class_mask_iou_mean": 0.0
+          },
+          {
+            "stem": "6Yk9E",
+            "TP": 0,
+            "FP": 0,
+            "FN": 0,
+            "sum_iou": 0.0,
+            "predictions": 0,
+            "max_predicted_class_score": 0.02027234621345997,
+            "best_same_class_mask_iou_mean": 0.0
+          }
+        ]
+      },
+      "production_adopted": false,
+      "note": "Overfit probe measures training capacity only."
+    }
+  },
+  "oracle_diagnosis": {
+    "schema_version": 1,
+    "scope": "Exact eight observed training capacity pages only; no val/dev accessed",
+    "not_a_deployable_score": true,
+    "no_oracle_PQ_reported": true,
+    "fixed_mask_threshold": "logit>0 (sigmoid>.5)",
+    "matching": "Strict native-mask IoU>.5, sum-IoU Hungarian, one-to-one",
+    "class_rule": "Best non-null argmax among 0..29; ignores confidence/null only for labeled oracle diagnosis",
+    "all_queries_considered": true,
+    "no_parameter_threshold_or_checkpoint_change": true,
+    "geometry_any_class": {
+      "GT": 46,
+      "one_to_one_TP": 10,
+      "missed_GT": 36,
+      "sum_matched_IoU": 6.562134742736816,
+      "sum_best_IoU": 14.94230430573225,
+      "independent_GT_with_IoU_over_half": 10,
+      "mean_best_IoU": 0.3248327022985272
+    },
+    "geometry_best_nonnull_class": {
+      "GT": 46,
+      "one_to_one_TP": 5,
+      "missed_GT": 41,
+      "sum_matched_IoU": 3.2043522596359253,
+      "sum_best_IoU": 8.72059356814134,
+      "independent_GT_with_IoU_over_half": 5,
+      "mean_best_IoU": 0.18957812104655086
+    },
+    "free_gate_unchanged": {
+      "TP": 0,
+      "FP": 1,
+      "FN": 46,
+      "predictions": 1
+    },
+    "pages": [
+      {
+        "stem": "9WwF0",
+        "valid_shape": [
+          1000,
+          1000
+        ],
+        "queries": 100,
+        "GT": 18,
+        "geometry_any_class": {
+          "GT": 18,
+          "one_to_one_TP": 5,
+          "missed_GT": 13,
+          "sum_matched_IoU": 3.0278531908988953,
+          "sum_best_IoU": 5.9412475153803825,
+          "mean_best_IoU": 0.33006930641002125,
+          "independent_GT_with_IoU_over_half": 5,
+          "assignment": [
+            {
+              "GT_row": 1,
+              "query": 13,
+              "IoU": 0.53125
+            },
+            {
+              "GT_row": 2,
+              "query": 7,
+              "IoU": 0.7018469572067261
+            },
+            {
+              "GT_row": 7,
+              "query": 8,
+              "IoU": 0.5818815231323242
+            },
+            {
+              "GT_row": 9,
+              "query": 1,
+              "IoU": 0.5219298005104065
+            },
+            {
+              "GT_row": 13,
+              "query": 81,
+              "IoU": 0.6909449100494385
+            }
+          ]
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 18,
+          "one_to_one_TP": 1,
+          "missed_GT": 17,
+          "sum_matched_IoU": 0.6955380439758301,
+          "sum_best_IoU": 2.0622839292045683,
+          "mean_best_IoU": 0.11457132940025379,
+          "independent_GT_with_IoU_over_half": 1,
+          "assignment": [
+            {
+              "GT_row": 2,
+              "query": 72,
+              "IoU": 0.6955380439758301
+            }
+          ]
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 18,
+          "predictions": 0
+        },
+        "instances": [
+          {
+            "GT_row": 0,
+            "class": 2,
+            "best_geometry_query": 39,
+            "IoU": 0.1819772571325302,
+            "GT_pixels": 320,
+            "query_mask_pixels": 1031,
+            "intersection_pixels": 208,
+            "precision": 0.2017458777885548,
+            "recall": 0.65,
+            "true_class_probability": 0.0853663980960846,
+            "null_probability": 0.14408308267593384,
+            "best_nonnull_class": 22,
+            "best_nonnull_probability": 0.18072067201137543,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 1,
+            "class": 3,
+            "best_geometry_query": 13,
+            "IoU": 0.53125,
+            "GT_pixels": 267,
+            "query_mask_pixels": 174,
+            "intersection_pixels": 153,
+            "precision": 0.8793103448275862,
+            "recall": 0.5730337078651685,
+            "true_class_probability": 0.05113008990883827,
+            "null_probability": 0.5627360343933105,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.07071034610271454,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 2,
+            "class": 4,
+            "best_geometry_query": 7,
+            "IoU": 0.7018469572067261,
+            "GT_pixels": 273,
+            "query_mask_pixels": 372,
+            "intersection_pixels": 266,
+            "precision": 0.7150537634408602,
+            "recall": 0.9743589743589743,
+            "true_class_probability": 0.104989193379879,
+            "null_probability": 0.550104022026062,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.1100277304649353,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 3,
+            "class": 4,
+            "best_geometry_query": 3,
+            "IoU": 0.252390056848526,
+            "GT_pixels": 436,
+            "query_mask_pixels": 219,
+            "intersection_pixels": 132,
+            "precision": 0.6027397260273972,
+            "recall": 0.30275229357798167,
+            "true_class_probability": 0.10131928324699402,
+            "null_probability": 0.2247866541147232,
+            "best_nonnull_class": 22,
+            "best_nonnull_probability": 0.15091462433338165,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 4,
+            "class": 8,
+            "best_geometry_query": 17,
+            "IoU": 0.29046088457107544,
+            "GT_pixels": 324,
+            "query_mask_pixels": 880,
+            "intersection_pixels": 271,
+            "precision": 0.3079545454545455,
+            "recall": 0.8364197530864198,
+            "true_class_probability": 0.038449522107839584,
+            "null_probability": 0.6868794560432434,
+            "best_nonnull_class": 21,
+            "best_nonnull_probability": 0.08530399203300476,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 5,
+            "class": 8,
+            "best_geometry_query": 53,
+            "IoU": 0.448373407125473,
+            "GT_pixels": 747,
+            "query_mask_pixels": 1301,
+            "intersection_pixels": 634,
+            "precision": 0.4873174481168332,
+            "recall": 0.8487282463186078,
+            "true_class_probability": 0.2053520381450653,
+            "null_probability": 0.6839267611503601,
+            "best_nonnull_class": 8,
+            "best_nonnull_probability": 0.2053520381450653,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 6,
+            "class": 8,
+            "best_geometry_query": 8,
+            "IoU": 0.018216682597994804,
+            "GT_pixels": 501,
+            "query_mask_pixels": 561,
+            "intersection_pixels": 19,
+            "precision": 0.0338680926916221,
+            "recall": 0.03792415169660679,
+            "true_class_probability": 0.03983527049422264,
+            "null_probability": 0.15210887789726257,
+            "best_nonnull_class": 18,
+            "best_nonnull_probability": 0.18930254876613617,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 7,
+            "class": 14,
+            "best_geometry_query": 8,
+            "IoU": 0.5818815231323242,
+            "GT_pixels": 347,
+            "query_mask_pixels": 561,
+            "intersection_pixels": 334,
+            "precision": 0.5953654188948306,
+            "recall": 0.962536023054755,
+            "true_class_probability": 0.15940873324871063,
+            "null_probability": 0.15210887789726257,
+            "best_nonnull_class": 18,
+            "best_nonnull_probability": 0.18930254876613617,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 8,
+            "class": 14,
+            "best_geometry_query": 55,
+            "IoU": 0.3356643319129944,
+            "GT_pixels": 347,
+            "query_mask_pixels": 226,
+            "intersection_pixels": 144,
+            "precision": 0.6371681415929203,
+            "recall": 0.414985590778098,
+            "true_class_probability": 0.1555202305316925,
+            "null_probability": 0.20603083074092865,
+            "best_nonnull_class": 18,
+            "best_nonnull_probability": 0.20603083074092865,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 9,
+            "class": 15,
+            "best_geometry_query": 1,
+            "IoU": 0.5219298005104065,
+            "GT_pixels": 468,
+            "query_mask_pixels": 573,
+            "intersection_pixels": 357,
+            "precision": 0.6230366492146597,
+            "recall": 0.7628205128205128,
+            "true_class_probability": 0.05796558037400246,
+            "null_probability": 0.40393567085266113,
+            "best_nonnull_class": 28,
+            "best_nonnull_probability": 0.1291055977344513,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 10,
+            "class": 15,
+            "best_geometry_query": 63,
+            "IoU": 0.18704453110694885,
+            "GT_pixels": 426,
+            "query_mask_pixels": 1040,
+            "intersection_pixels": 231,
+            "precision": 0.2221153846153846,
+            "recall": 0.5422535211267606,
+            "true_class_probability": 0.05200010538101196,
+            "null_probability": 0.2529715299606323,
+            "best_nonnull_class": 22,
+            "best_nonnull_probability": 0.1088017076253891,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 11,
+            "class": 18,
+            "best_geometry_query": 0,
+            "IoU": 0.2677305042743683,
+            "GT_pixels": 812,
+            "query_mask_pixels": 2048,
+            "intersection_pixels": 604,
+            "precision": 0.294921875,
+            "recall": 0.7438423645320197,
+            "true_class_probability": 0.08216384053230286,
+            "null_probability": 0.2611161470413208,
+            "best_nonnull_class": 4,
+            "best_nonnull_probability": 0.14196638762950897,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 12,
+            "class": 19,
+            "best_geometry_query": 45,
+            "IoU": 0.1778947412967682,
+            "GT_pixels": 538,
+            "query_mask_pixels": 581,
+            "intersection_pixels": 169,
+            "precision": 0.2908777969018933,
+            "recall": 0.3141263940520446,
+            "true_class_probability": 0.061392124742269516,
+            "null_probability": 0.17973801493644714,
+            "best_nonnull_class": 22,
+            "best_nonnull_probability": 0.1649368703365326,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 13,
+            "class": 20,
+            "best_geometry_query": 81,
+            "IoU": 0.6909449100494385,
+            "GT_pixels": 421,
+            "query_mask_pixels": 438,
+            "intersection_pixels": 351,
+            "precision": 0.8013698630136986,
+            "recall": 0.833729216152019,
+            "true_class_probability": 0.09860038757324219,
+            "null_probability": 0.3013470768928528,
+            "best_nonnull_class": 28,
+            "best_nonnull_probability": 0.13582777976989746,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 14,
+            "class": 21,
+            "best_geometry_query": 38,
+            "IoU": 0.3606965243816376,
+            "GT_pixels": 993,
+            "query_mask_pixels": 648,
+            "intersection_pixels": 435,
+            "precision": 0.6712962962962963,
+            "recall": 0.4380664652567976,
+            "true_class_probability": 0.05312443897128105,
+            "null_probability": 0.4679765999317169,
+            "best_nonnull_class": 4,
+            "best_nonnull_probability": 0.1748700886964798,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 15,
+            "class": 22,
+            "best_geometry_query": 32,
+            "IoU": 0.2789291739463806,
+            "GT_pixels": 679,
+            "query_mask_pixels": 802,
+            "intersection_pixels": 323,
+            "precision": 0.4027431421446384,
+            "recall": 0.47569955817378495,
+            "true_class_probability": 0.0994059145450592,
+            "null_probability": 0.33366888761520386,
+            "best_nonnull_class": 4,
+            "best_nonnull_probability": 0.18141262233257294,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 16,
+            "class": 22,
+            "best_geometry_query": 22,
+            "IoU": 0.0886194035410881,
+            "GT_pixels": 866,
+            "query_mask_pixels": 301,
+            "intersection_pixels": 95,
+            "precision": 0.31561461794019935,
+            "recall": 0.10969976905311778,
+            "true_class_probability": 0.09923624247312546,
+            "null_probability": 0.3601662516593933,
+            "best_nonnull_class": 28,
+            "best_nonnull_probability": 0.17013050615787506,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 17,
+            "class": 28,
+            "best_geometry_query": 59,
+            "IoU": 0.02539682574570179,
+            "GT_pixels": 270,
+            "query_mask_pixels": 53,
+            "intersection_pixels": 8,
+            "precision": 0.1509433962264151,
+            "recall": 0.02962962962962963,
+            "true_class_probability": 0.20780004560947418,
+            "null_probability": 0.3119448125362396,
+            "best_nonnull_class": 28,
+            "best_nonnull_probability": 0.20780004560947418,
+            "passes_unchanged_free_gate": false
+          }
+        ],
+        "query_mask_area_summary": {
+          "min": 0,
+          "max": 5392,
+          "mean": 1134.27,
+          "empty_queries": 2
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "bfe2eb42451569788756beb5d07f0a5ae94a60c9437eca70d7233e2de087a298",
+          "cached_target": "91b33799e13097f6a064978defe64597513f9e17b7e011c412e2105434f478cc"
+        }
+      },
+      {
+        "stem": "ETpC1",
+        "valid_shape": [
+          1000,
+          1000
+        ],
+        "queries": 100,
+        "GT": 0,
+        "geometry_any_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "predictions": 0
+        },
+        "instances": [],
+        "query_mask_area_summary": {
+          "min": 0,
+          "max": 1431,
+          "mean": 54.76,
+          "empty_queries": 75
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "90c3c16290aa623cd56ac9f6f4697e25db006dfd90e59ee5b04154ccc77c7208",
+          "cached_target": "78a4f1e3dda9a63b72525290e0ec0a8d0c9e9056be270fe106baf3849134d857"
+        }
+      },
+      {
+        "stem": "7UIjI",
+        "valid_shape": [
+          1000,
+          1000
+        ],
+        "queries": 100,
+        "GT": 2,
+        "geometry_any_class": {
+          "GT": 2,
+          "one_to_one_TP": 0,
+          "missed_GT": 2,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.5182541757822037,
+          "mean_best_IoU": 0.25912708789110184,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 2,
+          "one_to_one_TP": 0,
+          "missed_GT": 2,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.5182541757822037,
+          "mean_best_IoU": 0.25912708789110184,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 1,
+          "FN": 2,
+          "predictions": 1
+        },
+        "instances": [
+          {
+            "GT_row": 0,
+            "class": 3,
+            "best_geometry_query": 67,
+            "IoU": 0.21647901833057404,
+            "GT_pixels": 521,
+            "query_mask_pixels": 1856,
+            "intersection_pixels": 423,
+            "precision": 0.2279094827586207,
+            "recall": 0.8119001919385797,
+            "true_class_probability": 0.4923700988292694,
+            "null_probability": 0.4483080804347992,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.4923700988292694,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 1,
+            "class": 3,
+            "best_geometry_query": 32,
+            "IoU": 0.30177515745162964,
+            "GT_pixels": 521,
+            "query_mask_pixels": 579,
+            "intersection_pixels": 255,
+            "precision": 0.44041450777202074,
+            "recall": 0.4894433781190019,
+            "true_class_probability": 0.5013335347175598,
+            "null_probability": 0.4424252510070801,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.5013335347175598,
+            "passes_unchanged_free_gate": true
+          }
+        ],
+        "query_mask_area_summary": {
+          "min": 0,
+          "max": 5954,
+          "mean": 1560.65,
+          "empty_queries": 10
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "f50037348d630303d9a389799ca25b46f8952519f6591b783a9216490cfe96af",
+          "cached_target": "1789a52da84e865d5517f62daf77543f509dcc8466bf89b06cc2e9f3fe9fed11"
+        }
+      },
+      {
+        "stem": "a8Lp4",
+        "valid_shape": [
+          1000,
+          1000
+        ],
+        "queries": 100,
+        "GT": 0,
+        "geometry_any_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "predictions": 0
+        },
+        "instances": [],
+        "query_mask_area_summary": {
+          "min": 0,
+          "max": 1468,
+          "mean": 113.09,
+          "empty_queries": 68
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "074d6036d7e0542c9a115d0c14d899cc17ecbe624e2a78c31eca62a931d86f9d",
+          "cached_target": "78a4f1e3dda9a63b72525290e0ec0a8d0c9e9056be270fe106baf3849134d857"
+        }
+      },
+      {
+        "stem": "HcYK7",
+        "valid_shape": [
+          1000,
+          999
+        ],
+        "queries": 100,
+        "GT": 11,
+        "geometry_any_class": {
+          "GT": 11,
+          "one_to_one_TP": 3,
+          "missed_GT": 8,
+          "sum_matched_IoU": 2.0490480065345764,
+          "sum_best_IoU": 4.422852419316769,
+          "mean_best_IoU": 0.4020774926651608,
+          "independent_GT_with_IoU_over_half": 3,
+          "assignment": [
+            {
+              "GT_row": 4,
+              "query": 73,
+              "IoU": 0.634719729423523
+            },
+            {
+              "GT_row": 6,
+              "query": 93,
+              "IoU": 0.8431001901626587
+            },
+            {
+              "GT_row": 10,
+              "query": 56,
+              "IoU": 0.5712280869483948
+            }
+          ]
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 11,
+          "one_to_one_TP": 3,
+          "missed_GT": 8,
+          "sum_matched_IoU": 1.9355303645133972,
+          "sum_best_IoU": 3.5179752245894633,
+          "mean_best_IoU": 0.31981592950813303,
+          "independent_GT_with_IoU_over_half": 3,
+          "assignment": [
+            {
+              "GT_row": 4,
+              "query": 73,
+              "IoU": 0.634719729423523
+            },
+            {
+              "GT_row": 6,
+              "query": 97,
+              "IoU": 0.7295825481414795
+            },
+            {
+              "GT_row": 10,
+              "query": 56,
+              "IoU": 0.5712280869483948
+            }
+          ]
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 11,
+          "predictions": 0
+        },
+        "instances": [
+          {
+            "GT_row": 0,
+            "class": 2,
+            "best_geometry_query": 60,
+            "IoU": 0.19212599098682404,
+            "GT_pixels": 303,
+            "query_mask_pixels": 1211,
+            "intersection_pixels": 244,
+            "precision": 0.2014863748967795,
+            "recall": 0.8052805280528053,
+            "true_class_probability": 0.3578352630138397,
+            "null_probability": 0.16128899157047272,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.3578352630138397,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 1,
+            "class": 2,
+            "best_geometry_query": 1,
+            "IoU": 0.45619335770606995,
+            "GT_pixels": 346,
+            "query_mask_pixels": 618,
+            "intersection_pixels": 302,
+            "precision": 0.4886731391585761,
+            "recall": 0.8728323699421965,
+            "true_class_probability": 0.04025588184595108,
+            "null_probability": 0.6522399187088013,
+            "best_nonnull_class": 13,
+            "best_nonnull_probability": 0.08690255880355835,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 2,
+            "class": 2,
+            "best_geometry_query": 98,
+            "IoU": 0.22862286865711212,
+            "GT_pixels": 370,
+            "query_mask_pixels": 995,
+            "intersection_pixels": 254,
+            "precision": 0.2552763819095477,
+            "recall": 0.6864864864864865,
+            "true_class_probability": 0.08138497918844223,
+            "null_probability": 0.7030588984489441,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.08138497918844223,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 3,
+            "class": 3,
+            "best_geometry_query": 91,
+            "IoU": 0.2010086476802826,
+            "GT_pixels": 351,
+            "query_mask_pixels": 1316,
+            "intersection_pixels": 279,
+            "precision": 0.21200607902735563,
+            "recall": 0.7948717948717948,
+            "true_class_probability": 0.09834504872560501,
+            "null_probability": 0.3859352767467499,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.11770360171794891,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 4,
+            "class": 4,
+            "best_geometry_query": 73,
+            "IoU": 0.634719729423523,
+            "GT_pixels": 370,
+            "query_mask_pixels": 534,
+            "intersection_pixels": 351,
+            "precision": 0.6573033707865169,
+            "recall": 0.9486486486486486,
+            "true_class_probability": 0.15302512049674988,
+            "null_probability": 0.46404293179512024,
+            "best_nonnull_class": 4,
+            "best_nonnull_probability": 0.15302512049674988,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 5,
+            "class": 4,
+            "best_geometry_query": 63,
+            "IoU": 0.3412759304046631,
+            "GT_pixels": 448,
+            "query_mask_pixels": 1297,
+            "intersection_pixels": 444,
+            "precision": 0.34232845026985353,
+            "recall": 0.9910714285714286,
+            "true_class_probability": 0.13309542834758759,
+            "null_probability": 0.22115832567214966,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.17770572006702423,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 6,
+            "class": 8,
+            "best_geometry_query": 93,
+            "IoU": 0.8431001901626587,
+            "GT_pixels": 458,
+            "query_mask_pixels": 517,
+            "intersection_pixels": 446,
+            "precision": 0.8626692456479691,
+            "recall": 0.9737991266375546,
+            "true_class_probability": 0.13105341792106628,
+            "null_probability": 0.33465665578842163,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.2565901577472687,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 7,
+            "class": 21,
+            "best_geometry_query": 57,
+            "IoU": 0.39115872979164124,
+            "GT_pixels": 785,
+            "query_mask_pixels": 1292,
+            "intersection_pixels": 584,
+            "precision": 0.4520123839009288,
+            "recall": 0.7439490445859872,
+            "true_class_probability": 0.07949401438236237,
+            "null_probability": 0.7483488321304321,
+            "best_nonnull_class": 8,
+            "best_nonnull_probability": 0.08011749386787415,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 8,
+            "class": 22,
+            "best_geometry_query": 19,
+            "IoU": 0.09943582862615585,
+            "GT_pixels": 287,
+            "query_mask_pixels": 2831,
+            "intersection_pixels": 282,
+            "precision": 0.0996114447191805,
+            "recall": 0.9825783972125436,
+            "true_class_probability": 0.08195320516824722,
+            "null_probability": 0.2125704437494278,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.14956198632717133,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 9,
+            "class": 28,
+            "best_geometry_query": 30,
+            "IoU": 0.46398305892944336,
+            "GT_pixels": 237,
+            "query_mask_pixels": 454,
+            "intersection_pixels": 219,
+            "precision": 0.48237885462555063,
+            "recall": 0.9240506329113924,
+            "true_class_probability": 0.12313967198133469,
+            "null_probability": 0.5693920850753784,
+            "best_nonnull_class": 13,
+            "best_nonnull_probability": 0.12313967198133469,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 10,
+            "class": 29,
+            "best_geometry_query": 56,
+            "IoU": 0.5712280869483948,
+            "GT_pixels": 3254,
+            "query_mask_pixels": 3463,
+            "intersection_pixels": 2442,
+            "precision": 0.7051689286745596,
+            "recall": 0.750460971112477,
+            "true_class_probability": 0.1607447862625122,
+            "null_probability": 0.4724551737308502,
+            "best_nonnull_class": 29,
+            "best_nonnull_probability": 0.1607447862625122,
+            "passes_unchanged_free_gate": false
+          }
+        ],
+        "query_mask_area_summary": {
+          "min": 2,
+          "max": 23674,
+          "mean": 2335.84,
+          "empty_queries": 0
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "014a94af2091df02c3994a0951dc262c9b45af67f1dd9abf2688c29cbfdcd39c",
+          "cached_target": "760bfc1c3455721170e0ed35d69221ee3b61c0d701592e3af5b59908a8c51713"
+        }
+      },
+      {
+        "stem": "QgliH",
+        "valid_shape": [
+          1000,
+          1000
+        ],
+        "queries": 100,
+        "GT": 15,
+        "geometry_any_class": {
+          "GT": 15,
+          "one_to_one_TP": 2,
+          "missed_GT": 13,
+          "sum_matched_IoU": 1.4852335453033447,
+          "sum_best_IoU": 4.059950195252895,
+          "mean_best_IoU": 0.270663346350193,
+          "independent_GT_with_IoU_over_half": 2,
+          "assignment": [
+            {
+              "GT_row": 10,
+              "query": 1,
+              "IoU": 0.573283851146698
+            },
+            {
+              "GT_row": 13,
+              "query": 88,
+              "IoU": 0.9119496941566467
+            }
+          ]
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 15,
+          "one_to_one_TP": 1,
+          "missed_GT": 14,
+          "sum_matched_IoU": 0.573283851146698,
+          "sum_best_IoU": 2.622080238565104,
+          "mean_best_IoU": 0.1748053492376736,
+          "independent_GT_with_IoU_over_half": 1,
+          "assignment": [
+            {
+              "GT_row": 10,
+              "query": 1,
+              "IoU": 0.573283851146698
+            }
+          ]
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 15,
+          "predictions": 0
+        },
+        "instances": [
+          {
+            "GT_row": 0,
+            "class": 2,
+            "best_geometry_query": 93,
+            "IoU": 0.24315068125724792,
+            "GT_pixels": 125,
+            "query_mask_pixels": 238,
+            "intersection_pixels": 71,
+            "precision": 0.29831932773109243,
+            "recall": 0.568,
+            "true_class_probability": 0.276380330324173,
+            "null_probability": 0.29420533776283264,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.276380330324173,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 1,
+            "class": 2,
+            "best_geometry_query": 84,
+            "IoU": 0.2123456746339798,
+            "GT_pixels": 304,
+            "query_mask_pixels": 678,
+            "intersection_pixels": 172,
+            "precision": 0.2536873156342183,
+            "recall": 0.5657894736842105,
+            "true_class_probability": 0.28885793685913086,
+            "null_probability": 0.15704934298992157,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.28885793685913086,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 2,
+            "class": 2,
+            "best_geometry_query": 91,
+            "IoU": 0.23231357336044312,
+            "GT_pixels": 304,
+            "query_mask_pixels": 985,
+            "intersection_pixels": 243,
+            "precision": 0.2467005076142132,
+            "recall": 0.7993421052631579,
+            "true_class_probability": 0.12964050471782684,
+            "null_probability": 0.3469359576702118,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.143498957157135,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 3,
+            "class": 2,
+            "best_geometry_query": 38,
+            "IoU": 0.0642523393034935,
+            "GT_pixels": 125,
+            "query_mask_pixels": 786,
+            "intersection_pixels": 55,
+            "precision": 0.06997455470737914,
+            "recall": 0.44,
+            "true_class_probability": 0.14625732600688934,
+            "null_probability": 0.48711130023002625,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.18202020227909088,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 4,
+            "class": 3,
+            "best_geometry_query": 63,
+            "IoU": 0.20149601995944977,
+            "GT_pixels": 444,
+            "query_mask_pixels": 2126,
+            "intersection_pixels": 431,
+            "precision": 0.20272812793979303,
+            "recall": 0.9707207207207207,
+            "true_class_probability": 0.24256214499473572,
+            "null_probability": 0.187437504529953,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.24256214499473572,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 5,
+            "class": 3,
+            "best_geometry_query": 31,
+            "IoU": 0.3015267252922058,
+            "GT_pixels": 445,
+            "query_mask_pixels": 578,
+            "intersection_pixels": 237,
+            "precision": 0.4100346020761246,
+            "recall": 0.5325842696629214,
+            "true_class_probability": 0.33622896671295166,
+            "null_probability": 0.38699716329574585,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.33622896671295166,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 6,
+            "class": 3,
+            "best_geometry_query": 38,
+            "IoU": 0.1666666716337204,
+            "GT_pixels": 502,
+            "query_mask_pixels": 786,
+            "intersection_pixels": 184,
+            "precision": 0.2340966921119593,
+            "recall": 0.3665338645418327,
+            "true_class_probability": 0.18202020227909088,
+            "null_probability": 0.48711130023002625,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.18202020227909088,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 7,
+            "class": 13,
+            "best_geometry_query": 39,
+            "IoU": 0.3692307770252228,
+            "GT_pixels": 1834,
+            "query_mask_pixels": 1014,
+            "intersection_pixels": 768,
+            "precision": 0.757396449704142,
+            "recall": 0.4187568157033806,
+            "true_class_probability": 0.17187923192977905,
+            "null_probability": 0.254021018743515,
+            "best_nonnull_class": 13,
+            "best_nonnull_probability": 0.17187923192977905,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 8,
+            "class": 13,
+            "best_geometry_query": 59,
+            "IoU": 0.31247246265411377,
+            "GT_pixels": 1636,
+            "query_mask_pixels": 1342,
+            "intersection_pixels": 709,
+            "precision": 0.5283159463487332,
+            "recall": 0.43337408312958436,
+            "true_class_probability": 0.16857045888900757,
+            "null_probability": 0.458221971988678,
+            "best_nonnull_class": 28,
+            "best_nonnull_probability": 0.1910153329372406,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 9,
+            "class": 13,
+            "best_geometry_query": 45,
+            "IoU": 0.09984871745109558,
+            "GT_pixels": 1824,
+            "query_mask_pixels": 357,
+            "intersection_pixels": 198,
+            "precision": 0.5546218487394958,
+            "recall": 0.10855263157894737,
+            "true_class_probability": 0.08483236283063889,
+            "null_probability": 0.3226649761199951,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.13450677692890167,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 10,
+            "class": 13,
+            "best_geometry_query": 1,
+            "IoU": 0.573283851146698,
+            "GT_pixels": 1626,
+            "query_mask_pixels": 1766,
+            "intersection_pixels": 1236,
+            "precision": 0.6998867497168743,
+            "recall": 0.7601476014760148,
+            "true_class_probability": 0.11402756720781326,
+            "null_probability": 0.5612633228302002,
+            "best_nonnull_class": 13,
+            "best_nonnull_probability": 0.11402756720781326,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 11,
+            "class": 18,
+            "best_geometry_query": 87,
+            "IoU": 0.15584415197372437,
+            "GT_pixels": 151,
+            "query_mask_pixels": 27,
+            "intersection_pixels": 24,
+            "precision": 0.8888888888888888,
+            "recall": 0.15894039735099338,
+            "true_class_probability": 0.2158030867576599,
+            "null_probability": 0.1654619723558426,
+            "best_nonnull_class": 18,
+            "best_nonnull_probability": 0.2158030867576599,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 12,
+            "class": 18,
+            "best_geometry_query": 0,
+            "IoU": 0.0,
+            "GT_pixels": 113,
+            "query_mask_pixels": 1101,
+            "intersection_pixels": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "true_class_probability": 0.025223707780241966,
+            "null_probability": 0.25475040078163147,
+            "best_nonnull_class": 3,
+            "best_nonnull_probability": 0.2754508852958679,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 13,
+            "class": 18,
+            "best_geometry_query": 88,
+            "IoU": 0.9119496941566467,
+            "GT_pixels": 151,
+            "query_mask_pixels": 153,
+            "intersection_pixels": 145,
+            "precision": 0.9477124183006536,
+            "recall": 0.9602649006622517,
+            "true_class_probability": 0.03255759924650192,
+            "null_probability": 0.5593419075012207,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.11014094203710556,
+            "passes_unchanged_free_gate": false
+          },
+          {
+            "GT_row": 14,
+            "class": 28,
+            "best_geometry_query": 81,
+            "IoU": 0.21556885540485382,
+            "GT_pixels": 284,
+            "query_mask_pixels": 325,
+            "intersection_pixels": 108,
+            "precision": 0.3323076923076923,
+            "recall": 0.38028169014084506,
+            "true_class_probability": 0.1604796051979065,
+            "null_probability": 0.20605990290641785,
+            "best_nonnull_class": 2,
+            "best_nonnull_probability": 0.2687527537345886,
+            "passes_unchanged_free_gate": false
+          }
+        ],
+        "query_mask_area_summary": {
+          "min": 0,
+          "max": 4402,
+          "mean": 759.86,
+          "empty_queries": 2
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "02fbf4b00d788d55e4fe08fbdc13a3f5cf903fc5d06c0a0001ed294ed72c46d9",
+          "cached_target": "a82046f9086820353d56b00b91a55babeb8f65b7f1ddb97e4b5dd6dc152fcc48"
+        }
+      },
+      {
+        "stem": "VaaLC",
+        "valid_shape": [
+          999,
+          1000
+        ],
+        "queries": 100,
+        "GT": 0,
+        "geometry_any_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "predictions": 0
+        },
+        "instances": [],
+        "query_mask_area_summary": {
+          "min": 0,
+          "max": 57,
+          "mean": 2.32,
+          "empty_queries": 86
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "c121b79e2a223290e7e42a14dc2a731a52b04b80237bcb272aebcb233067fa74",
+          "cached_target": "47b4344f48d05a426394449e83ebac19f0e8593c587ec40a59a7cc798e1640e5"
+        }
+      },
+      {
+        "stem": "6Yk9E",
+        "valid_shape": [
+          1000,
+          1000
+        ],
+        "queries": 100,
+        "GT": 0,
+        "geometry_any_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "geometry_best_nonnull_class": {
+          "GT": 0,
+          "one_to_one_TP": 0,
+          "missed_GT": 0,
+          "sum_matched_IoU": 0.0,
+          "sum_best_IoU": 0.0,
+          "mean_best_IoU": null,
+          "independent_GT_with_IoU_over_half": 0,
+          "assignment": []
+        },
+        "free_gate_unchanged": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "predictions": 0
+        },
+        "instances": [],
+        "query_mask_area_summary": {
+          "min": 0,
+          "max": 2915,
+          "mean": 167.57,
+          "empty_queries": 74
+        },
+        "checkpoint_mode": "eval",
+        "input_sha256": {
+          "png": "6e8a72891f8a05a5bb66495d0e09215a48b2a6fcd781992550a4993f4982de97",
+          "cached_target": "78a4f1e3dda9a63b72525290e0ec0a8d0c9e9056be270fe106baf3849134d857"
+        }
+      }
+    ],
+    "checkpoint_sha256": "f5a3e1b0cf9fbc404b7a2457470a37d961c11b7dd119cf781889e81f7c42dc3c",
+    "capacity_protocol_sha256": "74ac644e7ee340eae7bee43d227c2fe922b4018bd9e1a304f152aa7935afb851",
+    "data_manifest_sha256": "8341e9b2fb5dba3df3ad51185c989a26fa43d6edc91c9016bedad9c9a671a365",
+    "tool_sha256": "4717bbd5b5f52b5488e6c4c410062282a20c0021a333d560b011c893dcd0fc29",
+    "limitations": [
+      "Oracle query-to-GT assignment uses labels and is not inference.",
+      "Native pixel-mask overlap precedes vector export and is not official CAD PQ.",
+      "Per-GT best-query values may reuse a query; only one-to-one_TP enforces unique assignment.",
+      "Oversampled training-point Dice does not imply dense pixel accuracy.",
+      "Both GT and predicted masks were cropped to the same original valid native frame."
+    ]
+  },
+  "png_smoke": {
+    "architecture": "query-ink-set-v1",
+    "weights_sha256": "f5a3e1b0cf9fbc404b7a2457470a37d961c11b7dd119cf781889e81f7c42dc3c",
+    "images": 1,
+    "emitted_instances": 0,
+    "device": "cpu",
+    "seconds": 1.0972,
+    "score_threshold": 0.5,
+    "mask_threshold": 0.5,
+    "output": "_work\\round5\\png_smoke",
+    "metadata": "_work\\round5\\png_smoke_metadata"
+  },
+  "verification": {
+    "unit_tests": 152,
+    "unit_test_seconds": 23.36,
+    "compliance": true,
+    "source_freezes_match": true
+  },
+  "limitations": [
+    "Native mask diagnostic is not vector CAD PQ.",
+    "Eight already-observed train pages; training capacity is not generalization.",
+    "AdamW state and RNG were reset at update200, weights alone resumed.",
+    "999px pages have a different pixel phase from the fixed1000px scorer.",
+    "CPU FP32 and CUDA bf16 inference differ near the .5 class-confidence boundary.",
+    "Legacy CAD backbone historical label exposure unverified.",
+    "A short negative prototype does not disprove the whole query-prediction family."
+  ],
+  "artifacts": {
+    "cadvec/query_instances.py": "8b3cb37a956fb8b2977efd79052b9c789de5a3cedb44a5c4049384876af494f0",
+    "cadvec/query_data.py": "7ba5df7fa6b7baf1e4c561537ac7d9dd2193b77e4a65826512439d6335660f44",
+    "tools/build_query_instances.py": "f1f2dbc64dac3376459b0e32a37d82c9fab951de2261562cc1e42bdbffacb4c2",
+    "tools/train_query_instances.py": "f2695a9b8796385fdaa7f1d320a9b57341371a44819ef9bf683fa77db5638cab",
+    "tools/infer_query_instances.py": "c36c31bcc81a951b3e379b58cc54187fc8cd09f04f180bd74ea0aed975080bda",
+    "tools/diagnose_query_capacity.py": "4717bbd5b5f52b5488e6c4c410062282a20c0021a333d560b011c893dcd0fc29"
+  }
+}

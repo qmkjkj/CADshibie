@@ -1,5 +1,7 @@
 # 方法说明：工程图纸 PNG 图元解析（v2）
 
+> 2026-11-27 状态说明：本文保留早期 v2 与 hybrid 的方法记录。当前默认为 hybrid 加原生边界残差细节头，历史 1000 页回归 PQ 33.785%，清单总参数 23,561,566；当前实现与限制以 [README](../README.md)、[第三轮记录](ROUND3_NATIVE_GEOMETRY.md) 为准。后续尚未执行的路线见 [详细实施方案](NEXT_OPTIMIZATION_PLAN.md)。下文旧参数和旧默认描述按历史版本理解。
+
 > 赛题“验证 JSON、3 页内方法说明”。完整代码、依赖、模型清单与复现命令见
 > `README.md`、`requirements.txt`、`weights/manifest.json`。
 

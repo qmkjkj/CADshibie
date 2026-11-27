@@ -1,12 +1,23 @@
 # 数据与实验产物（不随仓库发布）
 datasets/
+/dev/
+dev_final/
+train_final/
+test_final/
+train_json/
+test_json/
+gt_*/
 datasets.tar.gz
 _work/
 eval_run/
 results/
+/results_cad/
+/人工智能比赛/
 runs/
 *.tar.gz
 *.zip
+__MACOSX/
+.DS_Store
 
 # Python
 __pycache__/

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "limit": 5000000000,
-  "total_parameters": 23077263,
+  "total_parameters": 23561566,
   "external_network_required": false,
   "external_apis": [],
   "models": [
@@ -210,6 +210,29 @@
       "parameter_source": "manifest",
       "optional": true,
       "description": "Stuff 每类概率阈值与最小面积（calib 300 全图统计 TP/FP/FN 后按边际 PQ 选择），0 参数。"
+    },
+    {
+      "name": "native-residual-detail",
+      "kind": "cnn-native-detail",
+      "path": "native_detail.pt",
+      "parameters": 484303,
+      "parameter_source": "torch-state-dict",
+      "optional": true,
+      "sha256": "dd885ae635ac546a465c1622d1f99b64cec637494e78142888459b514bade907",
+      "description": "Native 320px RGB + coarse-instance residual UNet with a softened 2px boundary prior; source-grouped train/val epoch 9. PNG-only inference; frozen incremental confirmation passed. See docs/ROUND3_NATIVE_GEOMETRY.md.",
+      "provenance": {
+        "training": "competition train_final, source-grouped allowed train pages only",
+        "initialization": "random residual head; zero output initialization",
+        "selection": "fixed training-side 500-crop proxy, then frozen 155-page development selection and single 108-page / 99-family incremental confirmation",
+        "splits_sha256": "4b3978fcb72b6a8ff62d3d4dd94c77ae42bb852112d6dd9995228c6a67457593",
+        "architecture": "native-residual-v2",
+        "prior_mode": "boundary",
+        "boundary_radius": 2,
+        "boundary_logit": 2.0,
+        "training_pages": 800,
+        "expanded_training_adopted": false,
+        "confirmation_note": "Old base-model historical exposure unverified; this isolates only the new head increment."
+      }
     }
   ]
 }

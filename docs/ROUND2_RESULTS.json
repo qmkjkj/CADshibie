@@ -1,0 +1,2210 @@
+{
+  "date": "2026-11-27",
+  "experiment": "Remove the redundant per-class ROI accepted-instance cap",
+  "adopted": true,
+  "default_roi_max_instances": 0,
+  "previous_roi_max_instances": 15,
+  "model_weights_changed": false,
+  "model_parameters": 23561566,
+  "freeze": {
+    "base": "native_detail.pt frozen epoch7",
+    "roi_max_instances": 0,
+    "native_decode": null,
+    "decode_development_gain_points": 0.26661217478917143,
+    "decode_adoption_minimum_points": 1.0,
+    "rules": "Select decode only for >1 PQ point development improvement; otherwise remove cap only. No quality/NMS/routing changes.",
+    "native_sha256": "076cfcb059f4baff57787b41d3b16a3e10244ae2260a40cccee918c655765ef6",
+    "split_sha256": "2ec7a004058e57fed62adf323345f20148e5734ee5cc3b4b165cf61d27b5014c"
+  },
+  "split": {
+    "seed": 2711,
+    "source_splits_sha256": "4b3978fcb72b6a8ff62d3d4dd94c77ae42bb852112d6dd9995228c6a67457593",
+    "protected_validation_pages": 120,
+    "protected_validation_groups": 94,
+    "roles": {
+      "development": [
+        "0LN6r",
+        "10vSO",
+        "120Ux",
+        "1EWvZ",
+        "1ExNW",
+        "1Zu9g",
+        "1a5PI",
+        "2Ub96",
+        "2UoAJ",
+        "2YMaH",
+        "2YOsl",
+        "2mzj7",
+        "2wtUm",
+        "38Hmp",
+        "3BsR7",
+        "3DlP6",
+        "3E97J",
+        "3SjyC",
+        "3W1yY",
+        "3fbR5",
+        "3fmHq",
+        "4LkTZ",
+        "4OOBV",
+        "4ReqM",
+        "4aowa",
+        "4ptqn",
+        "4q4IT",
+        "5UU8o",
+        "5qoXb",
+        "5revl",
+        "5rpXC",
+        "5xpyl",
+        "6XQzP",
+        "6n0pc",
+        "6njyj",
+        "6oNUM",
+        "6oTN4",
+        "6qgaC",
+        "6rJVF",
+        "7aYYN",
+        "7apOn",
+        "7fIe7",
+        "7iwRS",
+        "7pJHA",
+        "7sCrA",
+        "7sx7L",
+        "7yn6q",
+        "7z50Z",
+        "9uET8",
+        "9unYH",
+        "A6Wo3",
+        "A6cG1",
+        "AFpBs",
+        "AFpWw",
+        "AHdzH",
+        "AHpRZ",
+        "BA6AF",
+        "BIpS6",
+        "BJTMV",
+        "BJnqv",
+        "BSHlg",
+        "BU13M",
+        "Dfc3k",
+        "Dhl7g",
+        "DnoI2",
+        "ELQ1l",
+        "EQZHx",
+        "FpXn4",
+        "HvVFj",
+        "HxmuH",
+        "ICbXZ",
+        "ICr4r",
+        "IFyaf",
+        "IGXRp",
+        "Is7N4",
+        "JBNAG",
+        "JBp8J",
+        "JCRDD",
+        "JHevW",
+        "JI1SU",
+        "JIGjd",
+        "JeItd",
+        "JeJjD",
+        "Jn1n7",
+        "Jn4NK",
+        "JnsVe",
+        "JqwFQ",
+        "Jr14U",
+        "Jr1AI",
+        "Jr1Up",
+        "Jr4Qw",
+        "KiYsj",
+        "KkW5g",
+        "KkwyS",
+        "KlJTV",
+        "Klnkh",
+        "LDa0G",
+        "LDbEK",
+        "LRZl1",
+        "LRjSN",
+        "Nsm9u",
+        "Nw9XX",
+        "O4oIm",
+        "O5sPe",
+        "O63os",
+        "OJy9h",
+        "ONpyZ",
+        "OWrTW",
+        "OXa1y",
+        "OYDMQ",
+        "Oc0Lt",
+        "Odynb",
+        "OeH1t",
+        "PFMk7",
+        "PHkVi",
+        "PI8cl",
+        "PUH9g",
+        "R4fPi",
+        "RAHIY",
+        "SvzI6",
+        "TADYL",
+        "TuquC",
+        "TwkJH",
+        "VABqi",
+        "Vr0Xc",
+        "Vr9v9",
+        "WRmcz",
+        "Wk0yX",
+        "WlKfE",
+        "WnqLM",
+        "WpciC",
+        "WyO3u",
+        "XeXnA",
+        "XfJFK",
+        "XgzWu",
+        "XmTAk",
+        "XmsS6",
+        "YHN3U",
+        "YJIq6",
+        "Z1GUw",
+        "Z1jgp",
+        "Z2mG9",
+        "ZEjH9",
+        "aFtUZ",
+        "b6VoS",
+        "b6gPZ",
+        "b918x",
+        "bnQfC",
+        "bnt9b",
+        "bpazd",
+        "crkSL",
+        "dUl8a",
+        "dVS0e",
+        "e8rmw",
+        "e8wWF"
+      ],
+      "confirmation": [
+        "0moVJ",
+        "0oMpP",
+        "1VwbB",
+        "1VxWq",
+        "1aYom",
+        "2iTSY",
+        "2jr8P",
+        "3eYug",
+        "4DKhI",
+        "4dCHV",
+        "4dJwM",
+        "4zJok",
+        "5su16",
+        "5th23",
+        "5ttPt",
+        "5tyGe",
+        "6sBYt",
+        "6sQR0",
+        "7cpot",
+        "7cyqx",
+        "7czBX",
+        "8IzN4",
+        "8Lk05",
+        "BwAxL",
+        "CC3JD",
+        "CQ3sX",
+        "DUab6",
+        "EGFMj",
+        "Eh3p1",
+        "Fd0ni",
+        "FoJlN",
+        "FxA37",
+        "G4NVu",
+        "G4Vor",
+        "GQI9N",
+        "HUp6Z",
+        "HW1QX",
+        "HWB5S",
+        "HX4fX",
+        "HXHDP",
+        "HmHJI",
+        "HmeHn",
+        "HtCJB",
+        "IrDxD",
+        "LPaRe",
+        "LQWbZ",
+        "LQi8t",
+        "LQuGt",
+        "LRWs6",
+        "O73r8",
+        "OPa3c",
+        "OQ9Ps",
+        "OQOsl",
+        "OcgPq",
+        "OcuPO",
+        "QBjqz",
+        "QJhY6",
+        "QLHeP",
+        "QWPiu",
+        "QWWpZ",
+        "QXL0P",
+        "RAyip",
+        "RBQPt",
+        "Rq16q",
+        "SAwuM",
+        "SB6vJ",
+        "T5jTz",
+        "TJEmK",
+        "TJWwl",
+        "TLViv",
+        "TLWCD",
+        "TMIpv",
+        "TcJSh",
+        "TcWCm",
+        "Tre5s",
+        "TreXX",
+        "TsFkL",
+        "TsUDv",
+        "UlXdI",
+        "V1vOr",
+        "VtBv7",
+        "W5ooc",
+        "Wzqk6",
+        "X0PlZ",
+        "X0VkA",
+        "beow4",
+        "dDSw0",
+        "eQKwU",
+        "eQUSB",
+        "eQk37",
+        "eU5dP",
+        "f1Fiz"
+      ]
+    },
+    "groups": {
+      "0LN6r": "train/0LN6r.png",
+      "0moVJ": "train/0moVJ.png",
+      "0oMpP": "train/0moVJ.png",
+      "10vSO": "train/10vSO.png",
+      "120Ux": "train/120Ux.png",
+      "1EWvZ": "train/1EWvZ.png",
+      "1ExNW": "train/1EWvZ.png",
+      "1VwbB": "train/1VwbB.png",
+      "1VxWq": "train/1VwbB.png",
+      "1Zu9g": "train/1Zu9g.png",
+      "1a5PI": "train/1Zu9g.png",
+      "1aYom": "train/1aYom.png",
+      "2Ub96": "train/2Ub96.png",
+      "2UoAJ": "train/2Ub96.png",
+      "2YMaH": "train/2YMaH.png",
+      "2YOsl": "train/2YMaH.png",
+      "2iTSY": "train/2iTSY.png",
+      "2jr8P": "train/2iTSY.png",
+      "2mzj7": "train/2mzj7.png",
+      "2wtUm": "train/2wtUm.png",
+      "38Hmp": "train/38Hmp.png",
+      "3BsR7": "train/3BsR7.png",
+      "3DlP6": "train/3BsR7.png",
+      "3E97J": "train/3BsR7.png",
+      "3SjyC": "train/3SjyC.png",
+      "3W1yY": "train/3W1yY.png",
+      "3eYug": "train/3eYug.png",
+      "3fbR5": "train/3fbR5.png",
+      "3fmHq": "train/3fbR5.png",
+      "4DKhI": "train/4DKhI.png",
+      "4LkTZ": "train/4LkTZ.png",
+      "4OOBV": "train/4LkTZ.png",
+      "4ReqM": "train/4LkTZ.png",
+      "4aowa": "train/4aowa.png",
+      "4dCHV": "train/4dCHV.png",
+      "4dJwM": "train/4dCHV.png",
+      "4ptqn": "train/4ptqn.png",
+      "4q4IT": "train/4ptqn.png",
+      "4zJok": "train/4zJok.png",
+      "5UU8o": "train/5UU8o.png",
+      "5qoXb": "train/5qoXb.png",
+      "5revl": "train/5qoXb.png",
+      "5rpXC": "train/5qoXb.png",
+      "5su16": "train/5su16.png",
+      "5th23": "train/5su16.png",
+      "5ttPt": "train/5ttPt.png",
+      "5tyGe": "train/5tyGe.png",
+      "5xpyl": "train/5xpyl.png",
+      "6XQzP": "train/6XQzP.png",
+      "6n0pc": "train/6n0pc.png",
+      "6njyj": "train/6n0pc.png",
+      "6oNUM": "train/6n0pc.png",
+      "6oTN4": "train/6n0pc.png",
+      "6qgaC": "train/6qgaC.png",
+      "6rJVF": "train/6qgaC.png",
+      "6sBYt": "train/6sBYt.png",
+      "6sQR0": "train/6sBYt.png",
+      "7aYYN": "train/7aYYN.png",
+      "7apOn": "train/7aYYN.png",
+      "7cpot": "train/7cpot.png",
+      "7cyqx": "train/7cpot.png",
+      "7czBX": "train/7cpot.png",
+      "7fIe7": "train/7fIe7.png",
+      "7iwRS": "train/7iwRS.png",
+      "7pJHA": "train/7pJHA.png",
+      "7sCrA": "train/7sCrA.png",
+      "7sx7L": "train/7sCrA.png",
+      "7yn6q": "train/7yn6q.png",
+      "7z50Z": "train/7yn6q.png",
+      "8IzN4": "train/8IzN4.png",
+      "8Lk05": "train/8Lk05.png",
+      "9uET8": "train/9uET8.png",
+      "9unYH": "train/9uET8.png",
+      "A6Wo3": "train/A6Wo3.png",
+      "A6cG1": "train/A6Wo3.png",
+      "AFpBs": "train/AFpBs.png",
+      "AFpWw": "train/AFpBs.png",
+      "AHdzH": "train/AFpBs.png",
+      "AHpRZ": "train/AFpBs.png",
+      "BA6AF": "train/BA6AF.png",
+      "BIpS6": "train/BIpS6.png",
+      "BJTMV": "train/BIpS6.png",
+      "BJnqv": "train/BIpS6.png",
+      "BSHlg": "train/BSHlg.png",
+      "BU13M": "train/BU13M.png",
+      "BwAxL": "train/BwAxL.png",
+      "CC3JD": "train/CC3JD.png",
+      "CQ3sX": "train/CQ3sX.png",
+      "DUab6": "train/DUab6.png",
+      "Dfc3k": "train/Dfc3k.png",
+      "Dhl7g": "train/Dfc3k.png",
+      "DnoI2": "train/DnoI2.png",
+      "EGFMj": "train/EGFMj.png",
+      "ELQ1l": "train/ELQ1l.png",
+      "EQZHx": "train/EQZHx.png",
+      "Eh3p1": "train/Eh3p1.png",
+      "Fd0ni": "train/Fd0ni.png",
+      "FoJlN": "train/FoJlN.png",
+      "FpXn4": "train/FpXn4.png",
+      "FxA37": "train/FxA37.png",
+      "G4NVu": "train/G4NVu.png",
+      "G4Vor": "train/G4NVu.png",
+      "GQI9N": "train/GQI9N.png",
+      "HUp6Z": "train/HUp6Z.png",
+      "HW1QX": "train/HUp6Z.png",
+      "HWB5S": "train/HUp6Z.png",
+      "HX4fX": "train/HX4fX.png",
+      "HXHDP": "train/HX4fX.png",
+      "HmHJI": "train/HmHJI.png",
+      "HmeHn": "train/HmHJI.png",
+      "HtCJB": "train/HtCJB.png",
+      "HvVFj": "train/HvVFj.png",
+      "HxmuH": "train/HvVFj.png",
+      "ICbXZ": "train/ICbXZ.png",
+      "ICr4r": "train/ICbXZ.png",
+      "IFyaf": "train/IFyaf.png",
+      "IGXRp": "train/IFyaf.png",
+      "IrDxD": "train/IrDxD.png",
+      "Is7N4": "train/Is7N4.png",
+      "JBNAG": "train/JBNAG.png",
+      "JBp8J": "train/JBNAG.png",
+      "JCRDD": "train/JBNAG.png",
+      "JHevW": "train/JHevW.png",
+      "JI1SU": "train/JHevW.png",
+      "JIGjd": "train/JHevW.png",
+      "JeItd": "train/JeItd.png",
+      "JeJjD": "train/JeItd.png",
+      "Jn1n7": "train/Jn1n7.png",
+      "Jn4NK": "train/Jn1n7.png",
+      "JnsVe": "train/Jn1n7.png",
+      "JqwFQ": "train/JqwFQ.png",
+      "Jr14U": "train/JqwFQ.png",
+      "Jr1AI": "train/JqwFQ.png",
+      "Jr1Up": "train/JqwFQ.png",
+      "Jr4Qw": "train/JqwFQ.png",
+      "KiYsj": "train/KiYsj.png",
+      "KkW5g": "train/KiYsj.png",
+      "KkwyS": "train/KiYsj.png",
+      "KlJTV": "train/KiYsj.png",
+      "Klnkh": "train/KiYsj.png",
+      "LDa0G": "train/LDa0G.png",
+      "LDbEK": "train/LDa0G.png",
+      "LPaRe": "train/LPaRe.png",
+      "LQWbZ": "train/LPaRe.png",
+      "LQi8t": "train/LPaRe.png",
+      "LQuGt": "train/LPaRe.png",
+      "LRWs6": "train/LPaRe.png",
+      "LRZl1": "train/LRZl1.png",
+      "LRjSN": "train/LRZl1.png",
+      "Nsm9u": "train/Nsm9u.png",
+      "Nw9XX": "train/Nsm9u.png",
+      "O4oIm": "train/O4oIm.png",
+      "O5sPe": "train/O5sPe.png",
+      "O63os": "train/O5sPe.png",
+      "O73r8": "train/O73r8.png",
+      "OJy9h": "train/OJy9h.png",
+      "ONpyZ": "train/ONpyZ.png",
+      "OPa3c": "train/OPa3c.png",
+      "OQ9Ps": "train/OPa3c.png",
+      "OQOsl": "train/OQOsl.png",
+      "OWrTW": "train/OWrTW.png",
+      "OXa1y": "train/OWrTW.png",
+      "OYDMQ": "train/OWrTW.png",
+      "Oc0Lt": "train/Oc0Lt.png",
+      "OcgPq": "train/OcgPq.png",
+      "OcuPO": "train/OcuPO.png",
+      "Odynb": "train/Odynb.png",
+      "OeH1t": "train/Odynb.png",
+      "PFMk7": "train/PFMk7.png",
+      "PHkVi": "train/PFMk7.png",
+      "PI8cl": "train/PFMk7.png",
+      "PUH9g": "train/PUH9g.png",
+      "QBjqz": "train/QBjqz.png",
+      "QJhY6": "train/QJhY6.png",
+      "QLHeP": "train/QJhY6.png",
+      "QWPiu": "train/QWPiu.png",
+      "QWWpZ": "train/QWPiu.png",
+      "QXL0P": "train/QWPiu.png",
+      "R4fPi": "train/R4fPi.png",
+      "RAHIY": "train/RAHIY.png",
+      "RAyip": "train/RAyip.png",
+      "RBQPt": "train/RAyip.png",
+      "Rq16q": "train/Rq16q.png",
+      "SAwuM": "train/SAwuM.png",
+      "SB6vJ": "train/SAwuM.png",
+      "SvzI6": "train/SvzI6.png",
+      "T5jTz": "train/T5jTz.png",
+      "TADYL": "train/TADYL.png",
+      "TJEmK": "train/TJEmK.png",
+      "TJWwl": "train/TJEmK.png",
+      "TLViv": "train/TJEmK.png",
+      "TLWCD": "train/TLWCD.png",
+      "TMIpv": "train/TLWCD.png",
+      "TcJSh": "train/TcJSh.png",
+      "TcWCm": "train/TcJSh.png",
+      "Tre5s": "train/Tre5s.png",
+      "TreXX": "train/Tre5s.png",
+      "TsFkL": "train/Tre5s.png",
+      "TsUDv": "train/TsUDv.png",
+      "TuquC": "train/TuquC.png",
+      "TwkJH": "train/TuquC.png",
+      "UlXdI": "train/UlXdI.png",
+      "V1vOr": "train/V1vOr.png",
+      "VABqi": "train/VABqi.png",
+      "Vr0Xc": "train/Vr0Xc.png",
+      "Vr9v9": "train/Vr0Xc.png",
+      "VtBv7": "train/VtBv7.png",
+      "W5ooc": "train/W5ooc.png",
+      "WRmcz": "train/WRmcz.png",
+      "Wk0yX": "train/Wk0yX.png",
+      "WlKfE": "train/Wk0yX.png",
+      "WnqLM": "train/WnqLM.png",
+      "WpciC": "train/WnqLM.png",
+      "WyO3u": "train/WyO3u.png",
+      "Wzqk6": "train/Wzqk6.png",
+      "X0PlZ": "train/Wzqk6.png",
+      "X0VkA": "train/Wzqk6.png",
+      "XeXnA": "train/XeXnA.png",
+      "XfJFK": "train/XeXnA.png",
+      "XgzWu": "train/XgzWu.png",
+      "XmTAk": "train/XmTAk.png",
+      "XmsS6": "train/XmTAk.png",
+      "YHN3U": "train/YHN3U.png",
+      "YJIq6": "train/YHN3U.png",
+      "Z1GUw": "train/Z1GUw.png",
+      "Z1jgp": "train/Z1GUw.png",
+      "Z2mG9": "train/Z1GUw.png",
+      "ZEjH9": "train/ZEjH9.png",
+      "aFtUZ": "train/aFtUZ.png",
+      "b6VoS": "train/b6VoS.png",
+      "b6gPZ": "train/b6VoS.png",
+      "b918x": "train/b918x.png",
+      "beow4": "train/beow4.png",
+      "bnQfC": "train/bnQfC.png",
+      "bnt9b": "train/bnQfC.png",
+      "bpazd": "train/bnQfC.png",
+      "crkSL": "train/crkSL.png",
+      "dDSw0": "train/dDSw0.png",
+      "dUl8a": "train/dUl8a.png",
+      "dVS0e": "train/dVS0e.png",
+      "e8rmw": "train/e8rmw.png",
+      "e8wWF": "train/e8rmw.png",
+      "eQKwU": "train/eQKwU.png",
+      "eQUSB": "train/eQKwU.png",
+      "eQk37": "train/eQKwU.png",
+      "eU5dP": "train/eQKwU.png",
+      "f1Fiz": "train/f1Fiz.png"
+    },
+    "weights_sha256": "076cfcb059f4baff57787b41d3b16a3e10244ae2260a40cccee918c655765ef6",
+    "note": "Exclude all families used for native head epoch selection; historic frozen model exposure remains unknown."
+  },
+  "development": {
+    "boosted_quality": {
+      "micro": {
+        "PQ": 0.3163943516817433,
+        "SQ": 0.7355462439208384,
+        "RQ": 0.4301488238118099
+      },
+      "images": 155,
+      "TP": 448,
+      "FP": 349,
+      "FN": 838,
+      "sum_iou": 329.5247172765356
+    },
+    "decode40": {
+      "micro": {
+        "PQ": 0.3201001787695862,
+        "SQ": 0.7280709948484706,
+        "RQ": 0.4396551724137931
+      },
+      "images": 155,
+      "TP": 459,
+      "FP": 343,
+      "FN": 827,
+      "sum_iou": 334.184586635448
+    },
+    "decode50": {
+      "micro": {
+        "PQ": 0.3225274708686922,
+        "SQ": 0.7297096575185379,
+        "RQ": 0.4419942473633749
+      },
+      "images": 155,
+      "TP": 461,
+      "FP": 339,
+      "FN": 825,
+      "sum_iou": 336.396152116046
+    },
+    "decode70": {
+      "micro": {
+        "PQ": 0.3261596849461982,
+        "SQ": 0.7258102860283423,
+        "RQ": 0.4493731918997107
+      },
+      "images": 155,
+      "TP": 466,
+      "FP": 322,
+      "FN": 820,
+      "sum_iou": 338.2275932892075
+    },
+    "decode80": {
+      "micro": {
+        "PQ": 0.31922933054344815,
+        "SQ": 0.7205362241916121,
+        "RQ": 0.44304411051866216
+      },
+      "images": 155,
+      "TP": 457,
+      "FP": 320,
+      "FN": 829,
+      "sum_iou": 329.28505445556675
+    },
+    "detector_nms": {
+      "micro": {
+        "PQ": 0.3240807145313438,
+        "SQ": 0.7302338178076382,
+        "RQ": 0.4438040345821326
+      },
+      "images": 155,
+      "TP": 462,
+      "FP": 334,
+      "FN": 824,
+      "sum_iou": 337.36802382712887
+    },
+    "extra_classes": {
+      "micro": {
+        "PQ": 0.3209088518277741,
+        "SQ": 0.7269637097958984,
+        "RQ": 0.44143723751749886
+      },
+      "images": 155,
+      "TP": 473,
+      "FP": 384,
+      "FN": 813,
+      "sum_iou": 343.85383473345996
+    },
+    "hires": {
+      "micro": {
+        "PQ": 0.3159180139985391,
+        "SQ": 0.7283665322744096,
+        "RQ": 0.43373493975903615
+      },
+      "images": 155,
+      "TP": 450,
+      "FP": 339,
+      "FN": 836,
+      "sum_iou": 327.7649395234843
+    },
+    "ink_nms": {
+      "micro": {
+        "PQ": 0.3242364476954626,
+        "SQ": 0.7302338178076382,
+        "RQ": 0.4440172993753003
+      },
+      "images": 155,
+      "TP": 462,
+      "FP": 333,
+      "FN": 824,
+      "sum_iou": 337.36802382712887
+    },
+    "larger_limit": {
+      "micro": {
+        "PQ": 0.3466721948877139,
+        "SQ": 0.7319401013335033,
+        "RQ": 0.4736346516007533
+      },
+      "images": 155,
+      "TP": 503,
+      "FP": 335,
+      "FN": 783,
+      "sum_iou": 368.16587097075217
+    },
+    "learned_quality": {
+      "micro": {
+        "PQ": 0.32817854721384127,
+        "SQ": 0.7283380439725063,
+        "RQ": 0.4505854800936768
+      },
+      "images": 155,
+      "TP": 481,
+      "FP": 368,
+      "FN": 805,
+      "sum_iou": 350.3305991507755
+    },
+    "legacy": {
+      "micro": {
+        "PQ": 0.32349356319830647,
+        "SQ": 0.7297902510330557,
+        "RQ": 0.44326923076923075
+      },
+      "images": 155,
+      "TP": 461,
+      "FP": 333,
+      "FN": 825,
+      "sum_iou": 336.4333057262387
+    },
+    "native_quality": {
+      "micro": {
+        "PQ": 0.3302475122460284,
+        "SQ": 0.728136081217147,
+        "RQ": 0.453551912568306
+      },
+      "images": 155,
+      "TP": 498,
+      "FP": 412,
+      "FN": 788,
+      "sum_iou": 362.6117684461392
+    },
+    "no_anchor": {
+      "micro": {
+        "PQ": 0.3199241475365973,
+        "SQ": 0.7361732829728006,
+        "RQ": 0.4345772319319792
+      },
+      "images": 155,
+      "TP": 460,
+      "FP": 371,
+      "FN": 826,
+      "sum_iou": 338.63971016748826
+    },
+    "no_atoms": {
+      "micro": {
+        "PQ": 0.3217543604528732,
+        "SQ": 0.7299187347391599,
+        "RQ": 0.4408084696823869
+      },
+      "images": 155,
+      "TP": 458,
+      "FP": 334,
+      "FN": 828,
+      "sum_iou": 334.30278051053523
+    },
+    "no_reassignment": {
+      "micro": {
+        "PQ": 0.318211995226274,
+        "SQ": 0.7363439495662687,
+        "RQ": 0.43215130023640663
+      },
+      "images": 155,
+      "TP": 457,
+      "FP": 372,
+      "FN": 829,
+      "sum_iou": 336.5091849517848
+    },
+    "unlimited": {
+      "micro": {
+        "PQ": 0.3507514052349742,
+        "SQ": 0.7317044970263846,
+        "RQ": 0.4793621013133208
+      },
+      "images": 155,
+      "TP": 511,
+      "FP": 335,
+      "FN": 775,
+      "sum_iou": 373.90099798048254
+    }
+  },
+  "confirmation": {
+    "baseline": {
+      "micro": {
+        "PQ": 0.3496644445316328,
+        "SQ": 0.7087391219897544,
+        "RQ": 0.493361285814116
+      },
+      "images": 92,
+      "TP": 353,
+      "FP": 242,
+      "FN": 483,
+      "sum_iou": 250.1849100623833
+    },
+    "selected": {
+      "micro": {
+        "PQ": 0.3496644445316328,
+        "SQ": 0.7087391219897544,
+        "RQ": 0.493361285814116
+      },
+      "images": 92,
+      "TP": 353,
+      "FP": 242,
+      "FN": 483,
+      "sum_iou": 250.1849100623833
+    },
+    "all_predictions_byte_identical": true
+  },
+  "historical": {
+    "baseline": {
+      "micro": {
+        "PQ": 0.3285596136708346,
+        "SQ": 0.7162105680251317,
+        "RQ": 0.45874722929151956
+      },
+      "images": 1000,
+      "TP": 2794,
+      "FP": 2058,
+      "FN": 4535,
+      "sum_iou": 2001.092327062218,
+      "per_class": {
+        "2": {
+          "TP": 617,
+          "FP": 300,
+          "FN": 779,
+          "sum_iou": 420.5121004517791,
+          "images": 387,
+          "PQ": 0.36360752308843847,
+          "SQ": 0.6815431125636614,
+          "RQ": 0.5335062689148292
+        },
+        "3": {
+          "TP": 300,
+          "FP": 205,
+          "FN": 519,
+          "sum_iou": 192.32147109204678,
+          "images": 426,
+          "PQ": 0.29051581735958726,
+          "SQ": 0.6410715703068226,
+          "RQ": 0.45317220543806647
+        },
+        "4": {
+          "TP": 153,
+          "FP": 51,
+          "FN": 166,
+          "sum_iou": 130.32562898455691,
+          "images": 189,
+          "PQ": 0.4983771662889366,
+          "SQ": 0.851801496631091,
+          "RQ": 0.5850860420650096
+        },
+        "5": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 13,
+          "sum_iou": 0.0,
+          "images": 6,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "8": {
+          "TP": 640,
+          "FP": 536,
+          "FN": 377,
+          "sum_iou": 500.62487679321634,
+          "images": 406,
+          "PQ": 0.45656623510553246,
+          "SQ": 0.7822263699894005,
+          "RQ": 0.5836753305973552
+        },
+        "9": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 31,
+          "sum_iou": 0.0,
+          "images": 17,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "10": {
+          "TP": 2,
+          "FP": 56,
+          "FN": 50,
+          "sum_iou": 1.12045595841841,
+          "images": 59,
+          "PQ": 0.020371926516698363,
+          "SQ": 0.560227979209205,
+          "RQ": 0.03636363636363636
+        },
+        "11": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 64,
+          "sum_iou": 0.0,
+          "images": 21,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "12": {
+          "TP": 34,
+          "FP": 45,
+          "FN": 42,
+          "sum_iou": 24.46079879344013,
+          "images": 45,
+          "PQ": 0.31562321023793716,
+          "SQ": 0.7194352586305921,
+          "RQ": 0.43870967741935485
+        },
+        "13": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 153,
+          "sum_iou": 0.0,
+          "images": 61,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "14": {
+          "TP": 149,
+          "FP": 47,
+          "FN": 224,
+          "sum_iou": 104.9255134463785,
+          "images": 68,
+          "PQ": 0.3688067256463216,
+          "SQ": 0.7041980768213323,
+          "RQ": 0.523725834797891
+        },
+        "15": {
+          "TP": 76,
+          "FP": 48,
+          "FN": 94,
+          "sum_iou": 62.03680802901108,
+          "images": 75,
+          "PQ": 0.4220191022381706,
+          "SQ": 0.8162737898554089,
+          "RQ": 0.5170068027210885
+        },
+        "16": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 83,
+          "sum_iou": 0.0,
+          "images": 42,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "17": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 111,
+          "sum_iou": 0.0,
+          "images": 49,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "18": {
+          "TP": 112,
+          "FP": 75,
+          "FN": 267,
+          "sum_iou": 74.42998038847372,
+          "images": 95,
+          "PQ": 0.2630034642702252,
+          "SQ": 0.6645533963256582,
+          "RQ": 0.3957597173144876
+        },
+        "19": {
+          "TP": 34,
+          "FP": 10,
+          "FN": 20,
+          "sum_iou": 23.432370966123212,
+          "images": 46,
+          "PQ": 0.47821165236986146,
+          "SQ": 0.6891873813565651,
+          "RQ": 0.6938775510204082
+        },
+        "20": {
+          "TP": 78,
+          "FP": 150,
+          "FN": 64,
+          "sum_iou": 51.15935996640866,
+          "images": 127,
+          "PQ": 0.27653708089950624,
+          "SQ": 0.6558892303385725,
+          "RQ": 0.42162162162162165
+        },
+        "21": {
+          "TP": 56,
+          "FP": 25,
+          "FN": 22,
+          "sum_iou": 37.72752506583662,
+          "images": 63,
+          "PQ": 0.4745600637212154,
+          "SQ": 0.6737058047470825,
+          "RQ": 0.7044025157232704
+        },
+        "22": {
+          "TP": 96,
+          "FP": 57,
+          "FN": 389,
+          "sum_iou": 67.92232461824933,
+          "images": 209,
+          "PQ": 0.21292264770611077,
+          "SQ": 0.7075242147734305,
+          "RQ": 0.30094043887147337
+        },
+        "23": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 126,
+          "sum_iou": 0.0,
+          "images": 76,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "24": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 33,
+          "sum_iou": 0.0,
+          "images": 28,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "25": {
+          "TP": 37,
+          "FP": 13,
+          "FN": 32,
+          "sum_iou": 27.465588992379427,
+          "images": 52,
+          "PQ": 0.4616065376870492,
+          "SQ": 0.7423132160102548,
+          "RQ": 0.6218487394957983
+        },
+        "26": {
+          "TP": 63,
+          "FP": 15,
+          "FN": 70,
+          "sum_iou": 47.66457392995325,
+          "images": 41,
+          "PQ": 0.4517969092886564,
+          "SQ": 0.7565805385706865,
+          "RQ": 0.5971563981042654
+        },
+        "27": {
+          "TP": 45,
+          "FP": 39,
+          "FN": 51,
+          "sum_iou": 26.35210404885064,
+          "images": 31,
+          "PQ": 0.29280115609834045,
+          "SQ": 0.5856023121966809,
+          "RQ": 0.5
+        },
+        "28": {
+          "TP": 95,
+          "FP": 24,
+          "FN": 222,
+          "sum_iou": 61.6620088628354,
+          "images": 150,
+          "PQ": 0.2828532516643826,
+          "SQ": 0.6490737775035306,
+          "RQ": 0.43577981651376146
+        },
+        "29": {
+          "TP": 81,
+          "FP": 48,
+          "FN": 218,
+          "sum_iou": 58.92361186521571,
+          "images": 225,
+          "PQ": 0.27534398067857807,
+          "SQ": 0.7274519983359964,
+          "RQ": 0.37850467289719625
+        },
+        "30": {
+          "TP": 27,
+          "FP": 59,
+          "FN": 109,
+          "sum_iou": 18.203063997792125,
+          "images": 162,
+          "PQ": 0.1639915675476768,
+          "SQ": 0.6741875554737824,
+          "RQ": 0.24324324324324326
+        },
+        "31": {
+          "TP": 10,
+          "FP": 7,
+          "FN": 11,
+          "sum_iou": 6.5966878719728665,
+          "images": 23,
+          "PQ": 0.3471940985248877,
+          "SQ": 0.6596687871972866,
+          "RQ": 0.5263157894736842
+        },
+        "32": {
+          "TP": 44,
+          "FP": 96,
+          "FN": 132,
+          "sum_iou": 34.77336740409957,
+          "images": 236,
+          "PQ": 0.22008460382341496,
+          "SQ": 0.7903038046386265,
+          "RQ": 0.27848101265822783
+        },
+        "33": {
+          "TP": 5,
+          "FP": 13,
+          "FN": 15,
+          "sum_iou": 3.138319117525973,
+          "images": 26,
+          "PQ": 0.16517469039610386,
+          "SQ": 0.6276638235051946,
+          "RQ": 0.2631578947368421
+        },
+        "34": {
+          "TP": 40,
+          "FP": 139,
+          "FN": 48,
+          "sum_iou": 25.31378641765256,
+          "images": 209,
+          "PQ": 0.1896163776603188,
+          "SQ": 0.632844660441314,
+          "RQ": 0.299625468164794
+        }
+      }
+    },
+    "selected": {
+      "micro": {
+        "PQ": 0.3292305446958775,
+        "SQ": 0.7160147700556794,
+        "RQ": 0.4598097112860892
+      },
+      "images": 1000,
+      "TP": 2803,
+      "FP": 2060,
+      "FN": 4526,
+      "sum_iou": 2006.9894004660691,
+      "per_class": {
+        "2": {
+          "TP": 617,
+          "FP": 301,
+          "FN": 779,
+          "sum_iou": 420.5121004517791,
+          "images": 387,
+          "PQ": 0.3634503893273804,
+          "SQ": 0.6815431125636614,
+          "RQ": 0.533275713050994
+        },
+        "3": {
+          "TP": 300,
+          "FP": 205,
+          "FN": 519,
+          "sum_iou": 192.32147109204678,
+          "images": 426,
+          "PQ": 0.29051581735958726,
+          "SQ": 0.6410715703068226,
+          "RQ": 0.45317220543806647
+        },
+        "4": {
+          "TP": 153,
+          "FP": 51,
+          "FN": 166,
+          "sum_iou": 130.32562898455691,
+          "images": 189,
+          "PQ": 0.4983771662889366,
+          "SQ": 0.851801496631091,
+          "RQ": 0.5850860420650096
+        },
+        "5": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 13,
+          "sum_iou": 0.0,
+          "images": 6,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "8": {
+          "TP": 640,
+          "FP": 536,
+          "FN": 377,
+          "sum_iou": 500.62487679321634,
+          "images": 406,
+          "PQ": 0.45656623510553246,
+          "SQ": 0.7822263699894005,
+          "RQ": 0.5836753305973552
+        },
+        "9": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 31,
+          "sum_iou": 0.0,
+          "images": 17,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "10": {
+          "TP": 2,
+          "FP": 56,
+          "FN": 50,
+          "sum_iou": 1.12045595841841,
+          "images": 59,
+          "PQ": 0.020371926516698363,
+          "SQ": 0.560227979209205,
+          "RQ": 0.03636363636363636
+        },
+        "11": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 64,
+          "sum_iou": 0.0,
+          "images": 21,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "12": {
+          "TP": 34,
+          "FP": 45,
+          "FN": 42,
+          "sum_iou": 24.46079879344013,
+          "images": 45,
+          "PQ": 0.31562321023793716,
+          "SQ": 0.7194352586305921,
+          "RQ": 0.43870967741935485
+        },
+        "13": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 153,
+          "sum_iou": 0.0,
+          "images": 61,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "14": {
+          "TP": 158,
+          "FP": 47,
+          "FN": 215,
+          "sum_iou": 110.82258685022974,
+          "images": 68,
+          "PQ": 0.383469158651314,
+          "SQ": 0.7014087775330996,
+          "RQ": 0.5467128027681661
+        },
+        "15": {
+          "TP": 76,
+          "FP": 48,
+          "FN": 94,
+          "sum_iou": 62.03680802901108,
+          "images": 75,
+          "PQ": 0.4220191022381706,
+          "SQ": 0.8162737898554089,
+          "RQ": 0.5170068027210885
+        },
+        "16": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 83,
+          "sum_iou": 0.0,
+          "images": 42,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "17": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 111,
+          "sum_iou": 0.0,
+          "images": 49,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "18": {
+          "TP": 112,
+          "FP": 76,
+          "FN": 267,
+          "sum_iou": 74.42998038847372,
+          "images": 95,
+          "PQ": 0.262539613363223,
+          "SQ": 0.6645533963256582,
+          "RQ": 0.3950617283950617
+        },
+        "19": {
+          "TP": 34,
+          "FP": 10,
+          "FN": 20,
+          "sum_iou": 23.432370966123212,
+          "images": 46,
+          "PQ": 0.47821165236986146,
+          "SQ": 0.6891873813565651,
+          "RQ": 0.6938775510204082
+        },
+        "20": {
+          "TP": 78,
+          "FP": 150,
+          "FN": 64,
+          "sum_iou": 51.15935996640866,
+          "images": 127,
+          "PQ": 0.27653708089950624,
+          "SQ": 0.6558892303385725,
+          "RQ": 0.42162162162162165
+        },
+        "21": {
+          "TP": 56,
+          "FP": 25,
+          "FN": 22,
+          "sum_iou": 37.72752506583662,
+          "images": 63,
+          "PQ": 0.4745600637212154,
+          "SQ": 0.6737058047470825,
+          "RQ": 0.7044025157232704
+        },
+        "22": {
+          "TP": 96,
+          "FP": 57,
+          "FN": 389,
+          "sum_iou": 67.92232461824933,
+          "images": 209,
+          "PQ": 0.21292264770611077,
+          "SQ": 0.7075242147734305,
+          "RQ": 0.30094043887147337
+        },
+        "23": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 126,
+          "sum_iou": 0.0,
+          "images": 76,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "24": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 33,
+          "sum_iou": 0.0,
+          "images": 28,
+          "PQ": 0.0,
+          "SQ": 0.0,
+          "RQ": 0.0
+        },
+        "25": {
+          "TP": 37,
+          "FP": 13,
+          "FN": 32,
+          "sum_iou": 27.465588992379427,
+          "images": 52,
+          "PQ": 0.4616065376870492,
+          "SQ": 0.7423132160102548,
+          "RQ": 0.6218487394957983
+        },
+        "26": {
+          "TP": 63,
+          "FP": 15,
+          "FN": 70,
+          "sum_iou": 47.66457392995325,
+          "images": 41,
+          "PQ": 0.4517969092886564,
+          "SQ": 0.7565805385706865,
+          "RQ": 0.5971563981042654
+        },
+        "27": {
+          "TP": 45,
+          "FP": 39,
+          "FN": 51,
+          "sum_iou": 26.35210404885064,
+          "images": 31,
+          "PQ": 0.29280115609834045,
+          "SQ": 0.5856023121966809,
+          "RQ": 0.5
+        },
+        "28": {
+          "TP": 95,
+          "FP": 24,
+          "FN": 222,
+          "sum_iou": 61.6620088628354,
+          "images": 150,
+          "PQ": 0.2828532516643826,
+          "SQ": 0.6490737775035306,
+          "RQ": 0.43577981651376146
+        },
+        "29": {
+          "TP": 81,
+          "FP": 48,
+          "FN": 218,
+          "sum_iou": 58.92361186521571,
+          "images": 225,
+          "PQ": 0.27534398067857807,
+          "SQ": 0.7274519983359964,
+          "RQ": 0.37850467289719625
+        },
+        "30": {
+          "TP": 27,
+          "FP": 59,
+          "FN": 109,
+          "sum_iou": 18.203063997792125,
+          "images": 162,
+          "PQ": 0.1639915675476768,
+          "SQ": 0.6741875554737824,
+          "RQ": 0.24324324324324326
+        },
+        "31": {
+          "TP": 10,
+          "FP": 7,
+          "FN": 11,
+          "sum_iou": 6.5966878719728665,
+          "images": 23,
+          "PQ": 0.3471940985248877,
+          "SQ": 0.6596687871972866,
+          "RQ": 0.5263157894736842
+        },
+        "32": {
+          "TP": 44,
+          "FP": 96,
+          "FN": 132,
+          "sum_iou": 34.77336740409957,
+          "images": 236,
+          "PQ": 0.22008460382341496,
+          "SQ": 0.7903038046386265,
+          "RQ": 0.27848101265822783
+        },
+        "33": {
+          "TP": 5,
+          "FP": 13,
+          "FN": 15,
+          "sum_iou": 3.138319117525973,
+          "images": 26,
+          "PQ": 0.16517469039610386,
+          "SQ": 0.6276638235051946,
+          "RQ": 0.2631578947368421
+        },
+        "34": {
+          "TP": 40,
+          "FP": 139,
+          "FN": 48,
+          "sum_iou": 25.31378641765256,
+          "images": 209,
+          "PQ": 0.1896163776603188,
+          "SQ": 0.632844660441314,
+          "RQ": 0.299625468164794
+        }
+      }
+    },
+    "paired_uncertainty": {
+      "method": "paired source-component percentile bootstrap",
+      "source_components": 565,
+      "draws": 5000,
+      "seed": 73,
+      "delta_PQ_points_95pct_CI": {
+        "selected": [
+          -0.011344774720471323,
+          0.23354464441995984
+        ]
+      },
+      "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+    },
+    "reuse": {
+      "updated_pages": [
+        "gaQ6v",
+        "h5kv7",
+        "lXV9Q",
+        "nVFCs",
+        "ofQPB",
+        "oWznC"
+      ],
+      "reused_pages": 994,
+      "rationale": "Raw same-class routed proposals <=15 cannot hit old accepted-instance cap.",
+      "baseline": "_work/native_detail_eval/all/pred",
+      "weights_sha256": "076cfcb059f4baff57787b41d3b16a3e10244ae2260a40cccee918c655765ef6"
+    }
+  },
+  "dense_confirmation": {
+    "selection": {
+      "screened": 109,
+      "selected": [
+        "3UElq"
+      ],
+      "counts": {
+        "0z7sm": {
+          "2": 2,
+          "8": 3,
+          "29": 1
+        },
+        "13JdX": {
+          "29": 1
+        },
+        "1DeLf": {
+          "8": 2
+        },
+        "1FMIy": {},
+        "1h8iM": {
+          "3": 1,
+          "29": 1,
+          "18": 1,
+          "2": 1
+        },
+        "2bnQA": {
+          "28": 3,
+          "2": 7,
+          "25": 3,
+          "3": 3,
+          "21": 3,
+          "8": 5,
+          "22": 5,
+          "4": 6,
+          "20": 1
+        },
+        "2rJKv": {
+          "8": 1,
+          "2": 1,
+          "3": 1
+        },
+        "2rqsx": {
+          "8": 2,
+          "20": 1,
+          "25": 1,
+          "19": 1
+        },
+        "2v6yS": {},
+        "2vmgu": {
+          "3": 1
+        },
+        "36FmJ": {
+          "8": 2,
+          "2": 5,
+          "22": 1,
+          "19": 2,
+          "21": 2,
+          "4": 2,
+          "20": 1,
+          "25": 2
+        },
+        "3UElq": {
+          "2": 30,
+          "3": 3,
+          "8": 6,
+          "29": 1,
+          "21": 2,
+          "28": 4,
+          "20": 1,
+          "4": 1,
+          "26": 1,
+          "25": 1,
+          "22": 1
+        },
+        "3bBZN": {
+          "2": 11,
+          "22": 4,
+          "28": 2,
+          "26": 2,
+          "19": 2,
+          "27": 2
+        },
+        "4AYUC": {
+          "28": 2,
+          "2": 8,
+          "3": 2,
+          "22": 3,
+          "8": 3
+        },
+        "4ENE3": {
+          "2": 4
+        },
+        "4F6kL": {
+          "29": 2
+        },
+        "4YGQA": {
+          "25": 3,
+          "2": 6,
+          "4": 3,
+          "8": 4,
+          "29": 6,
+          "28": 2,
+          "22": 2
+        },
+        "5JrKo": {
+          "29": 2
+        },
+        "5KLhg": {},
+        "5e1HX": {
+          "8": 1
+        },
+        "5fi6F": {
+          "3": 1,
+          "8": 1,
+          "4": 1
+        },
+        "5s3iB": {
+          "22": 3,
+          "2": 3,
+          "3": 2,
+          "21": 1,
+          "19": 1,
+          "8": 4,
+          "29": 3,
+          "4": 2
+        },
+        "6lunj": {
+          "2": 6,
+          "28": 2,
+          "8": 3,
+          "20": 5,
+          "22": 3,
+          "25": 1,
+          "4": 2
+        },
+        "7bjzQ": {
+          "20": 5
+        },
+        "7dKks": {
+          "20": 2,
+          "8": 3,
+          "29": 1
+        },
+        "7h9lV": {
+          "8": 5,
+          "28": 3,
+          "2": 9,
+          "22": 2,
+          "29": 3,
+          "21": 1
+        },
+        "8Hvfg": {},
+        "8ue6F": {
+          "3": 1,
+          "8": 1
+        },
+        "9164q": {},
+        "9VDHq": {
+          "3": 1
+        },
+        "9mgyg": {
+          "28": 1,
+          "2": 2,
+          "3": 4,
+          "8": 2,
+          "29": 1,
+          "22": 1
+        },
+        "AjI9Y": {
+          "12": 3,
+          "15": 7,
+          "19": 2,
+          "2": 10,
+          "21": 1,
+          "14": 15,
+          "18": 5,
+          "4": 2,
+          "29": 1,
+          "25": 1,
+          "3": 2,
+          "8": 2,
+          "22": 3
+        },
+        "Amy3i": {
+          "28": 1,
+          "2": 4,
+          "22": 2,
+          "4": 1,
+          "8": 4
+        },
+        "Ba5yZ": {},
+        "BpXzq": {
+          "8": 3
+        },
+        "CzkJc": {
+          "29": 2,
+          "2": 1
+        },
+        "DA4lN": {
+          "29": 1
+        },
+        "Dhtek": {
+          "21": 3,
+          "2": 8,
+          "28": 2,
+          "18": 4,
+          "22": 5,
+          "8": 7,
+          "20": 2,
+          "25": 1
+        },
+        "Dr325": {
+          "3": 3,
+          "2": 1,
+          "4": 1,
+          "29": 1
+        },
+        "E46qt": {
+          "8": 1
+        },
+        "EQaYg": {
+          "8": 1
+        },
+        "Eiga5": {
+          "28": 3,
+          "2": 8,
+          "3": 1,
+          "27": 1,
+          "29": 1,
+          "22": 3,
+          "8": 1
+        },
+        "EkV4B": {
+          "2": 3,
+          "3": 4,
+          "4": 2,
+          "29": 1
+        },
+        "Fiv96": {
+          "15": 2,
+          "2": 8,
+          "18": 7,
+          "21": 2,
+          "19": 2,
+          "22": 3,
+          "20": 3,
+          "8": 10,
+          "14": 4,
+          "25": 1,
+          "4": 2
+        },
+        "Fm60F": {
+          "15": 2,
+          "18": 6,
+          "2": 6,
+          "21": 2,
+          "22": 3,
+          "19": 2,
+          "20": 3,
+          "8": 6,
+          "14": 1,
+          "29": 1,
+          "3": 1
+        },
+        "Fm6ac": {
+          "15": 2,
+          "2": 6,
+          "21": 1,
+          "19": 1,
+          "18": 6,
+          "3": 3,
+          "20": 3,
+          "22": 1,
+          "14": 2,
+          "8": 6,
+          "29": 2
+        },
+        "FmbRD": {
+          "2": 3,
+          "21": 3,
+          "8": 6,
+          "19": 3,
+          "22": 4,
+          "4": 2,
+          "26": 1
+        },
+        "Foz70": {
+          "8": 1,
+          "4": 1
+        },
+        "Fr1KQ": {
+          "29": 6
+        },
+        "FteUj": {
+          "3": 5,
+          "2": 1,
+          "29": 2,
+          "8": 2
+        },
+        "FzvmT": {
+          "3": 3,
+          "4": 1,
+          "29": 1
+        },
+        "I8UJ5": {
+          "29": 1,
+          "8": 1,
+          "2": 1
+        },
+        "IC2Du": {
+          "8": 8,
+          "4": 2,
+          "22": 1
+        },
+        "IGrNq": {
+          "28": 1,
+          "3": 1,
+          "12": 2,
+          "2": 1,
+          "15": 4,
+          "8": 1,
+          "18": 3,
+          "22": 1
+        },
+        "ITafg": {
+          "19": 2,
+          "2": 7,
+          "22": 1,
+          "8": 4,
+          "21": 2,
+          "29": 1,
+          "3": 1,
+          "4": 1
+        },
+        "NItxk": {
+          "26": 4,
+          "2": 10,
+          "3": 2,
+          "8": 6,
+          "22": 5,
+          "27": 1,
+          "28": 2
+        },
+        "NbfYS": {
+          "21": 1,
+          "2": 5,
+          "3": 4,
+          "18": 4,
+          "28": 1,
+          "29": 2,
+          "19": 1,
+          "8": 8,
+          "22": 2,
+          "20": 1
+        },
+        "OJONo": {},
+        "OO5sg": {
+          "28": 2,
+          "2": 2,
+          "18": 2,
+          "3": 2,
+          "22": 3,
+          "8": 3,
+          "29": 2,
+          "21": 1
+        },
+        "OOjN4": {
+          "12": 4,
+          "18": 2,
+          "8": 2,
+          "14": 2,
+          "15": 2
+        },
+        "PPwXm": {
+          "29": 1,
+          "3": 2,
+          "2": 1,
+          "8": 1
+        },
+        "PYomI": {
+          "8": 1,
+          "3": 2,
+          "29": 1,
+          "20": 1
+        },
+        "QtF5k": {
+          "2": 2,
+          "8": 3,
+          "29": 1,
+          "28": 1
+        },
+        "RVZXr": {
+          "3": 1,
+          "2": 1,
+          "29": 3
+        },
+        "SSJ2E": {
+          "2": 5,
+          "28": 1,
+          "20": 3,
+          "8": 6,
+          "22": 1,
+          "25": 1
+        },
+        "SfoVl": {},
+        "Sho2F": {
+          "8": 5,
+          "19": 2,
+          "22": 3,
+          "21": 2,
+          "2": 4,
+          "28": 1,
+          "29": 1,
+          "25": 1,
+          "4": 2
+        },
+        "TatWU": {
+          "3": 2,
+          "8": 2,
+          "2": 2
+        },
+        "TpYn1": {
+          "25": 3,
+          "2": 6,
+          "4": 3,
+          "8": 4,
+          "29": 6,
+          "28": 2,
+          "22": 2
+        },
+        "TxGzN": {
+          "8": 2
+        },
+        "U83Oj": {
+          "8": 1
+        },
+        "ULKHs": {
+          "28": 4,
+          "2": 2,
+          "29": 3,
+          "22": 3
+        },
+        "UzadU": {
+          "3": 4,
+          "4": 1
+        },
+        "Uzevb": {
+          "21": 1,
+          "22": 1,
+          "8": 4,
+          "2": 2,
+          "25": 1,
+          "29": 1,
+          "20": 2,
+          "4": 1
+        },
+        "VBAoD": {
+          "8": 2,
+          "20": 1,
+          "25": 1,
+          "19": 1
+        },
+        "VHRTO": {
+          "21": 1,
+          "19": 1,
+          "2": 6,
+          "28": 2,
+          "22": 5,
+          "8": 7,
+          "20": 2,
+          "25": 1,
+          "4": 1
+        },
+        "VaV7V": {
+          "3": 2,
+          "8": 5
+        },
+        "Vcdvn": {
+          "3": 1,
+          "2": 1,
+          "8": 3,
+          "29": 2
+        },
+        "WB49L": {
+          "29": 2
+        },
+        "WQbvt": {
+          "21": 1,
+          "22": 4,
+          "3": 4,
+          "2": 4,
+          "8": 4,
+          "28": 2,
+          "25": 1,
+          "4": 5,
+          "19": 1,
+          "29": 1
+        },
+        "Wcea2": {
+          "2": 7,
+          "28": 2,
+          "22": 6,
+          "8": 6,
+          "18": 1,
+          "20": 1,
+          "4": 1
+        },
+        "XcILc": {
+          "2": 6,
+          "28": 1,
+          "8": 5,
+          "22": 2,
+          "19": 1,
+          "21": 1,
+          "25": 1,
+          "4": 1,
+          "29": 1
+        },
+        "XcPJ4": {
+          "22": 2,
+          "2": 2,
+          "8": 3
+        },
+        "Y5sHB": {
+          "29": 2,
+          "2": 2,
+          "22": 4,
+          "28": 1
+        },
+        "Y766l": {
+          "2": 2,
+          "20": 2,
+          "8": 9,
+          "4": 2
+        },
+        "Y7e8l": {
+          "3": 1,
+          "2": 4,
+          "4": 1
+        },
+        "Y7leM": {
+          "29": 1,
+          "8": 3
+        },
+        "YUJL2": {
+          "2": 4,
+          "28": 2,
+          "22": 4,
+          "8": 2
+        },
+        "Z9Coh": {
+          "8": 1
+        },
+        "ZJ7CF": {},
+        "ZJDGq": {},
+        "a4ujm": {
+          "8": 1
+        },
+        "a5pE8": {},
+        "bEHQS": {
+          "29": 1
+        },
+        "bXP38": {
+          "28": 2,
+          "2": 2,
+          "3": 2,
+          "29": 1,
+          "22": 1
+        },
+        "bmR3i": {
+          "3": 1,
+          "8": 3
+        },
+        "cMlNB": {
+          "29": 2,
+          "3": 1,
+          "2": 1,
+          "8": 4
+        },
+        "cMyFC": {
+          "15": 1,
+          "22": 3,
+          "18": 3,
+          "21": 1,
+          "3": 1,
+          "2": 3,
+          "14": 6,
+          "8": 5,
+          "20": 1,
+          "29": 1,
+          "28": 1,
+          "4": 1
+        },
+        "cV1ge": {
+          "26": 1
+        },
+        "cqamr": {
+          "2": 8,
+          "3": 2,
+          "28": 1,
+          "29": 1,
+          "8": 7,
+          "21": 2,
+          "4": 1,
+          "14": 8,
+          "22": 6,
+          "20": 3,
+          "15": 4,
+          "18": 1
+        },
+        "cr7fs": {
+          "12": 7,
+          "15": 3,
+          "2": 7,
+          "8": 6,
+          "18": 3,
+          "20": 1
+        },
+        "d7MTb": {
+          "12": 2,
+          "15": 6,
+          "19": 1,
+          "18": 9,
+          "2": 6,
+          "28": 2,
+          "22": 4,
+          "25": 1,
+          "14": 7,
+          "8": 6,
+          "4": 1
+        },
+        "dAgfk": {
+          "12": 4,
+          "25": 4,
+          "18": 6,
+          "15": 3,
+          "22": 2,
+          "8": 3,
+          "4": 2,
+          "14": 1
+        },
+        "dmTgh": {
+          "12": 2,
+          "15": 4,
+          "22": 5,
+          "21": 1,
+          "18": 10,
+          "2": 6,
+          "28": 2,
+          "19": 1,
+          "14": 7,
+          "8": 7,
+          "4": 3,
+          "25": 2,
+          "20": 2
+        },
+        "e4c8o": {},
+        "e6Gvi": {
+          "3": 1
+        },
+        "eWgdN": {
+          "3": 3,
+          "2": 1,
+          "29": 2,
+          "8": 2,
+          "20": 1
+        },
+        "ebEZT": {
+          "3": 2,
+          "29": 1,
+          "8": 1
+        },
+        "eeM78": {
+          "2": 3,
+          "29": 5,
+          "3": 1
+        }
+      },
+      "rule": "Frozen detector routed same-class proposals >15; selection frozen before opening labels",
+      "exposure": "Source families never used for native detail training/selection or new quality gate; old base exposure unknown."
+    },
+    "baseline": {
+      "micro": {
+        "PQ": 0.013741511035653652,
+        "SQ": 0.5221774193548387,
+        "RQ": 0.02631578947368421
+      },
+      "images": 1,
+      "TP": 1,
+      "FP": 3,
+      "FN": 71,
+      "sum_iou": 0.5221774193548387
+    },
+    "selected": {
+      "micro": {
+        "PQ": 0.013741511035653652,
+        "SQ": 0.5221774193548387,
+        "RQ": 0.02631578947368421
+      },
+      "images": 1,
+      "TP": 1,
+      "FP": 3,
+      "FN": 71,
+      "sum_iou": 0.5221774193548387
+    }
+  },
+  "tests": {
+    "passed": 103,
+    "schema_valid_outputs": 1000,
+    "offline_compliance": true,
+    "default_cli_matches_explicit_limit_zero": true,
+    "65_candidates_and_duplicate_nms": true
+  },
+  "source_sha256": {
+    "infer.py": "74c390f027c40e0beae9092c20144573aac04af786480968ed7a8bac835a26eb",
+    "cadvec/roi_ink.py": "0132ed930fe7c124f672b6428d8621264d88c5e3b170cb566c035a900409f672",
+    "cadvec/pipeline_segdet.py": "566f9bf2ba66ee54510594772d924986f68889b1053794dba7598db50d4531aa",
+    "cadvec/roi_quality.py": "31139adc38e3e0e10dd0f7cd90780f18b917f770783d7b8e7c069a112b35d60d",
+    "tools/ablate_roi_selection.py": "d816ee7c35b01ad110d0f3cf67dca151038bf3125f7c5e2f7734158501ee347e",
+    "tools/ablate_hybrid_assignment.py": "61f896854a725e315690e41b0f369110b128373335e49518018de7aea9ea9e86",
+    "tools/train_native_quality.py": "9a09c2b8de9b2649612d7485a27fc3170b9d73c022d414a28a570a70c7754960",
+    "tools/refit_native_quality.py": "b3350af676b41ee66c5bc64910f32ccf29bc018864e9fe023300af4d5db7263e",
+    "tools/diagnose_proposal_coverage.py": "e143b64e7ec789eef8a336b9c95bd51658876cd4eb4e55bae7a281aaf7ab3fb5"
+  },
+  "weights_sha256": {
+    "vit_strokes.pt": "8cbc240a8f80d5dff04b8ebb688ad1ff102c8b7f91a5476b10db479fd56a7345",
+    "yolo_seg.pt": "1157d3014ad48fc376dee3fb9ce712f6df4a9798dcb7ea0c4d17e8cae395e1c5",
+    "gat_primitive.pt": "f5e8428dad7cd53b0d61c42c03691551fc771a3e32e463d0177ad46e346d1eea",
+    "resnet18_layer3.pt": "41b265a255f2ab9c49a58a539f477daa5122df56eac9d7b9e018823612453149",
+    "stroke_palette.json": "c73875bc6cf3b780ae56f783ba9c48bab914cfa58d0f1e72ef5bfd429b387e4e",
+    "class_policy.json": "7589f89ff122905936b88c215d9dc55ce358a74c7eb1d8f7b6c0e7c1a422b84b",
+    "color_class_prior.json": "c48440776533f5aca7cfd0ce0d289513cc40e733b27a819a0b3719c4dab05e57",
+    "color_prior.json": "721c0e0da1b9e794d3b912b949fbe19b7a4d17a1b545f559876468a38dbec685",
+    "roi_ink.pt": "a47629742bc5e0aa8bc2c9e5395553e3bc9f09d7a89a6dddc5587cde059fe1ac",
+    "roi_ink_quality.json": "ea49894cbb05f0b781290d1fecf2c86e596b00a7c4ef03a98ee74c8d2a7bab7c",
+    "roi_ink_all.pt": "956ef170671f944e4f94ff3d6352da64910ac0f5379efdbeff87936893ae227c",
+    "roi_ink_256.pt": "07590465cdf0c584d1f596ed4f47611db95b91048b03324dd8c88b74143ded6d",
+    "roi_quality.json": "386a67cb5bd3438bbc444325317fa7ac1676b000c9df189c81fcafe50a729106",
+    "roi_ink_c2.pt": "c7b94c43daec24bd2c6de80e57cdb19f8d6f9d4c9e23ca59384e11346f38ac3a",
+    "roi_ink_unified.pt": "c0c14eb15f4e03d5a558a292fb233f5bea52b2da21369f8a1efe80bdf933d2b0",
+    "roi_quality_all.json": "dc4e84dcf68b195c78f3794770970e49fed3238790d777c469685df89183dacb",
+    "roi_ink_512.pt": "dbe1347ab7bf9b41ee100d2e69e9e4e7b826ba6c3db43e456480ae4ac39eea7b",
+    "roi_quality_512_all.json": "417e86965196710c3c2e095c3739de3610f26ebedaad687a450844276b52bf8b",
+    "roi_quality_512c_all.json": "434c30043f3ec60cdbda64c2e27155357eab892eb9021be50a1d30bd1d734156",
+    "atom_affinity.json": "b5846394fb3a89c1b833257975a332dbb8c8092fd1fdb82f26e3919b6619c4b7",
+    "anchor_assign.json": "adc2af7a9afe6003e88c9b3e42e6481f1f1a0174ec97712172a29b3cc357e55c",
+    "stuff_unet.pt": "da78569cb1b502ac6c804a2cc20d5cb0576a4aace58a821c621075e5fd4ff26d",
+    "stuff_thresholds.json": "8377175d9e29116cea0b67d4c890f83efeddd42e0bd0a8b74596b1359505dd6b",
+    "native_detail.pt": "076cfcb059f4baff57787b41d3b16a3e10244ae2260a40cccee918c655765ef6"
+  },
+  "limitations": [
+    "Development gain is concentrated in one dense source family; paired CI includes zero.",
+    "92 confirmation pages are identical and demonstrate ordinary-page regression, not dense-page benefit.",
+    "The additional input-selected dense page did not reach the old accepted-instance cap.",
+    "Full 1000 benchmark reuses 994 prior predictions and reruns 6 pages selected from raw detector counts.",
+    "Old base model label exposure and missed source-family relations remain unknown.",
+    "This does not reach 50% PQ or establish a score on the unlabeled dev set."
+  ],
+  "development_uncertainty": {
+    "method": "paired source-component percentile bootstrap",
+    "source_components": 88,
+    "draws": 5000,
+    "seed": 73,
+    "delta_PQ_points_95pct_CI": {
+      "no_extra_cap": [
+        0.0,
+        8.11047005085467
+      ]
+    },
+    "note": "Conditional on fixed weights/configuration and observed candidate source groups; does not remove historical model exposure."
+  }
+}

@@ -10,16 +10,31 @@
 与赛题规则约束，且体积过大）。运行时请把数据放到 `../datasets/` 或通过
 `--input/--output` 指定路径。
 
-- 最终本地成绩（test_final 全量 1000 张）：**PQ 24.348%**，SQ 68.137%，
-  RQ 35.734%，TP/FP/FN = 2186/2720/5143（hybrid + class 8 门控 +
-  class2 专用/256 ROI 细化 + 512 统一类别条件 ROI 模型接管 3/4/22/26/29 +
-  全图 Stuff 语义分支接管 30/31/32/33/34 + YOLO 锚点整实例重归属 +
-  原子级锚点归属（class 3/28）+ 学习式/几何质量门控；class 16/23 抑制）。
+- 最新本地历史口径回归（test_final 同 1000 张，2026-11-27）：**PQ 33.785%**，
+  TP/FP/FN = **2852/2042/4477**。本轮采用重新训练的原生边界残差细节头，
+  相对上一轮 32.923% 提高 **0.862 个百分点**，TP +49、FP −18。
+  回归使用经一致性核查的 ROI 缓存重放，1000 份旧模型输出全部复现上一轮。
+  另在冻结后的 108 页、99 个来源组增量确认中，PQ **37.796% → 38.798%**，
+  TP +15、FP −5；部分旧匹配及类别仍有退化。历史进展为
+  24.359% → 32.856% → 32.923% → 33.785%（原仓库历史记录为 24.348%）。
+  这些是本地结果，新 dev 无标签；旧基础权重训练范围尚未核实。尚未达到 50% 目标。
 - 默认推理：`python infer.py --input <dev_final目录> --output results`
   （hybrid 引擎：v3 像素管线 ∪ GAT class8 ∪ YOLO-seg 类别 + PQ 类别门控
   + class 8 检测掩码门控 + ROI 实例墨迹细化 + 512 统一类别条件模型
-  + 全图 Stuff 语义分支）。
-- 方法、消融和文献路线见 `METHOD.md`、`OPTIMIZATION.md`、`RESEARCH_PLAN.md`。
+  + 全图 Stuff 语义分支 + 原分辨率残差细节头）。可用
+  `--roi-max-instances 15` 对照额外截断；加 `--disable-native-detail` 对照历史几何基线。
+- 方法、消融和文献路线见 [方法说明](docs/METHOD.md)、[实验记录](docs/OPTIMIZATION.md)、[研究计划](docs/RESEARCH_PLAN.md)。
+- 工作笔记逐项实现核查、企业新资料与后续验证顺序见 [工作笔记核查](docs/WORK_NOTE_AUDIT.md)。
+- 本机环境、完整模板库与数据重复检查的运行方式见 [数据准备](docs/PREPARATION.md)。
+- 新 dev 的 809 张全量基线、结果包、检查图和评测限制见 [dev 运行记录](docs/DEV_BASELINE.md)。
+- 融合身份、评分栅格和可选原图几何精修的实现见 [原型记录](docs/GEOMETRY_REFINEMENT.md)，真实数据验收结论见下一条。
+- 恢复带标签训练/评估数据后的清理、来源隔离、真实小规模消融与新细节头训练见 [带标签优化记录](docs/LABELED_DATA_OPTIMIZATION.md)。
+- 第二轮候选召回、密集实例截断修复与负收益消融见 [候选优化记录](docs/ROUND2_CANDIDATE_OPTIMIZATION.md)。
+- 第三轮边界先验训练、扩训对照、冻结确认与回退方法见 [原生几何优化记录](docs/ROUND3_NATIVE_GEOMETRY.md)，完整指标见 [第三轮结果](docs/ROUND3_RESULTS.json)。
+- 第四轮目标提示、模板与质量评分试验已完成，均未达到采用标准；默认仍为 **33.785%**。见 [第四轮记录](docs/ROUND4_INSTANCE_OWNERSHIP.md) 和 [完整结果](docs/ROUND4_RESULTS.json)。
+- 第五轮新增整图实例集合模型，直接从 PNG 预测实例笔画；当前小样本能力检查未通过，尚未扩大训练或替换默认。实现与限制见 [新架构试验](docs/ROUND5_QUERY_INSTANCES.md)。
+- 四项优化方向的实际尝试范围、外部论文比较与下一轮建议见 [优化路线重新评估](docs/OPTIMIZATION_REASSESSMENT.md)。
+- 暂停实验后的详细执行路线、数据重建、两条主线、验收和停止条件见 [后续优化实施方案](docs/NEXT_OPTIMIZATION_PLAN.md)。
 - 依赖：`pip install -r requirements.txt`（GPU 可选，自动回退 CPU）。
 - 离线合规：`python tools/check_compliance.py`。
 
@@ -66,7 +81,7 @@ submission/
 ├── Dockerfile                # 64-bit Linux 离线镜像
 ├── environment.json          # 运行环境、依赖、资源与网络声明
 ├── validation.json           # 验证记录与输出契约
-├── METHOD.md                 # 3 页内方法说明（提交材料）
+├── docs/METHOD.md            # 方法说明（提交材料）
 ├── weights/
 │   ├── manifest.json         # 模型清单、参数量、离线声明
 │   ├── color_prior.json      # 训练集统计的颜色→语义先验（需构建）
@@ -96,7 +111,7 @@ submission/
 │   ├── net_guard.py          # 进程级离线防护
 │   └── params.py             # 模型清单与 5B 参数量审计
 ├── tools/                    # 构建先验、导出 GT、训练、评估、自检
-└── tests/                    # 43 个单元/集成测试
+└── tests/                    # 单元/集成测试（最近记录 152 项通过）
 ```
 
 ## 3. 快速开始
@@ -191,7 +206,7 @@ python infer.py --input /data/dev_final --output /results \
 
 ## 4. 方法（3 页内说明）
 
-v2 引擎（默认）分五步，详细说明见 `METHOD.md`：
+v2 像素分支分五步，详细说明见 `docs/METHOD.md`；当前默认引擎为 hybrid：
 
 1. **精确描边色恢复**（`cadvec/layers.py`）：PNG 是透明底 + 抗锯齿细线。
    对每个前景像素在“白 → 调色板色”的射线集合中取最近者，恢复精确描边色与
@@ -228,10 +243,10 @@ v2 引擎（默认）分五步，详细说明见 `METHOD.md`：
 | 规则要求 | 本提交的做法 |
 |---|---|
 | 64 位 Linux、离线运行 | `Dockerfile` 基于 `python:3.13-slim`；`infer.py` 启动即安装 socket 防护；`manifest` 声明 `external_network_required=false`；无外部 API |
-| 模型参数总量 ≤ 5B | 审计总量 23,077,263（ViT 2,911,525 + YOLO-seg 3,399,033 + GAT 356,373 + ResNet18 主干 2,787,279 + 六套 ROI 墨迹 U-Net 各 1,948,847 + Stuff U-Net 1,929,971）；见 `weights/manifest.json`；`compliance/params.py` 启动审计 |
+| 模型参数总量 ≤ 5B | 当前清单审计总量 23,561,566（原 23,077,263 + 原生细节头 484,303）；见 `weights/manifest.json`；`compliance/params.py` 启动审计 |
 | 容器、启动命令、依赖版本、模型清单 | `Dockerfile`、`run.sh`、`requirements.txt`、`weights/manifest.json`、`environment.json` |
 | 验证 JSON | `validation.json` 记录输出契约、测试/自检结果；`infer.py` 输出逐图 JSON 并由 `validate_output` 校验 |
-| 数据与开源权重 | 训练/校准只使用主办方 `train_final`/`test_final`；使用公开开源预训练权重：torchvision ResNet18（ImageNet1K）作 GAT 特征主干，YOLOv8n-seg 的 COCO/ImageNet 初始化仅用于 A/B 实验并在 `OPTIMIZATION.md` §20 声明；未使用私有数据集；`dev_final` 只读 PNG |
+| 数据与开源权重 | 训练/校准只使用主办方 `train_final`/`test_final`；使用公开开源预训练权重：torchvision ResNet18（ImageNet1K）作 GAT 特征主干，YOLOv8n-seg 的 COCO/ImageNet 初始化仅用于 A/B 实验并在 `docs/OPTIMIZATION.md` §20 声明；未使用私有数据集；`dev_final` 只读 PNG |
 | 禁止测试真值/答案查找 | `infer.py` 只 glob `*.png`，不导入 `cadvec.svg`；无按文件名/ID 的硬编码映射；`tools/check_compliance.py` 会扫描并阻断 |
 | 结果可复现 | 固定依赖版本、固定种子、确定性流程；单图输出与线程数无关 |
 
@@ -399,8 +414,8 @@ python tools/train_roi_ink.py --shards _work/roi_512/train --val-shards _work/ro
 泛化校验（R1 感知哈希分组划分，test_final 300/300/400）：calib
 **25.819%**（基线 19.202%）、hold **23.168%**（基线 16.727%）、从未参与任何选择
 的 final **24.083%**（基线 18.508%），三个子集同向。上一版按旧 500/500
-随机划分的 18.403% / 18.069% 仅作参考。完整消融见 `OPTIMIZATION.md`
-第 7、11、14、15、16、17 节，文献与路线见 `RESEARCH_PLAN.md`。
+随机划分的 18.403% / 18.069% 仅作参考。完整消融见 `docs/OPTIMIZATION.md`
+第 7、11、14、15、16、17 节，文献与路线见 `docs/RESEARCH_PLAN.md`。
 
 补充诊断（前 60 张子集）：v2 PQ=1.186%（TP/FP/FN=11/556/431），v1 PQ=0；
 把 ViT 类别替换为真值的上界为 PQ=3.164%。该子集比全量更难，小样本波动大，
@@ -459,7 +474,7 @@ python infer.py --input /data/dev_final --output results \
 
 ## 12. 提交前检查清单
 
-- [ ] 填写队伍信息，确认 `METHOD.md` 为 3 页内方法说明；
+- [ ] 填写队伍信息，确认 `docs/METHOD.md` 为 3 页内方法说明；
 - [ ] 已运行 `python tools/build_prior.py` 生成 `weights/color_prior.json`；
 - [ ] `python -m pytest tests -q` 全部通过；
 - [ ] `python tools/check_compliance.py --results <results>` 返回 `ok: true`；

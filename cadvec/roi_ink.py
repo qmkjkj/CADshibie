@@ -209,6 +209,7 @@ class RoiInkRefiner:
         self.native_pad = bool(native_pad)
         self.use_anchor = bool(getattr(model, "use_anchor", False))
         self.onehot = torch.eye(36, device=device)
+        self.native_detail = None
 
     @classmethod
     def load(cls, path: str | Path, device: str | None = "auto",
@@ -313,7 +314,7 @@ class RoiInkRefiner:
     @torch.no_grad()
     def analyze(self, image: np.ndarray, boxes: list[tuple[int, float, tuple]],
                 width: int, height: int, canvas_width: int = 100,
-                canvas_height: int = 100) -> list[dict]:
+                canvas_height: int = 100, *, include_empty: bool = False) -> list[dict]:
         """返回每个检测框的细化实例、概率统计与几何特征（不做 NMS/上限）。"""
         if not boxes:
             return []
@@ -389,7 +390,7 @@ class RoiInkRefiner:
             segments = vectorize_mask(
                 resized, left, top, crop_width, crop_height,
                 scale_x, scale_y, self.threshold)
-            if not segments:
+            if not segments and not include_empty:
                 continue
             results.append({
                 "class_id": class_id,
@@ -442,7 +443,7 @@ class RoiInkRefiner:
         kept_boxes: dict[int, list[tuple]] = {}
         for item in analyzed:
             class_id = int(item["class_id"])
-            if counts.get(class_id, 0) >= self.max_instances:
+            if self.max_instances > 0 and counts.get(class_id, 0) >= self.max_instances:
                 continue
             box = item["box"]
             if any(box_iou(box, other) > 0.5
@@ -455,7 +456,23 @@ class RoiInkRefiner:
                     continue
             kept_boxes.setdefault(class_id, []).append(box)
             counts[class_id] = counts.get(class_id, 0) + 1
-            results.append((class_id, float(item["confidence"]), item["segments"]))
+            segments = item["segments"]
+            if self.native_detail is not None:
+                left, top, right, bottom = item["box"]
+                prompt_args = {}
+                if getattr(self.native_detail, "uses_instance_prompt", False):
+                    x0,y0,x1,y1 = item["det_box"]
+                    prompt_args["det_box"] = (x0-left,y0-top,x1-left,y1-top)
+                probability = self.native_detail.correct(
+                    image[top:bottom, left:right], item["probability"], class_id, **prompt_args)
+                native_segments = vectorize_mask(
+                    probability, left, top, right-left, bottom-top,
+                    width/max(canvas_width,1), height/max(canvas_height,1), self.threshold)
+                if native_segments:
+                    segments = [{"command":0, "points":points, "polyline":np.asarray(points),
+                                 "length":float(length), "rgb":[0,0,0], "layer":0,"width":1.}
+                                for points,length in native_segments]
+            results.append((class_id, float(item["confidence"]), segments))
         return results
 
 def dice_loss(logits: torch.Tensor, target: torch.Tensor, eps: float = 1.0) -> torch.Tensor:

@@ -196,6 +196,7 @@ def run_image_segdet(
     canvas_height: int = 100,
     det_conf: float = 0.25,
     det_iou: float = 0.5,
+    image_size: int = 640,
     max_instances: int = 12,
     inside_fraction: float = 0.5,
     templates_path: str | Path | None = None,
@@ -231,7 +232,7 @@ def run_image_segdet(
     if device is None:
         import torch
         device = 0 if torch.cuda.is_available() else "cpu"
-    result = model.predict(source=str(png_path), imgsz=640, conf=det_conf,
+    result = model.predict(source=str(png_path), imgsz=image_size, conf=det_conf,
                            iou=det_iou, verbose=False, device=device,
                            retina_masks=False)[0]
     detections = []

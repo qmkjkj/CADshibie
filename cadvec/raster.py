@@ -19,17 +19,32 @@ def render_items(items, raster: int = 1000, canvas_width: float = 100.0,
                  canvas_height: float = 100.0) -> np.ndarray:
     sx = raster / max(float(canvas_width), 1e-6)
     sy = raster / max(float(canvas_height), 1e-6)
-    image = Image.new("1", (raster, raster), 0)
+    return render_window(items, (raster, raster), (sx, sy))
+
+
+def render_window(items, shape: tuple[int, int], scale_xy=(1.0, 1.0),
+                  origin_xy=(0, 0)) -> np.ndarray:
+    """Render a crop without changing global PIL pixel phase or primitive types.
+
+    ``origin_xy`` is an integer pixel offset in the full raster, not a new
+    canvas coordinate origin. This also supports rectangular source images.
+    """
+    height, width = shape
+    sx, sy = scale_xy
+    ox, oy = origin_xy
+    image = Image.new("1", (width, height), 0)
     draw = ImageDraw.Draw(image)
     for item in items:
-        points = _points(item, sx, sy)
+        points = [(x - ox, y - oy) for x, y in _points(item, sx, sy)]
         if int(item.get("command", 0)) in (0, 1):
             draw.line(points, fill=1, width=1, joint="curve")
         else:
             xs, ys = zip(*points)
             draw.ellipse((min(xs), min(ys), max(xs), max(ys)),
                          outline=1, width=1)
-    return np.asarray(image, dtype=bool)
+    # PIL mode "1" exposes true bytes as 255. Normalize to standard 0/1
+    # storage before passing these masks to native image kernels.
+    return np.not_equal(np.asarray(image), 0)
 
 
 def render_data(data: dict, raster: int = 1000,

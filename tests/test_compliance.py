@@ -121,3 +121,16 @@ def test_offline_guard_blocks_network():
     )
     assert completed.returncode != 0
     assert "OfflineViolation" in completed.stderr
+
+
+def test_source_scan_excludes_environment_but_checks_project_code(tmp_path, monkeypatch):
+    from tools import check_compliance
+
+    for directory in (".venv/Lib/site-packages/vendor", "_work/experiment", "cadvec"):
+        path = tmp_path / directory / "transport.py"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("import requests\n", encoding="utf-8")
+    monkeypatch.setattr(check_compliance, "ROOT", tmp_path)
+    problems = check_compliance.scan_imports()
+    assert len(problems) == 1
+    assert "cadvec" in problems[0] and "requests" in problems[0]

@@ -24,6 +24,8 @@ from PIL import Image, ImageDraw
 from scipy.ndimage import binary_dilation
 from scipy.optimize import linear_sum_assignment
 
+from .raster import render_items
+
 FIELDS = ("semanticIds", "instanceIds", "commands", "args")
 IGNORE_ID = 35
 THING_CLASS_COUNT = 30
@@ -65,11 +67,7 @@ def _segments(
     raster_size: int,
     dilation: int = 0,
 ) -> tuple[dict[tuple[int, int], np.ndarray], int]:
-    scale_x = raster_size / canvas_size[0]
-    scale_y = raster_size / canvas_size[1]
-    segments: dict[tuple[int, int], np.ndarray] = defaultdict(
-        lambda: np.zeros((raster_size, raster_size), dtype=bool)
-    )
+    groups: dict[tuple[int, int], list[dict]] = defaultdict(list)
     skipped = 0
     for class_id, instance_id, command, coordinates in zip(*(data[k] for k in FIELDS)):
         if class_id == IGNORE_ID:
@@ -83,18 +81,14 @@ def _segments(
         else:
             key = (class_id, -1)
         points = [
-            (coordinates[index] * scale_x, coordinates[index + 1] * scale_y)
+            (coordinates[index], coordinates[index + 1])
             for index in range(0, 8, 2)
         ]
-        image = Image.new("1", (raster_size, raster_size), 0)
-        draw = ImageDraw.Draw(image)
-        if command in (0, 1):
-            draw.line(points, fill=1, width=1, joint="curve")
-        else:
-            xs, ys = zip(*points)
-            draw.ellipse((min(xs), min(ys), max(xs), max(ys)), outline=1, width=1)
-        segments[key] |= np.asarray(image, dtype=bool)
-    result = dict(segments)
+        groups[key].append({"command": command, "points": points})
+    # Drawing independent primitives of one segment onto a binary PIL canvas
+    # is exactly their union, avoiding one full image allocation per primitive.
+    result = {key: render_items(items, raster_size, *canvas_size)
+              for key, items in groups.items()}
     if dilation > 0:
         result = {
             key: binary_dilation(mask, iterations=dilation)

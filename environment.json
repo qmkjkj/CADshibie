@@ -40,5 +40,66 @@
     "seconds_per_image": 1.5,
     "device": "CPU 几何 + RTX 3060 ViT",
     "note": "hybrid + 192/256 路由 + 512 统一模型 + 全图 Stuff 分支：RTX 3060 下 --workers 6 约 1.5s/张；CPU-only 可运行但更慢。"
+  },
+  "local_optimization_run": {
+    "date": "2026-11-26",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.9",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8GB",
+    "packages": {
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "ultralytics": "8.4.216",
+      "numpy": "2.2.6",
+      "Pillow": "11.3.0",
+      "scipy": "1.15.3",
+      "scikit-image": "0.25.2"
+    },
+    "workers": 3,
+    "native_detail_weight_bytes": 1983490,
+    "note": "This local Windows run does not validate the historical Linux container."
+  },
+  "native_geometry_round3": {
+    "date": "2026-11-27",
+    "architecture": "native-residual-v2",
+    "prior_mode": "boundary",
+    "native_tile": 320,
+    "boundary_radius": 2,
+    "boundary_logit": 2.0,
+    "native_detail_weight_bytes": 1984066,
+    "native_detail_sha256": "dd885ae635ac546a465c1622d1f99b64cec637494e78142888459b514bade907",
+    "training": "800 source-grouped official training pages, 10 epochs, seed73, base16, batch8, bf16, epoch9 selected by fixed crop proxy",
+    "expanded_training_adopted": false,
+    "unit_tests_passed": 108,
+    "runtime_note": "ROI replay timing is not full-pipeline deployment throughput; training wall time includes machine pause/sleep."
+  },
+  "native_geometry_round4": {
+    "date": "2026-11-27",
+    "adopted": false,
+    "record": "docs/ROUND4_RESULTS.json",
+    "optional_architecture": "native-residual-v3 instance class and box-relative coordinates",
+    "extra_parameters": 4640,
+    "training": "Paired 4 epochs, original800pages, same9660crops per epoch, batch8, bf16",
+    "unit_tests_passed": 135,
+    "default_unchanged": true,
+    "native_detail_sha256": "dd885ae635ac546a465c1622d1f99b64cec637494e78142888459b514bade907"
+  },
+  "experimental_query_round5": {
+    "date": "2026-11-27",
+    "architecture": "query-ink-set-v1",
+    "parameters": 2362595,
+    "input": "Native complete PNG, right-bottom pad32; no detector box/coarse inputs",
+    "training_batch": 1,
+    "training_precision": "bf16",
+    "queries": 100,
+    "points": 8192,
+    "peak_gpu_allocated_MiB": 1680.82421875,
+    "hardware": "RTX4060Laptop8GB",
+    "updates": 1000,
+    "production_adopted": false,
+    "default_unchanged": true,
+    "capacity_training_seconds": 199.23577440006193,
+    "unit_tests_passed": 152,
+    "note": "Eight training pages only. Runtime is training, not full production throughput."
   }
 }

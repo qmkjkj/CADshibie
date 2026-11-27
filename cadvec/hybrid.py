@@ -12,6 +12,7 @@ import cv2
 import numpy as np
 
 from .schema import assemble_output, validate_output
+from .raster import render_items
 
 RASTER = 400
 
@@ -131,13 +132,25 @@ def merge_final(
     gate_metric: str = "cover",
     support: dict[str, Any] | None = None,
     quality_rules: dict[int, tuple[str, str, float]] | None = None,
+    raster_mode: str = "legacy400",
+    source_identity: str = "scoped",
 ) -> dict[str, Any]:
     """最终融合：v3 ∪ GAT(class 8) → segdet 接管指定类别 → 抑制低精度类。"""
     width = int(primary.get("width", 100))
     height = int(primary.get("height", 100))
     items = _items(primary, "p")
+    if raster_mode not in {"legacy400", "canonical1000"}:
+        raise ValueError(f"Unknown fusion raster mode: {raster_mode}")
+    if source_identity not in {"legacy", "scoped"}:
+        raise ValueError(f"Unknown source identity mode: {source_identity}")
+    raster_size = 1000 if raster_mode == "canonical1000" else RASTER
+
+    def identity(item):
+        return item["key"] if source_identity == "scoped" else item["key"][1]
 
     def raster(group: list[dict]) -> np.ndarray:
+        if raster_mode == "canonical1000":
+            return render_items(group, raster_size, width, height)
         import cv2
         mask = np.zeros((RASTER, RASTER), np.uint8)
         for item in group:
@@ -169,10 +182,10 @@ def merge_final(
         for class_id in sorted(gat_classes):
             # 主引擎同类实例的掩码
             kept_masks = []
-            primary_groups: dict[int, list[dict]] = {}
+            primary_groups: dict[tuple, list[dict]] = {}
             for item in items:
                 if item["semantic"] == class_id:
-                    primary_groups.setdefault(item["key"][1], []).append(item)
+                    primary_groups.setdefault(identity(item), []).append(item)
             for group in primary_groups.values():
                 kept_masks.append(raster(group))
             for _key, mask, group in gat_by_class.get(class_id, []):
@@ -190,9 +203,9 @@ def merge_final(
     # 总 PQ +0.37，calib/holdout 两个半集方向一致。
     if gate_classes and support:
         import cv2
-        height_px, width_px = support.get("size") or (RASTER, RASTER)
-        scale_x = RASTER / max(float(width_px), 1.0)
-        scale_y = RASTER / max(float(height_px), 1.0)
+        height_px, width_px = support.get("size") or (raster_size, raster_size)
+        scale_x = raster_size / max(float(width_px), 1.0)
+        scale_y = raster_size / max(float(height_px), 1.0)
         support_masks: dict[int, list[np.ndarray]] = {}
         for raw_class, polygons in (support.get("polygons") or {}).items():
             class_id = int(raw_class)
@@ -202,17 +215,17 @@ def merge_final(
             for polygon in polygons:
                 if not polygon or len(polygon) < 3:
                     continue
-                mask = np.zeros((RASTER, RASTER), np.uint8)
+                mask = np.zeros((raster_size, raster_size), np.uint8)
                 points = np.asarray(polygon, dtype=np.float64)
                 points[:, 0] *= scale_x
                 points[:, 1] *= scale_y
                 cv2.fillPoly(mask, [np.round(points).astype(np.int32)], 1)
                 masks.append(mask.astype(bool))
             support_masks[class_id] = masks
-        grouped: dict[tuple[int, int], list[dict]] = {}
+        grouped: dict[tuple, list[dict]] = {}
         for item in items:
             if item["semantic"] in gate_classes:
-                grouped.setdefault((item["semantic"], item["key"][1]), []).append(item)
+                grouped.setdefault((item["semantic"], identity(item)), []).append(item)
         dropped: set[int] = set()
         for (class_id, _instance), group in grouped.items():
             mask = raster(group)
@@ -245,10 +258,10 @@ def merge_final(
                     item["key"], []).append(item)
         for class_id in sorted(segdet_union_classes):
             kept: list[tuple[np.ndarray, list[dict]]] = []
-            primary_groups: dict[int, list[dict]] = {}
+            primary_groups: dict[tuple, list[dict]] = {}
             for item in items:
                 if item["semantic"] == class_id:
-                    primary_groups.setdefault(item["key"][1], []).append(item)
+                    primary_groups.setdefault(identity(item), []).append(item)
             for group in primary_groups.values():
                 kept.append((raster(group), group))
             for group in segdet_groups.get(class_id, {}).values():
@@ -313,36 +326,13 @@ def merge_final(
 
 
 def merge_predictions(primary: dict[str, Any], secondary: dict[str, Any],
-                      classes: set[int], iou_threshold: float = 0.5) -> dict[str, Any]:
+                      classes: set[int], iou_threshold: float = 0.5,
+                      *, raster_mode: str = "legacy400") -> dict[str, Any]:
     """主引擎保留非目标类的图元；目标类取两个引擎的并集，按实例掩码
     IoU 去重（保留主引擎实例）。"""
     if not classes:
         return primary
-    primitives = [
-        _Primitive(primary, index)
-        for index in range(len(primary["commands"]))
-        if int(primary["semanticIds"][index]) not in classes
-    ]
-    kept_masks = []
-    for class_id in sorted(classes):
-        for mask, items in _class_instances(primary, class_id):
-            kept_masks.append(mask)
-            primitives.extend(items)
-        for mask, items in _class_instances(secondary, class_id, instance_offset=1_000_000):
-            duplicate = False
-            for existing in kept_masks:
-                intersection = int(np.count_nonzero(mask & existing))
-                if not intersection:
-                    continue
-                union = int(np.count_nonzero(mask | existing))
-                if intersection / max(union, 1) > iou_threshold:
-                    duplicate = True
-                    break
-            if not duplicate:
-                kept_masks.append(mask)
-                primitives.extend(items)
-    data = assemble_output(primitives,
-                           width=int(primary.get("width", 100)),
-                           height=int(primary.get("height", 100)))
-    validate_output(data)
-    return data
+    # Reuse source-aware, per-class suppression instead of a shared mask list
+    # and a fixed ID offset (which could suppress another class or collide).
+    return merge_final(primary, secondary, gat_classes=classes,
+                       iou_threshold=iou_threshold, raster_mode=raster_mode)

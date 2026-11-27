@@ -23,6 +23,7 @@ for _variable in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
 os.environ.setdefault("YOLO_OFFLINE", "1")
 
 import argparse
+import hashlib
 import json
 import random
 import sys
@@ -217,6 +218,34 @@ def build_parser() -> argparse.ArgumentParser:
         help="门控重叠度量：cover=交集/较小面积（默认），iou=标准 IoU",
     )
     parser.add_argument(
+        "--hybrid-raster", choices=("legacy400", "canonical1000"), default="legacy400",
+        help="融合栅格：canonical1000 使用评分器的 PIL/1px/圆椭圆语义；保留旧模式作对照",
+    )
+    parser.add_argument(
+        "--hybrid-source-identity", choices=("legacy", "scoped"), default="legacy",
+        help="跨分支实例身份门控；scoped 为实验修复，默认保留已验证的历史选择路径",
+    )
+    parser.add_argument(
+        "--geometry-refine", action="store_true",
+        help="hybrid 的原图局部几何精修（实验性，仅调整 Thing 实例位置，尚未验证真实 PQ）",
+    )
+    parser.add_argument(
+        "--stage-snapshots", default="",
+        help="可选：保存 hybrid 分支及后处理配置，供固定候选重放消融（不写入预测目录）",
+    )
+    parser.add_argument(
+        "--native-detail-weights", default=None,
+        help="原分辨率残差头权重；hybrid 默认使用 weights/native_detail.pt",
+    )
+    parser.add_argument(
+        "--segdet-image-size", type=int, default=640,
+        help="YOLO-seg 输入边长（32 的倍数）；hybrid/segdet 共用，默认 640",
+    )
+    parser.add_argument(
+        "--disable-native-detail", action="store_true",
+        help="关闭原分辨率残差头；完整历史基线另加 --roi-max-instances 15",
+    )
+    parser.add_argument(
         "--hybrid-segdet-weights", default=str(SCRIPT_DIR / "weights" / "yolo_seg.pt"),
         help="hybrid 引擎使用的 YOLO-seg 权重（不存在则跳过该分支）",
     )
@@ -239,6 +268,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--roi-quality-model", default=str(SCRIPT_DIR / "weights" / "roi_quality_512c_all.json"),
         help="学习式 ROI 实例质量模型（JSON）；不存在则关闭",
+    )
+    parser.add_argument(
+        "--roi-max-instances", type=int, default=0,
+        help="ROI 每类实例数上限；0 表示不额外截断，仍保留检测器上限和质量筛选",
     )
     parser.add_argument(
         "--stuff-weights", default=str(SCRIPT_DIR / "weights" / "stuff_unet.pt"),
@@ -349,14 +382,20 @@ def _cuda_available() -> bool:
 
 
 def find_pngs(input_path: Path) -> list[Path]:
+    def is_metadata(path: Path) -> bool:
+        return "__MACOSX" in path.parts or path.name.startswith("._")
+
     if input_path.is_file():
         if input_path.suffix.lower() != ".png":
             raise SystemExit(f"输入文件不是 PNG: {input_path}")
+        if is_metadata(input_path):
+            raise SystemExit(f"输入是 macOS 资源文件，不是 PNG 图像: {input_path}")
         return [input_path]
     if not input_path.is_dir():
         raise SystemExit(f"输入路径不存在: {input_path}")
     files = sorted(
-        (path for path in input_path.rglob("*") if path.is_file() and path.suffix.lower() == ".png"),
+        (path for path in input_path.rglob("*") if path.is_file()
+         and path.suffix.lower() == ".png" and not is_metadata(path)),
         key=lambda path: str(path.relative_to(input_path)).lower(),
     )
     if not files:
@@ -415,6 +454,7 @@ def _process_one(
             path, segdet["weights"], config, segdet["palette"],
             canvas_width=width, canvas_height=height,
             det_conf=segdet["det_conf"], det_iou=segdet["det_iou"],
+            image_size=segdet.get("image_size", 640),
             max_instances=segdet["max_instances"],
             inside_fraction=segdet["inside_fraction"],
             templates_path=segdet["templates"],
@@ -484,6 +524,7 @@ def _process_one(
                 path, segdet_options["weights"], config, segdet_options["palette"],
                 canvas_width=width, canvas_height=height,
                 det_conf=segdet_options["det_conf"], det_iou=segdet_options["det_iou"],
+                image_size=segdet_options.get("image_size", 640),
                 max_instances=segdet_options["max_instances"],
                 inside_fraction=segdet_options["inside_fraction"],
                 templates_path=None,
@@ -507,7 +548,10 @@ def _process_one(
             segdet_union_classes=refiner_classes,
             suppress=hybrid["suppress"],
             quality_rules=quality_rules,
+            raster_mode=hybrid.get("raster_mode", "legacy400"),
+            source_identity=hybrid.get("source_identity", "legacy"),
         )
+        merged_data = data
         if anchor_classes and segdet_support:
             detections = segdet_support.get("detections") or []
             size = segdet_support.get("size") or (0, 0)
@@ -530,6 +574,46 @@ def _process_one(
             stuff_items = stuff_branch.infer(path)
             if stuff_items:
                 data = append_stuff(data, stuff_items, width, height)
+        if hybrid.get("stage_snapshots"):
+            snapshot_dir = Path(hybrid["stage_snapshots"])
+            snapshot_dir.mkdir(parents=True, exist_ok=True)
+            snapshot = {
+                "schema_version": 1, "file": path.name,
+                "primary": v2_result.data, "gat": gat_result["data"],
+                "segdet": segdet_data, "support": segdet_support,
+                "merged": merged_data, "final": data,
+                "stuff_items": stuff_items if stuff_branch is not None else [],
+                "merge_options": {
+                    "gat_classes": sorted(hybrid["classes"]),
+                    "segdet_classes": sorted(hybrid["segdet_classes"]),
+                    "gate_classes": sorted(hybrid.get("gate_classes", [])),
+                    "gate_threshold": hybrid.get("gate_threshold", 0.1),
+                    "gate_metric": hybrid.get("gate_metric", "cover"),
+                    "segdet_union_classes": sorted(refiner_classes),
+                    "suppress": sorted(hybrid["suppress"]),
+                    "quality_rules": quality_rules,
+                    "raster_mode": hybrid.get("raster_mode", "legacy400"),
+                    "source_identity": hybrid.get("source_identity", "legacy"),
+                },
+                "assignment": {
+                    "anchor_classes": sorted(anchor_classes), "anchor_inside": anchor_inside,
+                    "anchor_affinity": anchor_affinity,
+                    "atom_classes": sorted(atom_classes), "atom_affinity": atom_affinity,
+                },
+            }
+            (snapshot_dir / f"{path.stem}.json").write_text(
+                json.dumps(snapshot, ensure_ascii=False, allow_nan=False,
+                           separators=(",", ":")), encoding="utf-8")
+        geometry_decisions = []
+        if hybrid.get("geometry_refine", False):
+            from cadvec.geometry_refine import refine_image
+            data, geometry_decisions = refine_image(data, path)
+            diagnostics = output_dir.parent / f"{output_dir.name}_geometry_refine"
+            diagnostics.mkdir(parents=True, exist_ok=True)
+            (diagnostics / f"{path.stem}.json").write_text(
+                json.dumps({"file": path.name, "has_ground_truth": False,
+                            "decisions": geometry_decisions}, ensure_ascii=False,
+                           allow_nan=False, indent=2) + "\n", encoding="utf-8")
         write_output(data, output_dir / f"{path.stem}.json")
         return {
             "file": path.name,
@@ -537,8 +621,11 @@ def _process_one(
             "hypotheses": v2_result.hypotheses,
             "objects": gat_result["stats"].get("instances", 0),
             "seconds": round(time.perf_counter() - started, 3),
-            "command_counts": {"line": len(data["commands"]), "arc": 0,
-                               "circle": 0, "ellipse": 0},
+            "command_counts": {name: data["commands"].count(command)
+                               for command, name in enumerate(("line", "arc", "circle", "ellipse"))},
+            "geometry_refine": {"enabled": hybrid.get("geometry_refine", False),
+                                "considered": len(geometry_decisions),
+                                "accepted": sum(row["accepted"] for row in geometry_decisions)},
         }
     if gat is not None:
         from cadvec.pipeline_gat import run_image_gat
@@ -591,6 +678,23 @@ def _process_one(
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.segdet_image_size < 32 or args.segdet_image_size % 32:
+        print("[错误] --segdet-image-size 必须是正的 32 倍数", file=sys.stderr)
+        return 2
+    if args.roi_max_instances < 0:
+        print("[错误] --roi-max-instances 必须大于等于 0", file=sys.stderr)
+        return 2
+    if args.disable_native_detail:
+        args.native_detail_weights = ""
+    elif args.native_detail_weights is None:
+        args.native_detail_weights = (
+            str(Path(args.weights) / "native_detail.pt") if args.engine == "hybrid" else "")
+    if args.native_detail_weights and args.engine not in {"hybrid", "segdet"}:
+        print("[错误] --native-detail-weights 只支持 hybrid 或 segdet 引擎", file=sys.stderr)
+        return 2
+    if args.geometry_refine and args.engine != "hybrid":
+        print("[错误] --geometry-refine 当前只支持 hybrid 引擎", file=sys.stderr)
+        return 2
     if args.external_api and not args.allow_network:
         print(
             "[错误] --external-api 必须与 --allow-network 同时使用；"
@@ -605,6 +709,21 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         report = audit_models(args.weights)
+        if args.native_detail_weights:
+            from compliance.params import ModelEntry, _count_torch_parameters
+            detail_path = Path(args.native_detail_weights).resolve()
+            if not detail_path.is_file():
+                raise ModelComplianceError(
+                    f"原分辨率残差头权重不存在: {detail_path}；"
+                    "可用 --disable-native-detail 恢复历史基线")
+            listed = {(Path(args.weights)/entry.path).resolve() for entry in report.models}
+            if detail_path not in listed:
+                parameters = _count_torch_parameters(detail_path)
+                report.total_parameters += parameters
+                report.models.append(ModelEntry(
+                    name="native-residual-detail",kind="cnn-native-detail",path=str(detail_path),
+                    parameters=parameters,parameter_source="torch-state-dict",exists=True,
+                    size_bytes=detail_path.stat().st_size))
     except ModelComplianceError as error:
         print(f"[合规检查失败] {error}", file=sys.stderr)
         return 2
@@ -671,6 +790,7 @@ def main(argv: list[str] | None = None) -> int:
         segdet_options = {
             "weights": args.segdet_weights, "palette": args.palette,
             "det_conf": args.det_conf, "det_iou": args.det_iou,
+            "image_size": args.segdet_image_size,
             "max_instances": args.max_instances,
             "inside_fraction": args.inside_fraction,
             "templates": args.segdet_templates,
@@ -726,11 +846,16 @@ def main(argv: list[str] | None = None) -> int:
             "gate_classes": {int(value) for value in args.hybrid_gate_classes.split(",") if value.strip()},
             "gate_threshold": args.hybrid_gate_threshold,
             "gate_metric": args.hybrid_gate_metric,
+            "raster_mode": args.hybrid_raster,
+            "source_identity": args.hybrid_source_identity,
+            "geometry_refine": args.geometry_refine,
+            "stage_snapshots": args.stage_snapshots,
             "segdet": {
                 "weights": args.hybrid_segdet_weights,
                 "palette": args.palette,
                 "det_conf": 0.2,
                 "det_iou": 0.5,
+                "image_size": args.segdet_image_size,
                 "max_instances": 10,
                 "inside_fraction": 0.35,
                 "device": 0 if device_name == "cuda" else "cpu",
@@ -812,6 +937,7 @@ def main(argv: list[str] | None = None) -> int:
             from cadvec.roi_ink import RoiInkRefiner
             roi_refiner = RoiInkRefiner.load(
                 args.roi_ink_weights, device=args.roi_ink_device,
+                max_instances=args.roi_max_instances,
                 quality_path=args.roi_quality_model)
             if roi_refiner is not None:
                 print(f"ROI 墨迹细化：classes {sorted(roi_classes)}，"
@@ -830,6 +956,7 @@ def main(argv: list[str] | None = None) -> int:
         from cadvec.roi_ink import RoiInkRefiner
         aux_refiner = RoiInkRefiner.load(
             args.roi_ink_weights_aux, device=args.roi_ink_device,
+            max_instances=args.roi_max_instances,
             quality_path=args.roi_quality_model)
         if aux_refiner is not None:
             roi_plan.append((aux_classes, aux_refiner))
@@ -843,6 +970,7 @@ def main(argv: list[str] | None = None) -> int:
         from cadvec.roi_ink import RoiInkRefiner
         extra_refiner = RoiInkRefiner.load(
             args.roi_ink_extra_weights, device=args.roi_ink_device,
+            max_instances=args.roi_max_instances,
             quality_path=args.roi_quality_model)
         if extra_refiner is not None:
             roi_plan.append((extra_classes, extra_refiner))
@@ -850,6 +978,13 @@ def main(argv: list[str] | None = None) -> int:
             print(f"ROI 墨迹细化（第三模型）：classes {sorted(extra_classes)}，"
                   f"设备 {extra_refiner.device}", file=sys.stderr)
     quality_rules = {}
+    if args.native_detail_weights:
+        from cadvec.native_detail import NativeDetailRefiner
+        native_detail = NativeDetailRefiner.load(args.native_detail_weights,
+                                               device=roi_plan[0][1].device if roi_plan else "cpu")
+        for _classes, model in roi_plan:
+            model.native_detail = native_detail
+        print(f"原分辨率残差头：{args.native_detail_weights}", file=sys.stderr)
     if roi_classes and Path(args.roi_ink_quality).exists():
         try:
             payload = json.loads(Path(args.roi_ink_quality).read_text(encoding="utf-8"))
@@ -983,6 +1118,24 @@ def main(argv: list[str] | None = None) -> int:
         "offline_guard": not args.allow_network,
         "external_api": bool(args.external_api),
     }
+    if args.engine == "hybrid":
+        summary["native_detail"] = {
+            "enabled": bool(args.native_detail_weights),
+            "weights": Path(args.native_detail_weights).name if args.native_detail_weights else None,
+            "sha256": hashlib.sha256(Path(args.native_detail_weights).read_bytes()).hexdigest()
+                      if args.native_detail_weights else None,
+        }
+        summary["segdet_image_size"] = args.segdet_image_size
+        summary["roi_max_instances"] = args.roi_max_instances
+        summary["hybrid_raster"] = args.hybrid_raster
+        summary["hybrid_source_identity"] = args.hybrid_source_identity
+        summary["geometry_refine"] = {
+            "enabled": args.geometry_refine,
+            "considered": sum(item.get("geometry_refine", {}).get("considered", 0)
+                              for item in results),
+            "accepted": sum(item.get("geometry_refine", {}).get("accepted", 0)
+                            for item in results),
+        }
     if errors:
         summary["error_samples"] = errors[:5]
     print(json.dumps(summary, ensure_ascii=False, indent=2))
